@@ -2,16 +2,11 @@
     <string name="app_name">RMM</string>
 
     <string name="hello_world">Hello world!</string>
-    <string name="title_activity_main">Habits List</string>
+    //login activity
+    <string name="lbl_username">Username</string>
+    <string name="lbl_enter_username">Enter your username</string>
+    <string name="lbl_pwd">Password</string>
+    <string name="lbl_enter_pwd">Enter your password</string>
+    <string name="lbl_login">Login</string>
 
-    <string name="title_section1">Section 1</string>
-    <string name="title_section2">Section 2</string>
-    <string name="title_section3">Section 3</string>
-
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-
-    <string name="action_example">Example action</string>
-
-    <string name="action_settings">Settings</string>
 </resources>
