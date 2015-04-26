@@ -2,9 +2,6 @@
     <string name="app_name">RMM</string>
 
     <string name="hello_world">Hello world!</string>
-<<<<<<< HEAD
-<<<<<<< HEAD
-
     <string name="title_activity_main">Habits List</string>
 
     <string name="title_section1">Habits</string>
@@ -17,10 +14,5 @@
     <string name="action_example">Example action</string>
     <string name="title_activity_habit_list">HabitListActivity</string>
 
-=======
     <string name="action_settings">Settings</string>
->>>>>>> parent of f461d21... Login Activity
-=======
-    <string name="action_settings">Settings</string>
->>>>>>> parent of f461d21... Login Activity
 </resources>
