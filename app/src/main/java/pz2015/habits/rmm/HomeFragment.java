@@ -4,17 +4,14 @@ package pz2015.habits.rmm;
  * Created by Marcin on 2015-04-26.
  */
 
-import android.app.Fragment;
 import android.app.ListFragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
-
-import java.util.ArrayList;
 
 public class HomeFragment extends ListFragment {
 
@@ -50,8 +47,15 @@ public class HomeFragment extends ListFragment {
 
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
-        TextView t = (TextView) v.findViewById(R.id.habitTitle);
-        t.setText("Tweet Clicked");
+//        Fragment mFragment = new HabitDetailFragment();
+//        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+//
+//        transaction.replace(R.id.frame_container, mFragment);
+//        transaction.addToBackStack(null);
+//
+//        transaction.commit();
+        Intent intent = new Intent(getActivity(), HabitDetailActivity.class);
+        getActivity().startActivity(intent);
     }
 
 }

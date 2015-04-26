@@ -1,5 +1,6 @@
 <resources>
     <string name="title_activity_main">My Main Activity</string>
+    <string name="title_activity_habit_detail">Habit Detail</string>
 
     <string name="app_name">RMM</string>
 
@@ -40,5 +41,9 @@
     <!-- Content Description -->
     <string name="desc_list_item_icon">Item Icon</string>
     <string name="hello_habits">hello habits</string>
+    <string name="addHabit">addHabit</string>
+    <string name="deleteHabit">deteleHabit</string>
+    <string name="title_activity_add_habit">AddHabitActivity</string>
+    <string name="title_activity_delete_habit">DeleteHabitActivity</string>
 
 </resources>
