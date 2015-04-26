@@ -1,4 +1,6 @@
 <resources>
+    <string name="title_activity_main">My Main Activity</string>
+
     <string name="app_name">RMM</string>
 
     <string name="hello_world">Hello world!</string>
