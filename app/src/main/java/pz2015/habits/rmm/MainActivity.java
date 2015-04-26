@@ -180,7 +180,7 @@ public class MainActivity extends ActionBarActivity {
                 fragment = new HomeFragment();
                 break;
             case 1:
-                //fragment = new FindPeopleFragment();
+                fragment = new SettingsFragment();
                 break;
             case 2:
                 //fragment = new PhotosFragment();
