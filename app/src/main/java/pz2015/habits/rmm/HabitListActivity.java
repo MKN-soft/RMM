@@ -1,17 +1,24 @@
 package pz2015.habits.rmm;
 
+import android.content.Context;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 
-public class HabitListActivity extends ActionBarActivity {
+public class HabitListActivity extends NavigationDrawerFragment {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_habit_list);
+        //setContentView(R.layout.activity_habit_list);
+        LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View contentView = inflater.inflate(R.layout.activity_habit_list, null, false);
+        mDrawerLayout.addView(contentView, 0);
+
     }
 
 
