@@ -1,5 +1,7 @@
 package pz2015.habits.rmm;
 
+import pz2015.*;
+
 import android.app.Activity;
 import android.app.FragmentManager;
 import android.content.res.Configuration;

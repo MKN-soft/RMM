@@ -1,4 +1,4 @@
-package pz2015.habits.rmm.pz2015.habits.rmm.adapter;
+package pz2015.habits.rmm.adapter;
 
 /**
  * Created by Marcin on 2015-04-26.

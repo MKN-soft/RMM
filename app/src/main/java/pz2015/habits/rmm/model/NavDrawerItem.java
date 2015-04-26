@@ -1,4 +1,4 @@
-package pz2015.habits.rmm.pz2015.habits.rmm.model;
+package pz2015.habits.rmm.model;
 
 /**
  * Created by Marcin on 2015-04-26.
