@@ -1,6 +1,8 @@
 package pz2015.habits.rmm;
 
 import pz2015.*;
+import pz2015.habits.rmm.adapter.NavDrawerListAdapter;
+import pz2015.habits.rmm.model.NavDrawerItem;
 
 import android.app.Activity;
 import android.app.FragmentManager;
@@ -18,9 +20,6 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
-
-import pz2015.habits.rmm.pz2015.habits.rmm.adapter.NavDrawerListAdapter;
-import pz2015.habits.rmm.pz2015.habits.rmm.model.NavDrawerItem;
 
 
 public class MainActivity extends Activity {
@@ -170,7 +169,7 @@ public class MainActivity extends Activity {
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
-            ..
+            super.onCreate(savedInstanceState);
             mDrawerList.setOnItemClickListener(new SlideMenuClickListener());
         }
 
@@ -180,8 +179,7 @@ public class MainActivity extends Activity {
         private class SlideMenuClickListener implements
                 ListView.OnItemClickListener {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position,
-                                    long id) {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 // display view for selected nav drawer item
                 displayView(position);
             }
@@ -192,7 +190,7 @@ public class MainActivity extends Activity {
          * */
     private void displayView(int position) {
         // update the main content by replacing fragments
-        Fragment fragment = null;
+        HomeFragment fragment = null;
         switch (position) {
             case 0:
                 fragment = new HomeFragment();

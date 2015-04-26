@@ -3,12 +3,6 @@ package pz2015.habits.rmm.adapter;
 /**
  * Created by Marcin on 2015-04-26.
  */
-import info.androidhive.slidingmenu.R;
-import info.androidhive.slidingmenu.model.NavDrawerItem;
-import pz2015.habits.rmm.pz2015.habits.rmm.model.NavDrawerItem;
-
-import java.util.ArrayList;
-
 import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -17,6 +11,11 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import java.util.ArrayList;
+
+import pz2015.habits.rmm.R;
+import pz2015.habits.rmm.model.NavDrawerItem;
 
 public class NavDrawerListAdapter extends BaseAdapter {
 
