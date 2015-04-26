@@ -1,14 +1,18 @@
 package pz2015.habits.rmm;
 
 import android.app.Activity;
+import android.app.FragmentManager;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
+import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -161,4 +165,69 @@ public class MainActivity extends Activity {
         super.onConfigurationChanged(newConfig);
         // Pass any configuration change to the drawer toggls
         mDrawerToggle.onConfigurationChanged(newConfig);
+
+        @Override
+        protected void onCreate(Bundle savedInstanceState) {
+            ..
+            mDrawerList.setOnItemClickListener(new SlideMenuClickListener());
+        }
+
+        /**
+         * Slide menu item click listener
+         * */
+        private class SlideMenuClickListener implements
+                ListView.OnItemClickListener {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position,
+                                    long id) {
+                // display view for selected nav drawer item
+                displayView(position);
+            }
+        }
+
+        /**
+         * Diplaying fragment view for selected nav drawer list item
+         * */
+    private void displayView(int position) {
+        // update the main content by replacing fragments
+        Fragment fragment = null;
+        switch (position) {
+            case 0:
+                fragment = new HomeFragment();
+                break;
+            case 1:
+                fragment = new FindPeopleFragment();
+                break;
+            case 2:
+                fragment = new PhotosFragment();
+                break;
+            case 3:
+                fragment = new CommunityFragment();
+                break;
+            case 4:
+                fragment = new PagesFragment();
+                break;
+            case 5:
+                fragment = new WhatsHotFragment();
+                break;
+
+            default:
+                break;
+        }
+
+        if (fragment != null) {
+            FragmentManager fragmentManager = getFragmentManager();
+            fragmentManager.beginTransaction()
+                    .replace(R.id.frame_container, fragment).commit();
+
+            // update selected item and title, then close the drawer
+            mDrawerList.setItemChecked(position, true);
+            mDrawerList.setSelection(position);
+            setTitle(navMenuTitles[position]);
+            mDrawerLayout.closeDrawer(mDrawerList);
+        } else {
+            // error in creating fragment
+            Log.e("MainActivity", "Error in creating fragment");
+        }
     }
+}
