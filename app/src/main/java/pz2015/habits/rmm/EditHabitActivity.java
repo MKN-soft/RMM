@@ -6,19 +6,19 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 
-public class DeleteHabitActivity extends ActionBarActivity {
+public class EditHabitActivity extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_delete_habit);
+        setContentView(R.layout.activity_edit_habit);
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_delete_habit, menu);
+        getMenuInflater().inflate(R.menu.menu_edit_habit, menu);
         return true;
     }
 
@@ -30,7 +30,7 @@ public class DeleteHabitActivity extends ActionBarActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_addHabit) {
+        if (id == R.id.action_settings) {
             return true;
         }
 

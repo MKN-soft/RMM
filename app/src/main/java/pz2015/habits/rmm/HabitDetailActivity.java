@@ -11,20 +11,20 @@ import android.widget.Button;
  */
 public class HabitDetailActivity extends Activity {
 
-    private Button _addHabit, _deleteHabit;
+    private Button _editHabit, _deleteHabit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_habit_detail);
 
-        _addHabit = (Button) findViewById(R.id.addHabit);
+        _editHabit = (Button) findViewById(R.id.editHabit);
         _deleteHabit = (Button) findViewById(R.id.deleteHabit);
 
-        _addHabit.setOnClickListener(new View.OnClickListener() {
+        _editHabit.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 //Hooking Activity
-                Intent intent = new Intent(HabitDetailActivity.this, AddHabitActivity.class);
+                Intent intent = new Intent(HabitDetailActivity.this, EditHabitActivity.class);
                 startActivity(intent);
             }
         });

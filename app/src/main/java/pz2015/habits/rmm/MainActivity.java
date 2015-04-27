@@ -1,12 +1,11 @@
 package pz2015.habits.rmm;
 
-import pz2015.*;
 import pz2015.habits.rmm.adapter.NavDrawerListAdapter;
 import pz2015.habits.rmm.model.NavDrawerItem;
 
-import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
 import android.os.Bundle;
@@ -17,7 +16,6 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
@@ -77,6 +75,7 @@ public class MainActivity extends ActionBarActivity {
 //        navDrawerItems.add(new NavDrawerItem(navMenuTitles[5], navMenuIcons.getResourceId(5, -1), true, "50+"));
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[0], navMenuIcons.getResourceId(0, -1)));
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[1], navMenuIcons.getResourceId(1, -1)));
+        navDrawerItems.add(new NavDrawerItem(navMenuTitles[2], navMenuIcons.getResourceId(5, -1)));
 
 
         // Recycle the typed array
@@ -151,7 +150,10 @@ public class MainActivity extends ActionBarActivity {
         }
         // Handle action bar actions click
         switch (item.getItemId()) {
-            case R.id.action_settings:
+            case R.id.action_addHabit:
+                //click addhabit
+                Intent intent = new Intent(MainActivity.this, AddHabitActivity.class);
+                startActivity(intent);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -165,7 +167,7 @@ public class MainActivity extends ActionBarActivity {
     public boolean onPrepareOptionsMenu(Menu menu) {
         // if nav drawer is opened, hide the action items
         boolean drawerOpen = mDrawerLayout.isDrawerOpen(mDrawerList);
-        //menu.findItem(R.id.action_settings).setVisible(!drawerOpen);
+        menu.findItem(R.id.action_addHabit).setVisible(!drawerOpen);
         return super.onPrepareOptionsMenu(menu);
     }
 
@@ -183,7 +185,7 @@ public class MainActivity extends ActionBarActivity {
                 fragment = new SettingsFragment();
                 break;
             case 2:
-                //fragment = new PhotosFragment();
+                fragment = new GoProFragment();
                 break;
             case 3:
                 //fragment = new CommunityFragment();

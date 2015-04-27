@@ -60,8 +60,8 @@
                 style="?android:attr/buttonStyleSmall"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="@string/addHabit"
-                android:id="@+id/addHabit" />
+                android:text="@string/editHabit"
+                android:id="@+id/editHabit" />
 
             <Button
                 style="?android:attr/buttonStyleSmall"

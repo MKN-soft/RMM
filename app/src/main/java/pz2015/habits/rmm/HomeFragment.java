@@ -13,6 +13,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import pz2015.habits.rmm.adapter.HabitAdapter;
+
 public class HomeFragment extends ListFragment {
 
     private ListView habitListView;
