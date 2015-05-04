@@ -41,8 +41,10 @@ public class HomeFragment extends ListFragment {
         habitItemArrayAdapter = new HabitAdapter(rootView.getContext(), new String[10]);
         //habitListView = (ListView) rootView.findViewById(R.id.habitList);
         //habitListView.setAdapter(habitItemArrayAdapter);
-        setListAdapter(habitItemArrayAdapter);
 
+        setListAdapter(habitItemArrayAdapter);
+        LogicBase.setHabitItemArrayAdapter(habitItemArrayAdapter); // remember reference to list of items
+        LogicBase.setHomeFragment(this);
 
         return rootView;
     }
@@ -56,8 +58,9 @@ public class HomeFragment extends ListFragment {
 //        transaction.addToBackStack(null);
 //
 //        transaction.commit();
+
+        LogicBase.setPosition(position); // remmber selected item position
         Intent intent = new Intent(getActivity(), HabitDetailActivity.class);
         getActivity().startActivity(intent);
     }
-
 }

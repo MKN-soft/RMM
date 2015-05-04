@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 
 /**
@@ -32,8 +33,13 @@ public class HabitDetailActivity extends Activity {
         _deleteHabit.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 //Hooking Activity
-                Intent intent = new Intent(HabitDetailActivity.this, DeleteHabitActivity.class);
-                startActivity(intent);
+                //Intent intent = new Intent(HabitDetailActivity.this, DeleteHabitActivity.class);
+                //startActivity(intent);
+                // remove this item from list
+
+                int position = LogicBase.getPosition();
+                LogicBase.removeHabitItemAt(position);
+                finish(); // ends current activity and go to previous
             }
         });
     }
