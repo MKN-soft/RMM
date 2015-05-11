@@ -38,8 +38,8 @@ public class HabitAdapter extends ArrayAdapter {
         View rowView = inflater.inflate(R.layout.row_habit, parent, false);
 
         TextView title = (TextView) rowView.findViewById(R.id.habitTitle);
-        TextView body = (TextView) rowView.findViewById(R.id.habitBody);
-        TextView date = (TextView) rowView.findViewById(R.id.habitDate);
+        TextView body = (TextView) rowView.findViewById(R.id.tweetBody);
+        TextView date = (TextView) rowView.findViewById(R.id.tweetDate);
 
         title.setText(habits[position].getTitle());
         body.setText(habits[position].getBody());
