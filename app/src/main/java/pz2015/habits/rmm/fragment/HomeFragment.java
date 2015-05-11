@@ -2,6 +2,7 @@ package pz2015.habits.rmm.fragment;
 
 /**
  * Created by Marcin on 2015-04-26.
+ * Displays list of Habit objects
  */
 
 import android.app.ListFragment;
@@ -26,8 +27,9 @@ public class HomeFragment extends ListFragment {
 
     private ListView habitListView;
     private ArrayAdapter habitItemArrayAdapter;
-    //private List<Habit> habits = new ArrayList();
-    private Habit[] habits = new Habit[5];
+    private List<Habit> habits = new ArrayList();
+
+    // Wykomentowane na pozniej do serializacji
     //private static final String HABITS_CACHE_FILE = "habit_cache.ser";
 
     private View view;
@@ -43,11 +45,8 @@ public class HomeFragment extends ListFragment {
         //na razie randomowe habitsy
         randomHabits(this.habits);
 
-        //habitItemArrayAdapter = new ArrayAdapter(rootView.getContext(), android.R.layout.simple_list_item_1, stringArray);
-        //habitItemArrayAdapter = new HabitAdapter(rootView.getContext(), new String[10]);
-        //habitItemArrayAdapter = new HabitAdapter(rootView.getContext(), habits);
-        //habitListView = (ListView) rootView.findViewById(R.id.habitList);
-        //habitListView.setAdapter(habitItemArrayAdapter);
+        //?????
+        habitItemArrayAdapter = new HabitAdapter(rootView.getContext(), habits);
 
         //to chyba usunąć i poprawić całą metode
         setListAdapter(habitItemArrayAdapter);
@@ -59,6 +58,7 @@ public class HomeFragment extends ListFragment {
 
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
+        //NIE RUSZAC - moze sie przydac :)
 //        Fragment mFragment = new HabitDetailFragment();
 //        FragmentTransaction transaction = getFragmentManager().beginTransaction();
 //
@@ -72,10 +72,10 @@ public class HomeFragment extends ListFragment {
         getActivity().startActivity(intent);
     }
 
-    private void randomHabits(Habit[] habits) {
+    private void randomHabits(List<Habit> habits) {
         for (int i = 0; i < 5; i++) {
             Habit habit = new Habit("Tytuł nawyku #" + i, "Trochę tekstu dla body #" + i);
-            habits[i] = habit;
+            habits.add(habit);
         }
     }
 

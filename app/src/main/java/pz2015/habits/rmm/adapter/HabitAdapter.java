@@ -1,8 +1,6 @@
 package pz2015.habits.rmm.adapter;
 
-import android.app.Activity;
 import android.content.Context;
-import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,14 +18,14 @@ import pz2015.habits.rmm.model.Habit;
 public class HabitAdapter extends ArrayAdapter {
 
     private LayoutInflater inflater;
-    private Habit[] habits;
+    private List<Habit> habits;
 
     public HabitAdapter(Context activity, String[] items) {
         super(activity, R.layout.row_habit, items);
         inflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
-    public HabitAdapter(Context activity, Habit[] habits) {
+    public HabitAdapter(Context activity, List<Habit> habits) {
         super(activity, R.layout.row_habit, habits);
         inflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         this.habits = habits;
@@ -38,11 +36,11 @@ public class HabitAdapter extends ArrayAdapter {
         View rowView = inflater.inflate(R.layout.row_habit, parent, false);
 
         TextView title = (TextView) rowView.findViewById(R.id.habitTitle);
-        TextView body = (TextView) rowView.findViewById(R.id.tweetBody);
-        TextView date = (TextView) rowView.findViewById(R.id.tweetDate);
+        TextView description = (TextView) rowView.findViewById(R.id.habitDescription);
+        TextView date = (TextView) rowView.findViewById(R.id.habitDate);
 
-        title.setText(habits[position].getTitle());
-        body.setText(habits[position].getBody());
+        title.setText(habits.get(position).getTitle());
+        description.setText(habits.get(position).getDescription());
         date.setText("DATKA");
 
         return rowView;

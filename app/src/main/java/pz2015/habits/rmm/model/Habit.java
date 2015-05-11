@@ -7,31 +7,37 @@ import java.io.Serializable;
  */
 public class Habit implements Serializable {
 
+    //TODO think about data needed in object.
+    //TODO implement all setters
+
     private static final long serialVersionUID = 1L;
 
     String id;
     String title;
-    String body;
+    String description;
+    String date;
 
     public Habit() { }
 
-    public Habit(String title, String body) {
+    public Habit(String title, String description) {
         this.title = title;
-        this.body = body;
+        this.description = description;
     }
 
     public String getId() { return this.id; }
 
     public String getTitle() { return this.title; }
 
-    public String getBody() { return this.body; }
+    public String getDescription() { return this.description; }
+
+    public String getDate() { return date; }
 
     public void setTitle(String title) {
         this.title = title;
     }
 
-    public void setBody(String body) {
-        this.body = body;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
 }

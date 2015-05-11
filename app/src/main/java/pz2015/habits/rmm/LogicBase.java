@@ -37,13 +37,13 @@ public class LogicBase {
         int count = habitItemArrayAdapter.getCount();
 
         //do zmiany na Habit
-        Habit[] array = new Habit[count -1]; //
+        String[] array = new String[count -1]; //
         int idA = 0;
         for(int i = 0 ; i < count ; i++){
             if(i == position)
                 continue;
 
-            array[idA] = (Habit) habitItemArrayAdapter.getItem(i);
+            array[idA] = (String) habitItemArrayAdapter.getItem(i);
             idA++;
         }
 
