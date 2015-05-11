@@ -13,14 +13,18 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import pz2015.habits.rmm.adapter.HabitAdapter;
+import pz2015.habits.rmm.model.Habit;
 
 public class HomeFragment extends ListFragment {
 
     private ListView habitListView;
     private ArrayAdapter habitItemArrayAdapter;
-    //private List<Habit> habits = new ArrayList();
-    //private String[] stringArray;
+    private List<Habit> habits = new ArrayList();
+    //private static final String HABITS_CACHE_FILE = "habit_cache.ser";
 
     private View view;
 
@@ -32,13 +36,12 @@ public class HomeFragment extends ListFragment {
 
         View rootView = inflater.inflate(R.layout.fragment_home, container, false);
 
-//        stringArray = new String[10];
-//        for(int i=0; i < stringArray.length; i++){
-//            stringArray[i] = "String " + i;
-//        }
+        //na razie randomowe habitsy
+        randomHabits(this.habits);
 
         //habitItemArrayAdapter = new ArrayAdapter(rootView.getContext(), android.R.layout.simple_list_item_1, stringArray);
-        habitItemArrayAdapter = new HabitAdapter(rootView.getContext(), new String[10]);
+        //habitItemArrayAdapter = new HabitAdapter(rootView.getContext(), new String[10]);
+        habitItemArrayAdapter = new HabitAdapter(rootView.getContext(), habits);
         //habitListView = (ListView) rootView.findViewById(R.id.habitList);
         //habitListView.setAdapter(habitItemArrayAdapter);
 
@@ -63,4 +66,12 @@ public class HomeFragment extends ListFragment {
         Intent intent = new Intent(getActivity(), HabitDetailActivity.class);
         getActivity().startActivity(intent);
     }
+
+    private void randomHabits(List<Habit> habits) {
+        for (int i = 0; i < 5; i++) {
+            Habit habit = new Habit("Tytuł nawyku #" + i, "Trochę tekstu dla body #" + i);
+            habits.add(habit);
+        }
+    }
+
 }
