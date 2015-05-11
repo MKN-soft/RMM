@@ -10,6 +10,8 @@ import pz2015.habits.rmm.R;
 
 public class DeleteHabitActivity extends ActionBarActivity {
 
+    //TODO: delete from disk and server
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

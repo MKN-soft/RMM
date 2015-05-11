@@ -10,6 +10,8 @@ import pz2015.habits.rmm.R;
 
 public class AddHabitActivity extends ActionBarActivity {
 
+    //TODO: adding habit to list
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

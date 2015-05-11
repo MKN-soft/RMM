@@ -22,7 +22,15 @@ import pz2015.habits.rmm.model.Habit;
  */
 public class PostManagement extends AsyncTask<Habit, Integer, Double> {
 
+    //TODO deleting habits/ records from server
 
+    /**
+     *
+     * @param params - objects to send
+     * @return
+     *
+     * Sends data in background (prevents crash)
+     */
     @Override
     protected Double doInBackground(Habit... params) {
 // TODO Auto-generated method stub
@@ -62,5 +70,7 @@ public class PostManagement extends AsyncTask<Habit, Integer, Double> {
             e.printStackTrace();
         }
     }
+
+
 
 }

@@ -9,6 +9,7 @@ public class Habit implements Serializable {
 
     //TODO think about data needed in object.
     //TODO implement all setters
+    //TODO date-done pairs
 
     private static final long serialVersionUID = 1L;
 
