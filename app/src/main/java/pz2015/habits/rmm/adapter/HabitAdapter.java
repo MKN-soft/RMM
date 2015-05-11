@@ -20,14 +20,14 @@ import pz2015.habits.rmm.model.Habit;
 public class HabitAdapter extends ArrayAdapter {
 
     private LayoutInflater inflater;
-    private List<Habit> habits;
+    private Habit[] habits;
 
     public HabitAdapter(Context activity, String[] items) {
         super(activity, R.layout.row_habit, items);
         inflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
-    public HabitAdapter(Context activity, List<Habit> habits) {
+    public HabitAdapter(Context activity, Habit[] habits) {
         super(activity, R.layout.row_habit, habits);
         inflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         this.habits = habits;
@@ -41,8 +41,8 @@ public class HabitAdapter extends ArrayAdapter {
         TextView body = (TextView) rowView.findViewById(R.id.habitBody);
         TextView date = (TextView) rowView.findViewById(R.id.habitDate);
 
-        title.setText(habits.get(position).getTitle());
-        body.setText(habits.get(position).getBody());
+        title.setText(habits[position].getTitle());
+        body.setText(habits[position].getBody());
         date.setText("DATKA");
 
         return rowView;

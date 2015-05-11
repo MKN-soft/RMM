@@ -4,6 +4,7 @@ import android.widget.ArrayAdapter;
 
 import pz2015.habits.rmm.adapter.HabitAdapter;
 import pz2015.habits.rmm.fragment.HomeFragment;
+import pz2015.habits.rmm.model.Habit;
 
 /**
  * Created by Natka on 2015-04-30.
@@ -36,13 +37,13 @@ public class LogicBase {
         int count = habitItemArrayAdapter.getCount();
 
         //do zmiany na Habit
-        String[] array = new String[count -1]; //
+        Habit[] array = new Habit[count -1]; //
         int idA = 0;
         for(int i = 0 ; i < count ; i++){
             if(i == position)
                 continue;
 
-            array[idA] = (String) habitItemArrayAdapter.getItem(i);
+            array[idA] = (Habit) habitItemArrayAdapter.getItem(i);
             idA++;
         }
 
