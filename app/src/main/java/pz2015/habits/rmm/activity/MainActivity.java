@@ -1,5 +1,9 @@
-package pz2015.habits.rmm;
+package pz2015.habits.rmm.activity;
 
+import pz2015.habits.rmm.fragment.GoProFragment;
+import pz2015.habits.rmm.fragment.HomeFragment;
+import pz2015.habits.rmm.R;
+import pz2015.habits.rmm.fragment.SettingsFragment;
 import pz2015.habits.rmm.adapter.NavDrawerListAdapter;
 import pz2015.habits.rmm.model.NavDrawerItem;
 

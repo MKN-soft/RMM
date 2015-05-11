@@ -1,4 +1,4 @@
-package pz2015.habits.rmm;
+package pz2015.habits.rmm.fragment;
 
 /**
  * Created by Marcin on 2015-04-26.
@@ -16,6 +16,9 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.List;
 
+import pz2015.habits.rmm.LogicBase;
+import pz2015.habits.rmm.R;
+import pz2015.habits.rmm.activity.HabitDetailActivity;
 import pz2015.habits.rmm.adapter.HabitAdapter;
 import pz2015.habits.rmm.model.Habit;
 
@@ -45,6 +48,7 @@ public class HomeFragment extends ListFragment {
         //habitListView = (ListView) rootView.findViewById(R.id.habitList);
         //habitListView.setAdapter(habitItemArrayAdapter);
 
+        //to chyba usunąć i poprawić całą metode
         setListAdapter(habitItemArrayAdapter);
         LogicBase.setHabitItemArrayAdapter(habitItemArrayAdapter); // remember reference to list of items
         LogicBase.setHomeFragment(this);

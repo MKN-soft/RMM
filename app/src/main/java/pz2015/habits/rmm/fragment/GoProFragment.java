@@ -1,10 +1,12 @@
-package pz2015.habits.rmm;
+package pz2015.habits.rmm.fragment;
 
 import android.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import pz2015.habits.rmm.R;
 
 
 public class GoProFragment extends Fragment {

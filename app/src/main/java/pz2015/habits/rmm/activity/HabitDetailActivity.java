@@ -1,11 +1,13 @@
-package pz2015.habits.rmm;
+package pz2015.habits.rmm.activity;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
+
+import pz2015.habits.rmm.LogicBase;
+import pz2015.habits.rmm.R;
 
 /**
  * Created by ASUS on 2015-04-27.

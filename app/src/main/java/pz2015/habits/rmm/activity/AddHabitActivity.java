@@ -1,9 +1,11 @@
-package pz2015.habits.rmm;
+package pz2015.habits.rmm.activity;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import pz2015.habits.rmm.R;
 
 
 public class AddHabitActivity extends ActionBarActivity {
