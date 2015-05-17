@@ -30,8 +30,11 @@ public class EditHabitActivity extends ActionBarActivity {
             public void onClick(View v) {
 
                int position = LogicBase.getPosition();
-               Habit habit = new Habit(habitName.getText().toString(),habitFrequency.getText().toString() );
+               Habit habit = LogicBase.getHabitAt(position);//new Habit(habitName.getText().toString(),habitFrequency.getText().toString() );
+               habit.setTitle(habitName.getText().toString());
+               habit.setDescription(habitFrequency.getText().toString());
                LogicBase.setHabitAt(position, habit);
+               // LogicBase.refreshList();
 
                finish();
             }

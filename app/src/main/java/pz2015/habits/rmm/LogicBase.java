@@ -45,6 +45,10 @@ public class LogicBase {
 
     }
 
+    public static void refreshList(){
+        homeFragment.setListAdapter(habitItemArrayAdapter);
+    }
+
     public static void setHabitAt(int position, Habit habit){
         int count = habitItemArrayAdapter.getCount();
 
