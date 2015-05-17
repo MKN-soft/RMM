@@ -43,7 +43,7 @@ public class HomeFragment extends ListFragment {
         View rootView = inflater.inflate(R.layout.fragment_home, container, false);
 
         //na razie randomowe habitsy
-        randomHabits(this.habits);
+        habits = randomHabits();
 
         //?????
         habitItemArrayAdapter = new HabitAdapter(rootView.getContext(), habits);
@@ -72,11 +72,13 @@ public class HomeFragment extends ListFragment {
         getActivity().startActivity(intent);
     }
 
-    private void randomHabits(List<Habit> habits) {
+    private List<Habit> randomHabits() {
+        List<Habit> habits = new ArrayList<Habit>();
         for (int i = 0; i < 5; i++) {
             Habit habit = new Habit("Tytuł nawyku #" + i, "Trochę tekstu dla body #" + i);
             habits.add(habit);
         }
+        return habits;
     }
 
 }

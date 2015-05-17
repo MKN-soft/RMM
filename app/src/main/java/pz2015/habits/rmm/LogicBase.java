@@ -2,6 +2,9 @@ package pz2015.habits.rmm;
 
 import android.widget.ArrayAdapter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import pz2015.habits.rmm.adapter.HabitAdapter;
 import pz2015.habits.rmm.fragment.HomeFragment;
 import pz2015.habits.rmm.model.Habit;
@@ -31,23 +34,59 @@ public class LogicBase {
         return position;
     }
 
+    public static Habit getHabbitAt(int position){
+        int count = habitItemArrayAdapter.getCount();
+
+        if(position < count){
+            return (Habit)habitItemArrayAdapter.getItem(position);
+        }else{
+            return null;
+        }
+
+    }
+
+    public static void addHabit(Habit newHabit){
+        int count = habitItemArrayAdapter.getCount();
+         List<Habit> newList = new ArrayList<Habit>(); //count -1
+        for(int i = 0 ; i < count ; i++){
+            newList.add((Habit) habitItemArrayAdapter.getItem(i));
+        }
+        newList.add(newHabit);
+
+        habitItemArrayAdapter = new HabitAdapter(habitItemArrayAdapter.getContext(), newList); //habitItemArrayAdapter.getContext()
+        homeFragment.setListAdapter(habitItemArrayAdapter);
+    }
+
     public static void removeHabitItemAt(int position){
 
+//        int count = habitItemArrayAdapter.getCount();
+//
+//        String[] array = new String[count -1]; //
+//        int idA = 0;
+//        for(int i = 0 ; i < count ; i++){
+//            if(i == position)
+//                continue;
+//
+//            array[idA] = (String) habitItemArrayAdapter.getItem(i);
+//            idA++;
+//        }
+
+   //     habitItemArrayAdapter = new HabitAdapter(habitItemArrayAdapter.getContext(), array);
+  //      homeFragment.setListAdapter(habitItemArrayAdapter);
 
         int count = habitItemArrayAdapter.getCount();
 
         //do zmiany na Habit
-        String[] array = new String[count -1]; //
-        int idA = 0;
+
+        // PETLA KTORA TWORZY NOWA LISTE ALE OMIJA USUWANY ELEMENT ZE STAREJ
+        List<Habit> listWithoutRemovedElement = new ArrayList<Habit>(); //count -1
         for(int i = 0 ; i < count ; i++){
             if(i == position)
                 continue;
-
-            array[idA] = (String) habitItemArrayAdapter.getItem(i);
-            idA++;
+            listWithoutRemovedElement.add((Habit) habitItemArrayAdapter.getItem(i));
         }
 
-        habitItemArrayAdapter = new HabitAdapter(habitItemArrayAdapter.getContext(), array);
+        habitItemArrayAdapter = new HabitAdapter(habitItemArrayAdapter.getContext(), listWithoutRemovedElement); //habitItemArrayAdapter.getContext()
         homeFragment.setListAdapter(habitItemArrayAdapter);
         //habitItemArrayAdapter.remove(habitItemArrayAdapter.getItem(position));
 

@@ -18,7 +18,7 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/editText"
+        android:id="@+id/addHabitName"
         android:layout_gravity="center_horizontal" />
 
     <TextView
@@ -33,7 +33,7 @@
         android:layout_height="wrap_content"
         android:inputType="number"
         android:ems="10"
-        android:id="@+id/editText2"
+        android:id="@+id/addHabitFrequency"
         android:layout_gravity="center_horizontal"
         android:numeric="integer" />
 
@@ -42,6 +42,13 @@
         android:layout_height="wrap_content"
         android:text="@string/setFrequency"
         android:id="@+id/textView4"
+        android:layout_gravity="center_horizontal" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add"
+        android:id="@+id/addHabitButton"
         android:layout_gravity="center_horizontal" />
 
 

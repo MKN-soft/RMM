@@ -1,11 +1,17 @@
 package pz2015.habits.rmm.activity;
 
+import android.preference.EditTextPreference;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 
+import pz2015.habits.rmm.LogicBase;
 import pz2015.habits.rmm.R;
+import pz2015.habits.rmm.model.Habit;
 
 
 public class AddHabitActivity extends ActionBarActivity {
@@ -16,6 +22,22 @@ public class AddHabitActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_habit);
+
+        Button addHabitButton = (Button) findViewById(R.id.addHabitButton);
+
+        final EditText habbitName = (EditText) findViewById(R.id.addHabitName);
+        final EditText habbitFrequency = (EditText) findViewById(R.id.addHabitFrequency);
+
+        addHabitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Habit newHabit = new Habit(habbitName.getText().toString(), habbitFrequency.getText().toString());
+                LogicBase.addHabit(newHabit);
+                finish();
+            }
+        });
+
     }
 
 
