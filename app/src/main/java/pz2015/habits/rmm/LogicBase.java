@@ -34,7 +34,7 @@ public class LogicBase {
         return position;
     }
 
-    public static Habit getHabbitAt(int position){
+    public static Habit getHabitAt(int position){
         int count = habitItemArrayAdapter.getCount();
 
         if(position < count){
@@ -59,26 +59,11 @@ public class LogicBase {
 
     public static void removeHabitItemAt(int position){
 
-//        int count = habitItemArrayAdapter.getCount();
-//
-//        String[] array = new String[count -1]; //
-//        int idA = 0;
-//        for(int i = 0 ; i < count ; i++){
-//            if(i == position)
-//                continue;
-//
-//            array[idA] = (String) habitItemArrayAdapter.getItem(i);
-//            idA++;
-//        }
-
-   //     habitItemArrayAdapter = new HabitAdapter(habitItemArrayAdapter.getContext(), array);
-  //      homeFragment.setListAdapter(habitItemArrayAdapter);
 
         int count = habitItemArrayAdapter.getCount();
 
-        //do zmiany na Habit
 
-        // PETLA KTORA TWORZY NOWA LISTE ALE OMIJA USUWANY ELEMENT ZE STAREJ
+        // loop which creat new list but avoid delete element from old list
         List<Habit> listWithoutRemovedElement = new ArrayList<Habit>(); //count -1
         for(int i = 0 ; i < count ; i++){
             if(i == position)

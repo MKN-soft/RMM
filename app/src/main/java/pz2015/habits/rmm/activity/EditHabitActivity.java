@@ -4,8 +4,13 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 
+import pz2015.habits.rmm.LogicBase;
 import pz2015.habits.rmm.R;
+import pz2015.habits.rmm.model.Habit;
 
 
 public class EditHabitActivity extends ActionBarActivity {
@@ -14,6 +19,22 @@ public class EditHabitActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_habit);
+
+        Button editHabitButton = (Button) findViewById(R.id.editHabitButton);
+
+        final EditText habitName = (EditText) findViewById(R.id.editHabitName);
+        final EditText habitFrequency = (EditText) findViewById(R.id.editHabitFrequency);
+
+        editHabitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                int position = LogicBase.getPosition();
+                LogicBase.getHabitAt(position).setTitle(habitName.getText().toString());
+                LogicBase.getHabitAt(position).setDescription(habitFrequency.getText().toString());
+                finish();
+            }
+        });
     }
 
 

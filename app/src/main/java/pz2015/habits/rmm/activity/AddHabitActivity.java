@@ -25,14 +25,14 @@ public class AddHabitActivity extends ActionBarActivity {
 
         Button addHabitButton = (Button) findViewById(R.id.addHabitButton);
 
-        final EditText habbitName = (EditText) findViewById(R.id.addHabitName);
-        final EditText habbitFrequency = (EditText) findViewById(R.id.addHabitFrequency);
+        final EditText habitName = (EditText) findViewById(R.id.addHabitName);
+        final EditText habitFrequency = (EditText) findViewById(R.id.addHabitFrequency);
 
         addHabitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Habit newHabit = new Habit(habbitName.getText().toString(), habbitFrequency.getText().toString());
+                Habit newHabit = new Habit(habitName.getText().toString(), habitFrequency.getText().toString());
                 LogicBase.addHabit(newHabit);
                 finish();
             }

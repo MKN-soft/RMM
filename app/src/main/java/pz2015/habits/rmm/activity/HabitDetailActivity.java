@@ -36,6 +36,9 @@ public class HabitDetailActivity extends Activity {
                 //Hooking Activity
                 Intent intent = new Intent(HabitDetailActivity.this, EditHabitActivity.class);
                 startActivity(intent);
+
+
+
             }
         });
 
