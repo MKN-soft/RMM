@@ -45,6 +45,23 @@ public class LogicBase {
 
     }
 
+    public static void setHabitAt(int position, Habit habit){
+        int count = habitItemArrayAdapter.getCount();
+
+        // loop which creat new list but avoid delete element from old list
+        List<Habit> modifiedList = new ArrayList<Habit>(); //count -1
+        for(int i = 0 ; i < count ; i++){
+            if(i == position) {
+                modifiedList.add(habit);
+                continue;
+            }
+            modifiedList.add((Habit) habitItemArrayAdapter.getItem(i));
+        }
+
+        habitItemArrayAdapter = new HabitAdapter(habitItemArrayAdapter.getContext(), modifiedList); //habitItemArrayAdapter.getContext()
+        homeFragment.setListAdapter(habitItemArrayAdapter);
+    }
+
     public static void addHabit(Habit newHabit){
         int count = habitItemArrayAdapter.getCount();
          List<Habit> newList = new ArrayList<Habit>(); //count -1

@@ -29,10 +29,11 @@ public class EditHabitActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
 
-                int position = LogicBase.getPosition();
-                LogicBase.getHabitAt(position).setTitle(habitName.getText().toString());
-                LogicBase.getHabitAt(position).setDescription(habitFrequency.getText().toString());
-                finish();
+               int position = LogicBase.getPosition();
+               Habit habit = new Habit(habitName.getText().toString(),habitFrequency.getText().toString() );
+               LogicBase.setHabitAt(position, habit);
+
+               finish();
             }
         });
     }
