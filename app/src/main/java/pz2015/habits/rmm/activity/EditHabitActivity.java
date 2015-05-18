@@ -29,10 +29,15 @@ public class EditHabitActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
 
+                //give position (from file HomeFragment)
                int position = LogicBase.getPosition();
+                //give habit from position
                Habit habit = LogicBase.getHabitAt(position);//new Habit(habitName.getText().toString(),habitFrequency.getText().toString() );
+                //rewrite habitName on new
                habit.setTitle(habitName.getText().toString());
+                //THIS IS BAD - CHANGE ON DESCRIPTION (zrobie to później :P)
                habit.setDescription(habitFrequency.getText().toString());
+                //exchange old version habit on edit version
                LogicBase.setHabitAt(position, habit);
                // LogicBase.refreshList();
 

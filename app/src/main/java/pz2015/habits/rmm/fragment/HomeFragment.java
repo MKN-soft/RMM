@@ -45,10 +45,10 @@ public class HomeFragment extends ListFragment {
         //na razie randomowe habitsy
         habits = randomHabits();
 
-        //?????
+        //create array adapter for homeFragment with given random habits
         habitItemArrayAdapter = new HabitAdapter(rootView.getContext(), habits);
 
-        //to chyba usunąć i poprawić całą metode
+        //Place which connect with components logicBase
         setListAdapter(habitItemArrayAdapter);
         LogicBase.setHabitItemArrayAdapter(habitItemArrayAdapter); // remember reference to list of items
         LogicBase.setHomeFragment(this);
@@ -67,7 +67,7 @@ public class HomeFragment extends ListFragment {
 //
 //        transaction.commit();
 
-        LogicBase.setPosition(position); // remmber selected item position
+        LogicBase.setPosition(position); // remember selected item position
         Intent intent = new Intent(getActivity(), HabitDetailActivity.class);
         getActivity().startActivity(intent);
     }

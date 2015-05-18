@@ -7,7 +7,7 @@ import android.view.MenuItem;
 
 import pz2015.habits.rmm.R;
 
-
+//NOT USE - remove is in HabitDetailActivity
 public class DeleteHabitActivity extends ActionBarActivity {
 
     //TODO: delete from disk and server

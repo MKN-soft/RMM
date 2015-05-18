@@ -28,11 +28,14 @@ public class AddHabitActivity extends ActionBarActivity {
         final EditText habitName = (EditText) findViewById(R.id.addHabitName);
         final EditText habitFrequency = (EditText) findViewById(R.id.addHabitFrequency);
 
+        //after click on button create new habit(1) and add to list(2)
         addHabitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Habit newHabit = new Habit(habitName.getText().toString(), habitFrequency.getText().toString());
+                //1
+                Habit newHabit = new Habit(habitName.getText().toString(), habitFrequency.getText().toString());//to change frequency on description!!!!
+                //2
                 LogicBase.addHabit(newHabit);
                 finish();
             }

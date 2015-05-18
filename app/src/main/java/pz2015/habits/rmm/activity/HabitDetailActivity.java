@@ -42,6 +42,7 @@ public class HabitDetailActivity extends Activity {
             }
         });
 
+        // after click remove code create dialogMessage with two button- positive and negative
         _deleteHabit.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 //Hooking Activity

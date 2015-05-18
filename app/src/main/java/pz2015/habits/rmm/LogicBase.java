@@ -34,6 +34,7 @@ public class LogicBase {
         return position;
     }
 
+    //method return habit on given in arguments position
     public static Habit getHabitAt(int position){
         int count = habitItemArrayAdapter.getCount();
 
@@ -45,27 +46,33 @@ public class LogicBase {
 
     }
 
+    // method only updating the list view, may be useful later
     public static void refreshList(){
         homeFragment.setListAdapter(habitItemArrayAdapter);
     }
 
+    // exchange old habit on new with change in this habit
     public static void setHabitAt(int position, Habit habit){
         int count = habitItemArrayAdapter.getCount();
 
-        // loop which creat new list but avoid delete element from old list
+        // loop which create new list but avoid delete element from old list
         List<Habit> modifiedList = new ArrayList<Habit>(); //count -1
         for(int i = 0 ; i < count ; i++){
             if(i == position) {
+               //add modified habit
                 modifiedList.add(habit);
                 continue;
             }
+            // add Habit from list (habitItemArrayAdapter keep all list habits)
             modifiedList.add((Habit) habitItemArrayAdapter.getItem(i));
         }
 
-        habitItemArrayAdapter = new HabitAdapter(habitItemArrayAdapter.getContext(), modifiedList); //habitItemArrayAdapter.getContext()
+        //exchange on new HabitAdapter with new List
+        habitItemArrayAdapter = new HabitAdapter(habitItemArrayAdapter.getContext(), modifiedList);
         homeFragment.setListAdapter(habitItemArrayAdapter);
     }
 
+    //method to add habit - create new list, rewrites old habits and add  at the and new habit
     public static void addHabit(Habit newHabit){
         int count = habitItemArrayAdapter.getCount();
          List<Habit> newList = new ArrayList<Habit>(); //count -1
@@ -74,17 +81,18 @@ public class LogicBase {
         }
         newList.add(newHabit);
 
-        habitItemArrayAdapter = new HabitAdapter(habitItemArrayAdapter.getContext(), newList); //habitItemArrayAdapter.getContext()
+        habitItemArrayAdapter = new HabitAdapter(habitItemArrayAdapter.getContext(), newList);
         homeFragment.setListAdapter(habitItemArrayAdapter);
     }
 
+    //method to delete habit
     public static void removeHabitItemAt(int position){
 
 
         int count = habitItemArrayAdapter.getCount();
 
 
-        // loop which creat new list but avoid delete element from old list
+        // loop which create new list but avoid delete element from old list
         List<Habit> listWithoutRemovedElement = new ArrayList<Habit>(); //count -1
         for(int i = 0 ; i < count ; i++){
             if(i == position)
