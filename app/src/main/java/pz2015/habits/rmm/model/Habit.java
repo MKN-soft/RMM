@@ -17,12 +17,14 @@ public class Habit implements Serializable {
     String title;
     String description;
     String date;
+    String frequency;
 
     public Habit() { }
 
-    public Habit(String title, String description) {
+    public Habit(String title, String description, String frequency) {
         this.title = title;
         this.description = description;
+        this.frequency = frequency;
     }
 
     public String getId() { return this.id; }
@@ -30,6 +32,8 @@ public class Habit implements Serializable {
     public String getTitle() { return this.title; }
 
     public String getDescription() { return this.description; }
+
+    public String getFrequency() { return this.frequency; }
 
     public String getDate() { return date; }
 
@@ -39,6 +43,10 @@ public class Habit implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public void setFrequency(String description) {
+        this.frequency = frequency;
     }
 
 }

@@ -23,6 +23,7 @@ public class EditHabitActivity extends ActionBarActivity {
         Button editHabitButton = (Button) findViewById(R.id.editHabitButton);
 
         final EditText habitName = (EditText) findViewById(R.id.editHabitName);
+        final EditText habitDescription = (EditText) findViewById(R.id.editHabitDescription);
         final EditText habitFrequency = (EditText) findViewById(R.id.editHabitFrequency);
 
         editHabitButton.setOnClickListener(new View.OnClickListener() {
@@ -35,8 +36,10 @@ public class EditHabitActivity extends ActionBarActivity {
                Habit habit = LogicBase.getHabitAt(position);//new Habit(habitName.getText().toString(),habitFrequency.getText().toString() );
                 //rewrite habitName on new
                habit.setTitle(habitName.getText().toString());
-                //THIS IS BAD - CHANGE ON DESCRIPTION (zrobie to później :P)
-               habit.setDescription(habitFrequency.getText().toString());
+                //description
+               habit.setDescription(habitDescription.getText().toString());
+                //frequency
+               habit.setFrequency(habitFrequency.getText().toString());
                 //exchange old version habit on edit version
                LogicBase.setHabitAt(position, habit);
                // LogicBase.refreshList();
