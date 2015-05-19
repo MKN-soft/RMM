@@ -8,9 +8,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import pz2015.habits.rmm.LogicBase;
 import pz2015.habits.rmm.R;
+import pz2015.habits.rmm.model.Habit;
 
 /**
  * Created by ASUS on 2015-04-27.
@@ -28,6 +30,20 @@ public class HabitDetailActivity extends Activity {
 
         selfContext = this;
 
+        //View on data Habit
+        TextView title = (TextView)findViewById(R.id.habitTitle);
+        TextView description = (TextView)findViewById(R.id.habitDescription);
+        TextView date = (TextView)findViewById(R.id.habitDate);
+
+        int position = LogicBase.getPosition();
+        Habit habit = LogicBase.getHabitAt(position);
+        title.setText(habit.getTitle());
+        description.setText(habit.getDescription());
+
+        //LogicBase.setHabitAt(position, habit);
+
+        //
+
         _editHabit = (Button) findViewById(R.id.editHabit);
         _deleteHabit = (Button) findViewById(R.id.deleteHabit);
 
@@ -37,6 +53,8 @@ public class HabitDetailActivity extends Activity {
                 Intent intent = new Intent(HabitDetailActivity.this, EditHabitActivity.class);
                 startActivity(intent);
 
+                //LogicBase.refreshList(); hmmm...
+                finish();
 
 
             }
