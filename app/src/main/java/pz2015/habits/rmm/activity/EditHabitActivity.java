@@ -22,9 +22,16 @@ public class EditHabitActivity extends ActionBarActivity {
 
         Button editHabitButton = (Button) findViewById(R.id.editHabitButton);
 
+        int position = LogicBase.getPosition();
+        Habit habit = LogicBase.getHabitAt(position);
+
         final EditText habitName = (EditText) findViewById(R.id.editHabitName);
         final EditText habitDescription = (EditText) findViewById(R.id.editHabitDescription);
         final EditText habitFrequency = (EditText) findViewById(R.id.editHabitFrequency);
+
+        habitName.setText(habit.getTitle());
+        habitDescription.setText(habit.getDescription());
+        habitFrequency.setText(habit.getFrequency());
 
         editHabitButton.setOnClickListener(new View.OnClickListener() {
             @Override
