@@ -1,5 +1,9 @@
 package pz2015.habits.rmm.model;
 
+
+import android.graphics.Canvas;
+import android.graphics.drawable.Drawable;
+
 import java.io.Serializable;
 
 /**
@@ -18,15 +22,17 @@ public class Habit implements Serializable {
     String description;
     String date;
     String frequency;
-    int image;
+    Drawable image;
+    String notes;
 
     public Habit() { }
 
-    public Habit(String title, String description, String frequency) {
+    public Habit(String title, String description, String frequency, Drawable image, String notes) {
         this.title = title;
         this.description = description;
         this.frequency = frequency;
-        //this.image = image;
+        this.image = image;
+        this.notes = notes;
     }
 
     public String getId() { return this.id; }
@@ -39,7 +45,9 @@ public class Habit implements Serializable {
 
     public String getDate() { return date; }
 
-    public int getIcon() { return this.image; }
+    public Drawable getImage() { return this.image; }
+
+    public String getNotes() { return notes; }
 
     public void setTitle(String title) {
         this.title = title;
@@ -49,10 +57,12 @@ public class Habit implements Serializable {
         this.description = description;
     }
 
-    public void setFrequency(String description) {
+    public void setFrequency(String frequency) {
         this.frequency = frequency;
     }
 
-    public void setIcon(int icon) {this.image = icon;}
+    public void setImage(Drawable image) {this.image = image;}
+
+    public void setNotes(String notes) { this.notes = notes; }
 
 }

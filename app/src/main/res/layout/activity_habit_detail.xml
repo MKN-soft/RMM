@@ -7,10 +7,10 @@
     android:gravity="center">
 
     <ImageView
-        android:id="@+id/tweetImage"
+        android:id="@+id/habitImage"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:background="@mipmap/ic_running"
+
         android:layout_gravity="center_horizontal" />
 
     <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
@@ -43,6 +43,20 @@
             android:text="Tweet description text"
             android:textColor="#393939"
             android:textSize="14sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="notes"
+            android:id="@+id/habitNotes" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="frequency"
+            android:id="@+id/habitFrequency"
+            android:textColor="#393939" />
+
         <TextView
             android:id="@+id/habitDate"
             android:layout_width="match_parent"

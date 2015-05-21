@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import pz2015.habits.rmm.LogicBase;
@@ -33,12 +34,19 @@ public class HabitDetailActivity extends Activity {
         //View on data Habit
         TextView title = (TextView)findViewById(R.id.habitTitle);
         TextView description = (TextView)findViewById(R.id.habitDescription);
+        TextView notes = (TextView)findViewById(R.id.habitNotes);
+        TextView frequency = (TextView)findViewById(R.id.habitFrequency);
         TextView date = (TextView)findViewById(R.id.habitDate);
+        ImageView habitImage =(ImageView)findViewById(R.id.habitImage);
 
         int position = LogicBase.getPosition();
         Habit habit = LogicBase.getHabitAt(position);
         title.setText(habit.getTitle());
         description.setText(habit.getDescription());
+        notes.setText(habit.getNotes());
+        frequency.setText("Your frequency: "+habit.getFrequency());
+
+        habitImage.setImageDrawable(habit.getImage());
 
         //LogicBase.setHabitAt(position, habit);
 

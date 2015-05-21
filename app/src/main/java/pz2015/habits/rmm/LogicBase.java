@@ -1,5 +1,6 @@
 package pz2015.habits.rmm;
 
+import android.media.Image;
 import android.widget.ArrayAdapter;
 
 import java.util.ArrayList;
@@ -105,4 +106,8 @@ public class LogicBase {
         //habitItemArrayAdapter.remove(habitItemArrayAdapter.getItem(position));
 
     }
+
+    /*public void checkImage(int image){
+        Image img = getImage(getCodeBase(), "Obrazki/image.jpg");
+    }*/
 }

@@ -17,15 +17,18 @@
         android:textSize="15dp" />
         <ImageView
         android:id="@+id/editHabitImage"
-        android:background="@mipmap/ic_running"
+
         android:layout_width="80dp"
-        android:layout_height="80dp" />
+        android:layout_height="80dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"/>
 
     <Button
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Edit image"
+        android:layout_marginLeft="5dp"
         android:id="@+id/button" />
 
     <EditText
@@ -37,7 +40,7 @@
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="@string/addHabitNameFieldSubtitle"
+        android:text="Habit name"
         android:id="@+id/textView"
         android:layout_gravity="center_horizontal" />
 
@@ -53,7 +56,7 @@
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="@string/setFrequency"
+        android:text="Change Frequency on your habit"
         android:id="@+id/textView4"
         android:layout_gravity="center_horizontal" />
 
@@ -69,7 +72,19 @@
         android:text="Change description"
         android:id="@+id/textView3" />
 
-    <Button
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/editHabitNotes"
+            android:layout_gravity="center_horizontal" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Change Notes"
+            android:id="@+id/textView6" />
+
+        <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Edit"

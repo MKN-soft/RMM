@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
@@ -38,10 +39,12 @@ public class HabitAdapter extends ArrayAdapter {
         TextView title = (TextView) rowView.findViewById(R.id.habitTitle);
         TextView description = (TextView) rowView.findViewById(R.id.habitDescription);
         TextView date = (TextView) rowView.findViewById(R.id.habitDate);
+        ImageView image = (ImageView) rowView.findViewById(R.id.imageView);
 
         title.setText(habits.get(position).getTitle());
         description.setText(habits.get(position).getDescription());
         date.setText("DATKA");
+        image.setImageDrawable(habits.get(position).getImage());
 
         return rowView;
     }

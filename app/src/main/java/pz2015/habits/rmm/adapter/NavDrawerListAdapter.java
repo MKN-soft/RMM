@@ -14,7 +14,9 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import pz2015.habits.rmm.LogicBase;
 import pz2015.habits.rmm.R;
+import pz2015.habits.rmm.model.Habit;
 import pz2015.habits.rmm.model.NavDrawerItem;
 
 public class NavDrawerListAdapter extends BaseAdapter {
@@ -51,6 +53,7 @@ public class NavDrawerListAdapter extends BaseAdapter {
                     context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
             convertView = mInflater.inflate(R.layout.drawer_list_item, null);
         }
+
 
         ImageView imgIcon = (ImageView) convertView.findViewById(R.id.icon);
         TextView txtTitle = (TextView) convertView.findViewById(R.id.title);

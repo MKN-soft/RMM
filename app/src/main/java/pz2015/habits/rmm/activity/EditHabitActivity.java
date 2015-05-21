@@ -7,6 +7,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 import pz2015.habits.rmm.LogicBase;
 import pz2015.habits.rmm.R;
@@ -28,10 +29,16 @@ public class EditHabitActivity extends ActionBarActivity {
         final EditText habitName = (EditText) findViewById(R.id.editHabitName);
         final EditText habitDescription = (EditText) findViewById(R.id.editHabitDescription);
         final EditText habitFrequency = (EditText) findViewById(R.id.editHabitFrequency);
+        final EditText habitNotes = (EditText) findViewById(R.id.editHabitNotes);
+        final ImageView habitImage =(ImageView)findViewById(R.id.editHabitImage);
+
+
 
         habitName.setText(habit.getTitle());
         habitDescription.setText(habit.getDescription());
         habitFrequency.setText(habit.getFrequency());
+        habitNotes.setText(habit.getNotes());
+        habitImage.setImageDrawable(habit.getImage());
 
         editHabitButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,6 +54,8 @@ public class EditHabitActivity extends ActionBarActivity {
                habit.setDescription(habitDescription.getText().toString());
                 //frequency
                habit.setFrequency(habitFrequency.getText().toString());
+                //notes
+               habit.setNotes(habitNotes.getText().toString());
                 //exchange old version habit on edit version
                LogicBase.setHabitAt(position, habit);
                // LogicBase.refreshList();

@@ -6,12 +6,16 @@ package pz2015.habits.rmm.fragment;
  */
 
 import android.app.ListFragment;
+import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -71,11 +75,17 @@ public class HomeFragment extends ListFragment {
         Intent intent = new Intent(getActivity(), HabitDetailActivity.class);
         getActivity().startActivity(intent);
     }
-
+    //image.draw(R.mipmap.ic_pages);
     private List<Habit> randomHabits() {
         List<Habit> habits = new ArrayList<Habit>();
+        //Resources res;
+        //Drawable image = image.sedraw(R.mipmap.ic_pages);
+        // = res.getDrawable(R.mipmap.ic_pages);
+        Drawable image = getResources().getDrawable(R.mipmap.ic_pages);
+        //imageView.setImageResource(R.mipmap.ic_pages);
+
         for (int i = 0; i < 5; i++) {//zle to na dole
-            Habit habit = new Habit("Tytuł nawyku #" + i, "Trochę tekstu dla body #" + i, "4");
+            Habit habit = new Habit("Tytuł nawyku #" + i, "Trochę tekstu dla body #" + i,  ""+1+i,image,"Tu sa notatki pisz co chcesz by pomoc sobie dazyc do wyrobienia nawyku " + i);//?????
             habits.add(habit);
         }
         return habits;
