@@ -74,7 +74,7 @@ public class HomeFragment extends ListFragment {
 
     private List<Habit> randomHabits() {
         List<Habit> habits = new ArrayList<Habit>();
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 5; i++) {//zle to na dole
             Habit habit = new Habit("Tytuł nawyku #" + i, "Trochę tekstu dla body #" + i, "4");
             habits.add(habit);
         }
