@@ -50,4 +50,6 @@
     <string name="addHabitNameFieldSubtitle">Habit name</string>
     <string name="setFrequency">Set frequency of your habit</string>
 
+    <string name="title_activity_edit_image">Change Image</string>
+
 </resources>

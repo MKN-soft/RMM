@@ -107,7 +107,7 @@ public class LogicBase {
 
     }
 
-    /*public void checkImage(int image){
-        Image img = getImage(getCodeBase(), "Obrazki/image.jpg");
-    }*/
+    public void setImageButton(){
+
+    }
 }

@@ -1,5 +1,6 @@
 package pz2015.habits.rmm.activity;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -15,6 +16,7 @@ import pz2015.habits.rmm.model.Habit;
 
 
 public class EditHabitActivity extends ActionBarActivity {
+    public ImageView habitImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +24,7 @@ public class EditHabitActivity extends ActionBarActivity {
         setContentView(R.layout.activity_edit_habit);
 
         Button editHabitButton = (Button) findViewById(R.id.editHabitButton);
+        Button editImageButton = (Button) findViewById(R.id.editImageButton);
 
         int position = LogicBase.getPosition();
         Habit habit = LogicBase.getHabitAt(position);
@@ -30,7 +33,7 @@ public class EditHabitActivity extends ActionBarActivity {
         final EditText habitDescription = (EditText) findViewById(R.id.editHabitDescription);
         final EditText habitFrequency = (EditText) findViewById(R.id.editHabitFrequency);
         final EditText habitNotes = (EditText) findViewById(R.id.editHabitNotes);
-        final ImageView habitImage =(ImageView)findViewById(R.id.editHabitImage);
+        habitImage =(ImageView)findViewById(R.id.editHabitImage);
 
 
 
@@ -39,6 +42,20 @@ public class EditHabitActivity extends ActionBarActivity {
         habitFrequency.setText(habit.getFrequency());
         habitNotes.setText(habit.getNotes());
         habitImage.setImageDrawable(habit.getImage());
+
+        editImageButton.setOnClickListener( new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(EditHabitActivity.this, EditImageActivity.class);
+                startActivity(intent);
+
+                onResume();
+
+
+            }
+        });
 
         editHabitButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,6 +80,13 @@ public class EditHabitActivity extends ActionBarActivity {
                finish();
             }
         });
+    }
+
+    protected void onResume(){
+        super.onResume();
+        int position2 = LogicBase.getPosition();
+        Habit habit2 = LogicBase.getHabitAt(position2);
+        habitImage.setImageDrawable(habit2.getImage());
     }
 
 

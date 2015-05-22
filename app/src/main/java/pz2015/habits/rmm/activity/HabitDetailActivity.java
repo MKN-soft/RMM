@@ -22,6 +22,9 @@ public class HabitDetailActivity extends Activity {
 
     private Button _editHabit, _deleteHabit;
 
+    public TextView title, description, notes, frequency;
+    public ImageView habitImage;
+
     private Context selfContext;
 
     @Override
@@ -32,12 +35,12 @@ public class HabitDetailActivity extends Activity {
         selfContext = this;
 
         //View on data Habit
-        TextView title = (TextView)findViewById(R.id.habitTitle);
-        TextView description = (TextView)findViewById(R.id.habitDescription);
-        TextView notes = (TextView)findViewById(R.id.habitNotes);
-        TextView frequency = (TextView)findViewById(R.id.habitFrequency);
+        title = (TextView)findViewById(R.id.habitTitle);
+        description = (TextView)findViewById(R.id.habitDescription);
+        notes = (TextView)findViewById(R.id.habitNotes);
+        frequency = (TextView)findViewById(R.id.habitFrequency);
         TextView date = (TextView)findViewById(R.id.habitDate);
-        ImageView habitImage =(ImageView)findViewById(R.id.habitImage);
+        habitImage =(ImageView)findViewById(R.id.habitImage);
 
         int position = LogicBase.getPosition();
         Habit habit = LogicBase.getHabitAt(position);
@@ -61,8 +64,9 @@ public class HabitDetailActivity extends Activity {
                 Intent intent = new Intent(HabitDetailActivity.this, EditHabitActivity.class);
                 startActivity(intent);
 
-                //LogicBase.refreshList(); hmmm...
-                finish();
+                //LogicBase.refreshList();
+                //finish();
+                onResume();
 
 
             }
@@ -101,11 +105,17 @@ public class HabitDetailActivity extends Activity {
         });
     }
 
+    public void onResume(){
+        super.onResume();
+        int position2 = LogicBase.getPosition();
+        Habit habit2 = LogicBase.getHabitAt(position2);
+        habitImage.setImageDrawable(habit2.getImage());
+        title.setText(habit2.getTitle());
+        description.setText(habit2.getDescription());
+        notes.setText(habit2.getNotes());
+        frequency.setText(habit2.getFrequency());
+    }
 
-//    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-//        View rootView = inflater.inflate(R.layout.activity_habit_detail, container, false);
-//
-//        return rootView;
-//    }
+
 
 }

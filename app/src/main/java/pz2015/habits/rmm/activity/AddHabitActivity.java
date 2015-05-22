@@ -1,7 +1,7 @@
 package pz2015.habits.rmm.activity;
 
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
-import android.preference.EditTextPreference;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -25,6 +25,7 @@ public class AddHabitActivity extends ActionBarActivity {
         setContentView(R.layout.activity_add_habit);
 
         Button addHabitButton = (Button) findViewById(R.id.addHabitButton);
+        Button chooseImage = (Button) findViewById(R.id.chooseImage);
 
         final EditText habitName = (EditText) findViewById(R.id.addHabitName);
         final EditText habitDescription = (EditText) findViewById(R.id.addHabitDescription);
@@ -32,13 +33,22 @@ public class AddHabitActivity extends ActionBarActivity {
         final EditText habitNotes = (EditText) findViewById(R.id.addHabitNotes);
         final Drawable image = getResources().getDrawable(R.mipmap.ic_home);
 
+        /*chooseImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(AddHabitActivity.this, tutaj cos);
+                startActivity(intent);
+
+            }
+        });*/
         //after click on button create new habit(1) and add to list(2)
         addHabitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 //1
-                Habit newHabit = new Habit(habitName.getText().toString(), habitDescription.getText().toString(), habitFrequency.getText().toString(), image, habitNotes.getText().toString());//to change frequency on description!!!!
+                Habit newHabit = new Habit(habitName.getText().toString(), habitDescription.getText().toString(), habitFrequency.getText().toString(), image, habitNotes.getText().toString());
                 //2
                 LogicBase.addHabit(newHabit);
                 finish();

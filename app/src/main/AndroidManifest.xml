@@ -36,6 +36,11 @@
             android:name=".activity.EditHabitActivity"
             android:label="@string/title_activity_edit_habit" >
         </activity>
+        <activity
+            android:name=".activity.EditImageActivity"
+            android:label="@string/title_activity_edit_image"
+            android:theme="@android:style/Theme.Dialog">
+        </activity>
     </application>
 
 </manifest>

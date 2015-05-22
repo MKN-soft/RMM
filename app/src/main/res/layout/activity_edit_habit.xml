@@ -29,7 +29,7 @@
         android:layout_height="wrap_content"
         android:text="Edit image"
         android:layout_marginLeft="5dp"
-        android:id="@+id/button" />
+        android:id="@+id/editImageButton" />
 
     <EditText
         android:layout_width="match_parent"
