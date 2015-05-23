@@ -81,7 +81,7 @@ public class HomeFragment extends ListFragment {
         Drawable image = getResources().getDrawable(R.mipmap.ic_pages);
 
         for (int i = 0; i < 5; i++) {//zle to na dole
-            Habit habit = new Habit("Tytuł nawykuu1 #" + i, "Trochę tekstu dla body #" + i,  ""+1+i,image,"Tu sa notatki pisz co chcesz by pomoc sobie dazyc do wyrobienia nawyku " + i);//?????
+            Habit habit = new Habit("Tytuł nawyku #" + i, "Trochę tekstu dla body #" + i,  ""+1+i,image,"Tu sa notatki pisz co chcesz by pomoc sobie dazyc do wyrobienia nawyku " + i);//?????
             habits.add(habit);
         }
         return habits;

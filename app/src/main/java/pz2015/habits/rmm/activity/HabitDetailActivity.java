@@ -20,7 +20,7 @@ import pz2015.habits.rmm.model.Habit;
  */
 public class HabitDetailActivity extends Activity {
 
-    private Button _editHabit, _deleteHabit;
+    private Button _editHabit, _deleteHabit, schedule;
 
     public TextView title, description, notes, frequency;
     public ImageView habitImage;
@@ -57,6 +57,18 @@ public class HabitDetailActivity extends Activity {
 
         _editHabit = (Button) findViewById(R.id.editHabit);
         _deleteHabit = (Button) findViewById(R.id.deleteHabit);
+        schedule = (Button) findViewById(R.id.Schedule);
+
+        schedule.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(HabitDetailActivity.this, ScheduleActivity.class);
+                startActivity(intent);
+
+                //finish();
+
+
+            }
+        });
 
         _editHabit.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -113,7 +125,7 @@ public class HabitDetailActivity extends Activity {
         title.setText(habit2.getTitle());
         description.setText(habit2.getDescription());
         notes.setText(habit2.getNotes());
-        frequency.setText(habit2.getFrequency());
+        frequency.setText("Your frequency: "+habit2.getFrequency());
     }
 
 

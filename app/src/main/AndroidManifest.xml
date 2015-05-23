@@ -43,8 +43,12 @@
         </activity>
         <activity
             android:name=".activity.AddImageActivity"
-            android:label="@string/title_activity_edit_image"
+            android:label="Choose Image"
             android:theme="@android:style/Theme.Dialog">
+        </activity>
+        <activity
+            android:name=".activity.ScheduleActivity"
+            android:label="Schedule" >
         </activity>
     </application>
 

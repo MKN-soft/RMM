@@ -43,15 +43,7 @@ public class AddHabitActivity extends ActionBarActivity {
         //final int position = LogicBase.getLastPosition();
         position = LogicBase.getLastPosition();
 
-        /*if(position != position2){
-            int posPlus = LogicBase.getLastPosition();
-            Habit habit = LogicBase.getHabitAt(posPlus);
-            habitImage.setImageDrawable(habit.getImage());
-
-        }*/
         habitImage.setImageDrawable(image);
-
-
 
 
         chooseImage.setOnClickListener(new View.OnClickListener() {

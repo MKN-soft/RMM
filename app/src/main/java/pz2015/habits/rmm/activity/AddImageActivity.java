@@ -28,7 +28,6 @@ public class AddImageActivity extends Activity {
         ImageButton Image8 = (ImageButton) findViewById(R.id.image8);
         ImageButton Image9 = (ImageButton) findViewById(R.id.image9);
 
-
         Image1.setImageResource(R.mipmap.ic_communities);
         Image2.setImageResource(R.mipmap.ic_home);
         Image3.setImageResource(R.mipmap.ic_launcher);
@@ -39,21 +38,11 @@ public class AddImageActivity extends Activity {
         Image8.setImageResource(R.mipmap.ic_whats_hot);
         Image9.setImageResource(R.mipmap.ic_question_mark);
 
-        //Drawable image = getResources().getDrawable(R.mipmap.ic_question_mark);//obojetnie co
-        //final Habit habit = new Habit("title", "description", "frequency", image, "notes");
-        //LogicBase.addHabit(habit);
-
         Image1.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Drawable image = getResources().getDrawable(R.mipmap.ic_communities);
                 Habit habit = new Habit("title", "description", "frequency", image, "notes");
                 LogicBase.addHabit(habit);
-                //Drawable image = getResources().getDrawable(R.mipmap.ic_communities);
-
-                //int position = LogicBase.getLastPosition();
-                //habit.setImage(image);
-                //exchange old version habit on edit version
-                //LogicBase.setHabitAt(position, habit);
 
                 //onResume();
                 finish();
@@ -66,11 +55,6 @@ public class AddImageActivity extends Activity {
                 Habit habit = new Habit("title", "description", "frequency", image, "notes");
                 LogicBase.addHabit(habit);
 
-                //int position = LogicBase.getLastPosition();
-                //habit.setImage(image);
-                //exchange old version habit on edit version
-                //LogicBase.setHabitAt(position, habit);
-
                 //onResume();
                 finish();
             }
@@ -81,11 +65,6 @@ public class AddImageActivity extends Activity {
                 Drawable image = getResources().getDrawable(R.mipmap.ic_launcher);
                 Habit habit = new Habit("title", "description", "frequency", image, "notes");
                 LogicBase.addHabit(habit);
-
-                //int position = LogicBase.getLastPosition();
-                //habit.setImage(image);
-                //exchange old version habit on edit version
-                //LogicBase.setHabitAt(position, habit);
 
                 //onResume();
                 finish();
@@ -98,11 +77,6 @@ public class AddImageActivity extends Activity {
                 Habit habit = new Habit("title", "description", "frequency", image, "notes");
                 LogicBase.addHabit(habit);
 
-                //int position = LogicBase.getLastPosition();
-                //habit.setImage(image);
-                //exchange old version habit on edit version
-                //LogicBase.setHabitAt(position, habit);
-
                 //onResume();
                 finish();
             }
@@ -113,11 +87,6 @@ public class AddImageActivity extends Activity {
                 Drawable image = getResources().getDrawable(R.mipmap.ic_people);
                 Habit habit = new Habit("title", "description", "frequency", image, "notes");
                 LogicBase.addHabit(habit);
-
-                //int position = LogicBase.getLastPosition();
-                //habit.setImage(image);
-                //exchange old version habit on edit version
-                //LogicBase.setHabitAt(position, habit);
 
                 //onResume();
                 finish();
@@ -130,11 +99,6 @@ public class AddImageActivity extends Activity {
                 Habit habit = new Habit("title", "description", "frequency", image, "notes");
                 LogicBase.addHabit(habit);
 
-                //int position = LogicBase.getLastPosition();
-                //habit.setImage(image);
-                //exchange old version habit on edit version
-                //LogicBase.setHabitAt(position, habit);
-
                 //onResume();
                 finish();
             }
@@ -145,11 +109,6 @@ public class AddImageActivity extends Activity {
                 Drawable image = getResources().getDrawable(R.mipmap.ic_running);
                 Habit habit = new Habit("title", "description", "frequency", image, "notes");
                 LogicBase.addHabit(habit);
-
-                //int position = LogicBase.getLastPosition();
-                //habit.setImage(image);
-                //exchange old version habit on edit version
-                //LogicBase.setHabitAt(position, habit);
 
                 //onResume();
                 finish();
@@ -162,11 +121,6 @@ public class AddImageActivity extends Activity {
                 Habit habit = new Habit("title", "description", "frequency", image, "notes");
                 LogicBase.addHabit(habit);
 
-                //int position = LogicBase.getLastPosition();
-                //habit.setImage(image);
-                //exchange old version habit on edit version
-                //LogicBase.setHabitAt(position, habit);
-
                 //onResume();
                 finish();
             }
@@ -177,11 +131,6 @@ public class AddImageActivity extends Activity {
                 Drawable image = getResources().getDrawable(R.mipmap.ic_question_mark);
                 Habit habit = new Habit("title", "description", "frequency", image, "notes");
                 LogicBase.addHabit(habit);
-
-                //int position = LogicBase.getLastPosition();
-                //habit.setImage(image);
-                //exchange old version habit on edit version
-                //LogicBase.setHabitAt(position, habit);
 
                 //onResume();
                 finish();

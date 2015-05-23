@@ -17,22 +17,26 @@
         android:capitalize="characters"
         android:textStyle="bold"
         android:textSize="15dp" />
-
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
     <ImageView
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_marginLeft="5dp"
         android:layout_marginTop="5dp"
-
         android:id="@+id/addHabitImage" />
 
     <Button
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="35dp"
         android:text="Choose Image"
         android:layout_marginLeft="5dp"
         android:id="@+id/chooseImage" />
+    </LinearLayout>
 
     <EditText
         android:layout_width="match_parent"

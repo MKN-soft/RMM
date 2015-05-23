@@ -15,6 +15,10 @@
         android:capitalize="characters"
         android:textStyle="bold"
         android:textSize="15dp" />
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
         <ImageView
         android:id="@+id/editHabitImage"
 
@@ -28,8 +32,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Edit image"
+        android:layout_marginTop="35dp"
         android:layout_marginLeft="5dp"
         android:id="@+id/editImageButton" />
+    </LinearLayout>
 
     <EditText
         android:layout_width="match_parent"
