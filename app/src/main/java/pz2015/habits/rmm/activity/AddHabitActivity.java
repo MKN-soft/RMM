@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 import pz2015.habits.rmm.LogicBase;
 import pz2015.habits.rmm.R;
@@ -18,6 +19,10 @@ import pz2015.habits.rmm.model.Habit;
 public class AddHabitActivity extends ActionBarActivity {
 
     //TODO: adding habit to list
+
+    public ImageView habitImage;
+    public int position = LogicBase.getLastPosition();
+    public int position2 = LogicBase.getLastPosition();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,30 +36,98 @@ public class AddHabitActivity extends ActionBarActivity {
         final EditText habitDescription = (EditText) findViewById(R.id.addHabitDescription);
         final EditText habitFrequency = (EditText) findViewById(R.id.addHabitFrequency);
         final EditText habitNotes = (EditText) findViewById(R.id.addHabitNotes);
-        final Drawable image = getResources().getDrawable(R.mipmap.ic_home);
 
-        /*chooseImage.setOnClickListener(new View.OnClickListener() {
+        final Drawable image = getResources().getDrawable(R.mipmap.ic_question_mark);
+        habitImage = (ImageView)findViewById(R.id.addHabitImage);
+
+        //final int position = LogicBase.getLastPosition();
+        position = LogicBase.getLastPosition();
+
+        /*if(position != position2){
+            int posPlus = LogicBase.getLastPosition();
+            Habit habit = LogicBase.getHabitAt(posPlus);
+            habitImage.setImageDrawable(habit.getImage());
+
+        }*/
+        habitImage.setImageDrawable(image);
+
+
+
+
+        chooseImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(AddHabitActivity.this, tutaj cos);
+                Intent intent = new Intent(AddHabitActivity.this, AddImageActivity.class);
                 startActivity(intent);
 
+                onResume();
+
             }
-        });*/
+        });
         //after click on button create new habit(1) and add to list(2)
         addHabitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //int position2 = LogicBase.getLastPosition();
+                position2 = LogicBase.getLastPosition();
+                // check that habit exist  by image add
+                if(position == position2){// habit does not exist
+                    Habit newHabit = new Habit(habitName.getText().toString(), habitDescription.getText().toString(), habitFrequency.getText().toString(), image, habitNotes.getText().toString());
+                    //2
+                    LogicBase.addHabit(newHabit);
+                    finish();
 
-                //1
-                Habit newHabit = new Habit(habitName.getText().toString(), habitDescription.getText().toString(), habitFrequency.getText().toString(), image, habitNotes.getText().toString());
-                //2
-                LogicBase.addHabit(newHabit);
-                finish();
+                }else{ // habit exist, change data therein
+                    Habit habit = LogicBase.getHabitAt(position2);
+
+                    habit.setTitle(habitName.getText().toString());
+                    //description
+                    habit.setDescription(habitDescription.getText().toString());
+                    //frequency
+                    habit.setFrequency(habitFrequency.getText().toString());
+                    //notes
+                    habit.setNotes(habitNotes.getText().toString());
+                    //exchange old version habit on edit version
+                    LogicBase.setHabitAt(position2, habit);
+
+
+                    int position3 = position + 1;
+                    int position4 = LogicBase.getLastPosition();
+                    while(position3 != position4) {
+                        LogicBase.removeHabitItemAt(position + 1);
+                        position3++;
+                    }
+
+                        finish();
+
+                    }
+
+
             }
         });
 
+    }
+
+    protected void onResume() {
+        super.onResume();
+        int position4 = LogicBase.getLastPosition();
+        if(position != position4){
+            int posPlus = LogicBase.getLastPosition();
+            Habit habit = LogicBase.getHabitAt(posPlus);
+            habitImage.setImageDrawable(habit.getImage());
+
+        }
+    }
+
+    public void onBackPressed() {
+        super.onBackPressed();
+        int position3 = position + 1;
+        int position4 = LogicBase.getLastPosition();
+        while(position3 <= position4) {
+            LogicBase.removeHabitItemAt(position + 1);
+            position3++;
+        }
     }
 
 

@@ -13,7 +13,7 @@ import pz2015.habits.rmm.model.Habit;
 /**
  * Created by Natka on 2015-05-22.
  */
-public class EditImageActivity extends Activity {
+public class AddImageActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_layout_image);
@@ -39,14 +39,21 @@ public class EditImageActivity extends Activity {
         Image8.setImageResource(R.mipmap.ic_whats_hot);
         Image9.setImageResource(R.mipmap.ic_question_mark);
 
+        //Drawable image = getResources().getDrawable(R.mipmap.ic_question_mark);//obojetnie co
+        //final Habit habit = new Habit("title", "description", "frequency", image, "notes");
+        //LogicBase.addHabit(habit);
 
         Image1.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                int position = LogicBase.getPosition();
-                Habit habit = LogicBase.getHabitAt(position);
                 Drawable image = getResources().getDrawable(R.mipmap.ic_communities);
-                habit.setImage(image);
-                LogicBase.setHabitAt(position, habit);
+                Habit habit = new Habit("title", "description", "frequency", image, "notes");
+                LogicBase.addHabit(habit);
+                //Drawable image = getResources().getDrawable(R.mipmap.ic_communities);
+
+                //int position = LogicBase.getLastPosition();
+                //habit.setImage(image);
+                //exchange old version habit on edit version
+                //LogicBase.setHabitAt(position, habit);
 
                 //onResume();
                 finish();
@@ -55,11 +62,14 @@ public class EditImageActivity extends Activity {
 
         Image2.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                int position = LogicBase.getPosition();
-                Habit habit = LogicBase.getHabitAt(position);
                 Drawable image = getResources().getDrawable(R.mipmap.ic_home);
-                habit.setImage(image);
-                LogicBase.setHabitAt(position, habit);
+                Habit habit = new Habit("title", "description", "frequency", image, "notes");
+                LogicBase.addHabit(habit);
+
+                //int position = LogicBase.getLastPosition();
+                //habit.setImage(image);
+                //exchange old version habit on edit version
+                //LogicBase.setHabitAt(position, habit);
 
                 //onResume();
                 finish();
@@ -68,11 +78,14 @@ public class EditImageActivity extends Activity {
 
         Image3.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                int position = LogicBase.getPosition();
-                Habit habit = LogicBase.getHabitAt(position);
                 Drawable image = getResources().getDrawable(R.mipmap.ic_launcher);
-                habit.setImage(image);
-                LogicBase.setHabitAt(position, habit);
+                Habit habit = new Habit("title", "description", "frequency", image, "notes");
+                LogicBase.addHabit(habit);
+
+                //int position = LogicBase.getLastPosition();
+                //habit.setImage(image);
+                //exchange old version habit on edit version
+                //LogicBase.setHabitAt(position, habit);
 
                 //onResume();
                 finish();
@@ -81,11 +94,14 @@ public class EditImageActivity extends Activity {
 
         Image4.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                int position = LogicBase.getPosition();
-                Habit habit = LogicBase.getHabitAt(position);
                 Drawable image = getResources().getDrawable(R.mipmap.ic_pages);
-                habit.setImage(image);
-                LogicBase.setHabitAt(position, habit);
+                Habit habit = new Habit("title", "description", "frequency", image, "notes");
+                LogicBase.addHabit(habit);
+
+                //int position = LogicBase.getLastPosition();
+                //habit.setImage(image);
+                //exchange old version habit on edit version
+                //LogicBase.setHabitAt(position, habit);
 
                 //onResume();
                 finish();
@@ -94,11 +110,14 @@ public class EditImageActivity extends Activity {
 
         Image5.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                int position = LogicBase.getPosition();
-                Habit habit = LogicBase.getHabitAt(position);
                 Drawable image = getResources().getDrawable(R.mipmap.ic_people);
-                habit.setImage(image);
-                LogicBase.setHabitAt(position, habit);
+                Habit habit = new Habit("title", "description", "frequency", image, "notes");
+                LogicBase.addHabit(habit);
+
+                //int position = LogicBase.getLastPosition();
+                //habit.setImage(image);
+                //exchange old version habit on edit version
+                //LogicBase.setHabitAt(position, habit);
 
                 //onResume();
                 finish();
@@ -107,11 +126,14 @@ public class EditImageActivity extends Activity {
 
         Image6.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                int position = LogicBase.getPosition();
-                Habit habit = LogicBase.getHabitAt(position);
                 Drawable image = getResources().getDrawable(R.mipmap.ic_photos);
-                habit.setImage(image);
-                LogicBase.setHabitAt(position, habit);
+                Habit habit = new Habit("title", "description", "frequency", image, "notes");
+                LogicBase.addHabit(habit);
+
+                //int position = LogicBase.getLastPosition();
+                //habit.setImage(image);
+                //exchange old version habit on edit version
+                //LogicBase.setHabitAt(position, habit);
 
                 //onResume();
                 finish();
@@ -120,11 +142,14 @@ public class EditImageActivity extends Activity {
 
         Image7.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                int position = LogicBase.getPosition();
-                Habit habit = LogicBase.getHabitAt(position);
                 Drawable image = getResources().getDrawable(R.mipmap.ic_running);
-                habit.setImage(image);
-                LogicBase.setHabitAt(position, habit);
+                Habit habit = new Habit("title", "description", "frequency", image, "notes");
+                LogicBase.addHabit(habit);
+
+                //int position = LogicBase.getLastPosition();
+                //habit.setImage(image);
+                //exchange old version habit on edit version
+                //LogicBase.setHabitAt(position, habit);
 
                 //onResume();
                 finish();
@@ -133,11 +158,14 @@ public class EditImageActivity extends Activity {
 
         Image8.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                int position = LogicBase.getPosition();
-                Habit habit = LogicBase.getHabitAt(position);
                 Drawable image = getResources().getDrawable(R.mipmap.ic_whats_hot);
-                habit.setImage(image);
-                LogicBase.setHabitAt(position, habit);
+                Habit habit = new Habit("title", "description", "frequency", image, "notes");
+                LogicBase.addHabit(habit);
+
+                //int position = LogicBase.getLastPosition();
+                //habit.setImage(image);
+                //exchange old version habit on edit version
+                //LogicBase.setHabitAt(position, habit);
 
                 //onResume();
                 finish();
@@ -146,11 +174,14 @@ public class EditImageActivity extends Activity {
 
         Image9.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                int position = LogicBase.getPosition();
-                Habit habit = LogicBase.getHabitAt(position);
                 Drawable image = getResources().getDrawable(R.mipmap.ic_question_mark);
-                habit.setImage(image);
-                LogicBase.setHabitAt(position, habit);
+                Habit habit = new Habit("title", "description", "frequency", image, "notes");
+                LogicBase.addHabit(habit);
+
+                //int position = LogicBase.getLastPosition();
+                //habit.setImage(image);
+                //exchange old version habit on edit version
+                //LogicBase.setHabitAt(position, habit);
 
                 //onResume();
                 finish();
@@ -158,4 +189,3 @@ public class EditImageActivity extends Activity {
         });
     }
 }
-

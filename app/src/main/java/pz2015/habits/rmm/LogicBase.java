@@ -107,7 +107,20 @@ public class LogicBase {
 
     }
 
-    public void setImageButton(){
+    public static Habit getLastHabit(int position){
+        int count = habitItemArrayAdapter.getCount();
+            if(position == count - 1){
+                return (Habit)habitItemArrayAdapter.getItem(position);
+            }else{
+                return null;
+            }
 
+        }
+    public static int getLastPosition(){
+        int count = habitItemArrayAdapter.getCount();
+        int position = count - 1;
+        return position;
     }
+
+
 }

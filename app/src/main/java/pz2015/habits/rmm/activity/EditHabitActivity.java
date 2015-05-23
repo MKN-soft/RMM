@@ -64,7 +64,7 @@ public class EditHabitActivity extends ActionBarActivity {
                 //give position (from file HomeFragment)
                int position = LogicBase.getPosition();
                 //give habit from position
-               Habit habit = LogicBase.getHabitAt(position);//new Habit(habitName.getText().toString(),habitFrequency.getText().toString() );
+               Habit habit = LogicBase.getHabitAt(position);
                 //rewrite habitName on new
                habit.setTitle(habitName.getText().toString());
                 //description
