@@ -18,7 +18,9 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import pz2015.habits.rmm.LogicBase;
@@ -80,8 +82,11 @@ public class HomeFragment extends ListFragment {
         List<Habit> habits = new ArrayList<Habit>();
         Drawable image = getResources().getDrawable(R.mipmap.ic_pages);
 
+        Date date = new Date();
+        String date1 = new SimpleDateFormat("dd MMMM yyyy").format(date);
+
         for (int i = 0; i < 5; i++) {//zle to na dole
-            Habit habit = new Habit("Tytuł nawyku #" + i, "Trochę tekstu dla body #" + i,  ""+1+i,image,"Tu sa notatki pisz co chcesz by pomoc sobie dazyc do wyrobienia nawyku " + i);//?????
+            Habit habit = new Habit("Tytuł nawyku #" + i, "Trochę tekstu dla body #" + i,  ""+1+i,image,"Tu sa notatki pisz co chcesz by pomoc sobie dazyc do wyrobienia nawyku " + i, date1);
             habits.add(habit);
         }
         return habits;

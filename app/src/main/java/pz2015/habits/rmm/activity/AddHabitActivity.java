@@ -11,6 +11,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import pz2015.habits.rmm.LogicBase;
 import pz2015.habits.rmm.R;
 import pz2015.habits.rmm.model.Habit;
@@ -65,7 +68,10 @@ public class AddHabitActivity extends ActionBarActivity {
                 position2 = LogicBase.getLastPosition();
                 // check that habit exist  by image add
                 if(position == position2){// habit does not exist
-                    Habit newHabit = new Habit(habitName.getText().toString(), habitDescription.getText().toString(), habitFrequency.getText().toString(), image, habitNotes.getText().toString());
+                    Date date = new Date();
+                    String date1 = new SimpleDateFormat("dd MMMM yyyy").format(date);
+
+                    Habit newHabit = new Habit(habitName.getText().toString(), habitDescription.getText().toString(), habitFrequency.getText().toString(), image, habitNotes.getText().toString(), date1);
                     //2
                     LogicBase.addHabit(newHabit);
                     finish();

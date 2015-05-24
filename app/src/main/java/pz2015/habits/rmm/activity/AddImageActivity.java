@@ -6,6 +6,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import pz2015.habits.rmm.LogicBase;
 import pz2015.habits.rmm.R;
 import pz2015.habits.rmm.model.Habit;
@@ -40,8 +43,11 @@ public class AddImageActivity extends Activity {
 
         Image1.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                Date date = new Date();
+                String date1 = new SimpleDateFormat("dd MMMM yyyy").format(date);
+
                 Drawable image = getResources().getDrawable(R.mipmap.ic_communities);
-                Habit habit = new Habit("title", "description", "frequency", image, "notes");
+                Habit habit = new Habit("title", "description", "frequency", image, "notes", date1);
                 LogicBase.addHabit(habit);
 
                 //onResume();
@@ -51,8 +57,11 @@ public class AddImageActivity extends Activity {
 
         Image2.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                Date date = new Date();
+                String date1 = new SimpleDateFormat("dd MMMM yyyy").format(date);
+
                 Drawable image = getResources().getDrawable(R.mipmap.ic_home);
-                Habit habit = new Habit("title", "description", "frequency", image, "notes");
+                Habit habit = new Habit("title", "description", "frequency", image, "notes", date1);
                 LogicBase.addHabit(habit);
 
                 //onResume();
@@ -62,8 +71,11 @@ public class AddImageActivity extends Activity {
 
         Image3.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                Date date = new Date();
+                String date1 = new SimpleDateFormat("dd MMMM yyyy").format(date);
+
                 Drawable image = getResources().getDrawable(R.mipmap.ic_launcher);
-                Habit habit = new Habit("title", "description", "frequency", image, "notes");
+                Habit habit = new Habit("title", "description", "frequency", image, "notes", date1);
                 LogicBase.addHabit(habit);
 
                 //onResume();
@@ -73,8 +85,11 @@ public class AddImageActivity extends Activity {
 
         Image4.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                Date date = new Date();
+                String date1 = new SimpleDateFormat("dd MMMM yyyy").format(date);
+
                 Drawable image = getResources().getDrawable(R.mipmap.ic_pages);
-                Habit habit = new Habit("title", "description", "frequency", image, "notes");
+                Habit habit = new Habit("title", "description", "frequency", image, "notes", date1);
                 LogicBase.addHabit(habit);
 
                 //onResume();
@@ -84,8 +99,11 @@ public class AddImageActivity extends Activity {
 
         Image5.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                Date date = new Date();
+                String date1 = new SimpleDateFormat("dd MMMM yyyy").format(date);
+
                 Drawable image = getResources().getDrawable(R.mipmap.ic_people);
-                Habit habit = new Habit("title", "description", "frequency", image, "notes");
+                Habit habit = new Habit("title", "description", "frequency", image, "notes", date1);
                 LogicBase.addHabit(habit);
 
                 //onResume();
@@ -95,8 +113,11 @@ public class AddImageActivity extends Activity {
 
         Image6.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                Date date = new Date();
+                String date1 = new SimpleDateFormat("dd MMMM yyyy").format(date);
+
                 Drawable image = getResources().getDrawable(R.mipmap.ic_photos);
-                Habit habit = new Habit("title", "description", "frequency", image, "notes");
+                Habit habit = new Habit("title", "description", "frequency", image, "notes", date1);
                 LogicBase.addHabit(habit);
 
                 //onResume();
@@ -106,8 +127,11 @@ public class AddImageActivity extends Activity {
 
         Image7.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                Date date = new Date();
+                String date1 = new SimpleDateFormat("dd MMMM yyyy").format(date);
+
                 Drawable image = getResources().getDrawable(R.mipmap.ic_running);
-                Habit habit = new Habit("title", "description", "frequency", image, "notes");
+                Habit habit = new Habit("title", "description", "frequency", image, "notes", date1);
                 LogicBase.addHabit(habit);
 
                 //onResume();
@@ -117,8 +141,11 @@ public class AddImageActivity extends Activity {
 
         Image8.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                Date date = new Date();
+                String date1 = new SimpleDateFormat("dd MMMM yyyy").format(date);
+
                 Drawable image = getResources().getDrawable(R.mipmap.ic_whats_hot);
-                Habit habit = new Habit("title", "description", "frequency", image, "notes");
+                Habit habit = new Habit("title", "description", "frequency", image, "notes", date1);
                 LogicBase.addHabit(habit);
 
                 //onResume();
@@ -128,8 +155,11 @@ public class AddImageActivity extends Activity {
 
         Image9.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                Date date = new Date();
+                String date1 = new SimpleDateFormat("dd MMMM yyyy").format(date);
+
                 Drawable image = getResources().getDrawable(R.mipmap.ic_question_mark);
-                Habit habit = new Habit("title", "description", "frequency", image, "notes");
+                Habit habit = new Habit("title", "description", "frequency", image, "notes", date1);
                 LogicBase.addHabit(habit);
 
                 //onResume();
