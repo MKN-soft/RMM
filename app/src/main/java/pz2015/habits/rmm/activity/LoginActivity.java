@@ -55,6 +55,7 @@ public class LoginActivity extends ActionBarActivity {
                 //Hooking Activity
                 Intent intent = new Intent(LoginActivity.this, LoadingActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
     }
