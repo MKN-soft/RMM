@@ -84,6 +84,8 @@ public class LoadingActivity extends Activity {
             //Getting json object
             JSONObject json = jParser.getJSONFromUrl(URL_LOGIN, list);
 
+            //TODO Sprawdzenie wszystkich możliwych opcji - istnieje user, brak usera, przejście do rejestracji itd.
+
             //Check logcat for JSON Response
             Log.d("RMM - JSON - ", json.toString());
             return null;
