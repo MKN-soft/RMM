@@ -43,7 +43,9 @@ public class LoadingActivity extends Activity {
 
         //TODO: back to login screen or signup or habit list
 
-
+        //Hooking Activity
+        Intent intent = new Intent(LoadingActivity.this, MainActivity.class);
+        startActivity(intent);
     }
 
 
@@ -81,10 +83,6 @@ public class LoadingActivity extends Activity {
             pDialog.setIndeterminate(false);
             pDialog.setCancelable(false);
             pDialog.show();
-
-            //Hooking Activity
-            Intent intent = new Intent(LoadingActivity.this, MainActivity.class);
-            startActivity(intent);
         }
 
         /**
