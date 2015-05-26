@@ -27,7 +27,7 @@ public class LoginActivity extends ActionBarActivity {
 
         if (savedUsername != null && savedPassword != null) {
             //Hooking Activity
-            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+            Intent intent = new Intent(LoginActivity.this, LoadingActivity.class);
             startActivity(intent);
             finish();
         }
@@ -53,7 +53,7 @@ public class LoginActivity extends ActionBarActivity {
                 editor.commit();
 
                 //Hooking Activity
-                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                Intent intent = new Intent(LoginActivity.this, LoadingActivity.class);
                 startActivity(intent);
             }
         });

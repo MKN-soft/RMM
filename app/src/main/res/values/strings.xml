@@ -51,5 +51,7 @@
     <string name="setFrequency">Set frequency of your habit</string>
 
     <string name="title_activity_edit_image">Change Image</string>
+    <string name="title_activity_loading">LoadingActivity</string>
+    <string name="load_string">Please wait while your data gets loaded...</string>
 
 </resources>
