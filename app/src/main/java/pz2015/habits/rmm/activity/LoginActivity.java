@@ -20,6 +20,18 @@ public class LoginActivity extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        //Sprawdza czy już się logowaliśmy za pierwszym razem
+        SharedPreferences prefs = getSharedPreferences("rmm_sign_up", MODE_PRIVATE);
+        String savedUsername = prefs.getString("username", null);
+        String savedPassword = prefs.getString("password", null);
+
+        if (savedUsername != null && savedPassword != null) {
+            //Hooking Activity
+            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+            startActivity(intent);
+            finish();
+        }
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
