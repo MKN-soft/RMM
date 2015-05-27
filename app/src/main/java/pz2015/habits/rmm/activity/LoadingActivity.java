@@ -6,10 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Handler;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 
 
 import org.apache.http.NameValuePair;
@@ -19,7 +16,8 @@ import org.json.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import pz2015.habits.rmm.JSONParser;
+import pz2015.habits.rmm.others.ConnectionDetector;
+import pz2015.habits.rmm.others.JSONParser;
 import pz2015.habits.rmm.R;
 
 //Ekran do ładowania po wpisaniu loginu i hasła, docelowo będzie "bardziej uniwersalny", do rejestracji, logowania itp...
@@ -37,12 +35,7 @@ public class LoadingActivity extends Activity {
 
     //JSON Node names
     private static final String TAG_SUCCESS = "success";
-    private static final String TAG_PRODUCTS = "products";
-    private static final String TAG_PID = "pid";
-    private static final String TAG_NAME = "name";
 
-    // Splash screen timer
-    private static int SPLASH_TIME_OUT = 3000;
 
 
     @Override
@@ -81,8 +74,36 @@ public class LoadingActivity extends Activity {
             list.add(new BasicNameValuePair("username", username));
             list.add(new BasicNameValuePair("password", password));
 
-            //Getting json object
-            JSONObject json = jParser.getJSONFromUrl(URL_LOGIN, list);
+            JSONObject json = null;
+
+            //Check internet connection
+            ConnectionDetector cd = new ConnectionDetector(getApplicationContext());
+            if (cd.isConnectingToInternet() == true) {
+                //Getting json object
+                json = jParser.getJSONFromUrl(URL_LOGIN, list);
+                try {
+                    //Checking for SUCCESS TAG
+                    int success = json.getInt(TAG_SUCCESS);
+
+                    if (success == 1) {
+                        // USER FOUND
+                        return null;
+                    }
+                    else {
+                        // USER NOT EXISTS
+                        //TODO REJESTRACJA
+                        // Hooking Activity
+                        Intent intent = new Intent(LoadingActivity.this, MainActivity.class);
+                        startActivity(intent);
+
+                        // Close this activity
+                        finish();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
 
             //TODO Sprawdzenie wszystkich możliwych opcji - istnieje user, brak usera, przejście do rejestracji itd.
 

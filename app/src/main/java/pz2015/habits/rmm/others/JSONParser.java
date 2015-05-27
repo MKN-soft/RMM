@@ -1,4 +1,4 @@
-package pz2015.habits.rmm;
+package pz2015.habits.rmm.others;
 
 import android.util.Log;
 
@@ -17,6 +17,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
+import java.net.ConnectException;
 import java.util.List;
 
 /**
@@ -48,10 +49,17 @@ public class JSONParser {
 
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
+            return null;
         } catch (ClientProtocolException e) {
             e.printStackTrace();
+            return null;
+        } catch (ConnectException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            return null;
         } catch (IOException e) {
             e.printStackTrace();
+            return null;
         }
 
         try {
