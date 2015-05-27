@@ -5,14 +5,16 @@
     <string name="app_name">RMM</string>
 
     <string name="hello_world">Hello world!</string>
-    //login activity
+    <!-- Login activity -->
+    <string name="login">Sign in</string>
+    <string name="registration">Sign up</string>
     <string name="lbl_username">Username</string>
     <string name="lbl_enter_username">Enter your username</string>
     <string name="lbl_pwd">Password</string>
     <string name="lbl_enter_pwd">Enter your password</string>
     <string name="lbl_login">Login</string>
 
-    //Navigation drawer
+    <!-- Navigation drawer -->
     <string name="action_addHabit">Add Habit</string>
     <string name="drawer_open">Slider Menu Opened</string>
     <string name="drawer_close">Slider Menu Closed</string>
@@ -37,7 +39,6 @@
 
     <!-- Content Description -->
     <string name="desc_list_item_icon">Item Icon</string>
-    <string name="hello_habits">hello habits</string>
     <string name="addHabit">addHabit</string>
     <string name="deleteHabit">DELETE HABIT</string>
     <string name="title_activity_add_habit">AddHabitActivity</string>
@@ -53,5 +54,7 @@
     <string name="title_activity_edit_image">Change Image</string>
     <string name="title_activity_loading">LoadingActivity</string>
     <string name="load_string">Please wait while your data gets loaded...</string>
+    <string name="title_activity_registration">RegistrationActivity</string>
+    <string name="lbl_registration">Sign up</string>
 
 </resources>

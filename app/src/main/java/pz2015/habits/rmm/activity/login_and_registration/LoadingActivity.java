@@ -1,4 +1,4 @@
-package pz2015.habits.rmm.activity;
+package pz2015.habits.rmm.activity.login_and_registration;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -16,6 +16,7 @@ import org.json.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import pz2015.habits.rmm.activity.MainActivity;
 import pz2015.habits.rmm.others.ConnectionDetector;
 import pz2015.habits.rmm.others.JSONParser;
 import pz2015.habits.rmm.R;
@@ -58,7 +59,6 @@ public class LoadingActivity extends Activity {
         protected void onPreExecute() {
             super.onPreExecute();
 
-            //Sprawdza czy już się logowaliśmy za pierwszym razem
             SharedPreferences prefs = getSharedPreferences("rmm_sign_up", MODE_PRIVATE);
             username = prefs.getString("username", null);
             password = prefs.getString("password", null);
@@ -69,46 +69,50 @@ public class LoadingActivity extends Activity {
          * */
         @Override
         protected Void doInBackground(String... params) {
-            //Building parameters
+            // Building parameters
             List<NameValuePair> list = new ArrayList<>();
             list.add(new BasicNameValuePair("username", username));
             list.add(new BasicNameValuePair("password", password));
 
             JSONObject json = null;
 
-            //Check internet connection
+            // Check internet connection
             ConnectionDetector cd = new ConnectionDetector(getApplicationContext());
             if (cd.isConnectingToInternet() == true) {
-                //Getting json object
+                // Get JSON OBJECT
                 json = jParser.getJSONFromUrl(URL_LOGIN, list);
-                try {
-                    //Checking for SUCCESS TAG
-                    int success = json.getInt(TAG_SUCCESS);
 
-                    if (success == 1) {
-                        // USER FOUND
-                        return null;
-                    }
-                    else {
-                        // USER NOT EXISTS
-                        //TODO REJESTRACJA
-                        // Hooking Activity
-                        Intent intent = new Intent(LoadingActivity.this, MainActivity.class);
-                        startActivity(intent);
+                if (json != null) {
+                    // success connection with server
+                    try {
+                        int success = json.getInt(TAG_SUCCESS);
 
-                        // Close this activity
-                        finish();
+                        if (success == 1) {
+                            // USER FOUND
+                            return null;
+                        }
+                        else {
+                            // USER NOT EXISTS
+                            // REJESTRACJA
+                            // Hooking Activity
+                            Intent intent = new Intent(LoadingActivity.this, RegistrationActivity.class);
+                            startActivity(intent);
+
+                            // Close this activity
+                            finish();
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
                     }
-                } catch (JSONException e) {
-                    e.printStackTrace();
                 }
-
+                else {
+                    // fail - json is null ?????
+                }
+            }
+            else {
+                // no internet connection
             }
 
-            //TODO Sprawdzenie wszystkich możliwych opcji - istnieje user, brak usera, przejście do rejestracji itd.
-
-            //Check logcat for JSON Response
-            Log.d("RMM - JSON - ", json.toString());
             return null;
         }
 

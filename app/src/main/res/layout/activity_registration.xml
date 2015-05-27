@@ -8,7 +8,7 @@
     <TextView android:id="@+id/header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/login"
+        android:text="@string/registration"
         android:padding="10dp"
         android:textSize="20sp"
         android:textColor="@android:color/white"
@@ -79,14 +79,13 @@
     <Button
         android:id="@+id/btn_login"
         android:layout_height="wrap_content"
-        android:layout_below="@id/pwd_block"
-        android:text="@string/lbl_login"
+        android:text="@string/lbl_registration"
         android:layout_width="290dp"
-        android:layout_centerHorizontal="true"
         android:gravity="center"
-        android:layout_marginTop="15dp"
         android:textSize="13sp"
         android:textStyle="bold"
-        />
+        android:layout_centerVertical="true"
+        android:layout_alignRight="@+id/uname_block"
+        android:layout_alignEnd="@+id/uname_block" />
 
 </RelativeLayout>
