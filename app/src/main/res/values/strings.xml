@@ -57,4 +57,8 @@
     <string name="title_activity_registration">RegistrationActivity</string>
     <string name="lbl_registration">Sign up</string>
 
+    <!-- Popup Dialog Strings -->
+    <string name="title_no_account">No account found!</string>
+    <string name="description_no_account">It\'s a description. Have you registered account? I bet NO!</string>
+
 </resources>

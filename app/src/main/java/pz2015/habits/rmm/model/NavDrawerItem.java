@@ -1,7 +1,5 @@
 package pz2015.habits.rmm.model;
 
-import android.graphics.drawable.Drawable;
-
 /**
  * Created by Marcin on 2015-04-26.
  */

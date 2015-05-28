@@ -1,6 +1,5 @@
 package pz2015.habits.rmm;
 
-import android.media.Image;
 import android.widget.ArrayAdapter;
 
 import java.util.ArrayList;

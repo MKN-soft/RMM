@@ -1,7 +1,5 @@
 package pz2015.habits.rmm.model;
 
-
-import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
 
 import java.io.Serializable;

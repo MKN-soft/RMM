@@ -1,76 +1,63 @@
 package pz2015.habits.rmm;
 
-import android.os.AsyncTask;
 
-import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONObject;
 
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
-import pz2015.habits.rmm.model.Habit;
+import pz2015.habits.rmm.others.Errors;
+import pz2015.habits.rmm.others.JSONParser;
 
 /**
  * Created by Marcin on 2015-05-08.
+ * Modified by Me :)
  */
-public class PostManagement extends AsyncTask<Habit, Integer, Double> {
+public class PostManagement  {
 
-    //TODO deleting habits/ records from server
+    List<NameValuePair> params;
 
-    /**
-     *
-     * @param params - objects to send
-     * @return
-     *
-     * Sends data in background (prevents crash)
-     */
-    @Override
-    protected Double doInBackground(Habit... params) {
-// TODO Auto-generated method stub
-        postData(params[0]);
-        return null;
+    JSONObject json;
+
+    //Creating JSON Parser object
+    JSONParser jParser;
+
+    //URL to post
+    private static String URL_LOGIN = "http://www.patra.waw.pl/php/check_login.php";
+
+    //JSON Node names
+    private static final String TAG_SUCCESS = "success";
+
+    public PostManagement(List<NameValuePair> params) {
+        this.params = params;
+        this.jParser = new JSONParser();
+        this.json = null;
     }
 
-    protected void onPostExecute(Double result){
-        //TODO on post execute, what happens when we post (maybe message box?)
-    }
+    public Errors isUserExists() {
+        // Get JSON OBJECT
+        json =  jParser.getJSONFromUrl(URL_LOGIN, params);
 
-    public void postData(Habit object) {
+        if (json != null) {
+            // success connection with server
+            try {
+                int success = json.getInt(TAG_SUCCESS);
 
-        //TODO change argument to habit object and send all of it's data at once in this method. What about server address and field names?
-// Create a new HttpClient and Post Header
-        HttpClient httpclient = new DefaultHttpClient();
-        HttpPost httppost = new HttpPost("http://patra.waw.pl/php/baza.php");
-
-        try {
-// Add your data
-            List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
-            nameValuePairs.add(new BasicNameValuePair("id", object.getId() ));
-            nameValuePairs.add(new BasicNameValuePair("title", object.getTitle() ));
-            nameValuePairs.add(new BasicNameValuePair("description", object.getDescription() ));
-            nameValuePairs.add(new BasicNameValuePair("start_date", object.getDate() ));
-
-            httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
-
-// Execute HTTP Post Request
-            HttpResponse response = httpclient.execute(httppost);
-
-        } catch (ClientProtocolException e) {
-// TODO Auto-generated catch block
-            e.printStackTrace();
-        } catch (IOException e) {
-// TODO Auto-generated catch block
-            e.printStackTrace();
+                if (success == 1) {
+                    // USER FOUND
+                    return Errors.USER_FOUND;
+                }
+                else {
+                    // USER NOT EXISTS
+                    // REJESTRACJA
+                    return Errors.USER_NOT_EXISTS;
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
+        // fail - json is null ?????
+        return Errors.USER_JSON_IS_NULL;
     }
-
-
 
 }

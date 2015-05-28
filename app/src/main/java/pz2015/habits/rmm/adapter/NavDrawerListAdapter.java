@@ -14,9 +14,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import pz2015.habits.rmm.LogicBase;
 import pz2015.habits.rmm.R;
-import pz2015.habits.rmm.model.Habit;
 import pz2015.habits.rmm.model.NavDrawerItem;
 
 public class NavDrawerListAdapter extends BaseAdapter {

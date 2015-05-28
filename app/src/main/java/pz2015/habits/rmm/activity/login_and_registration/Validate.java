@@ -1,7 +1,6 @@
 package pz2015.habits.rmm.activity.login_and_registration;
 
 import android.widget.EditText;
-import android.widget.TextView;
 
 import java.util.regex.Pattern;
 
