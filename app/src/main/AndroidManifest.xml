@@ -59,10 +59,18 @@
             android:name=".activity.login_and_registration.LoadingActivity"
             android:label="@string/title_activity_loading" >
         </activity>
+<<<<<<< HEAD
         <activity
+<<<<<<< HEAD
+            android:name=".activity.GoProActivity"
+            android:label="@string/title_activity_go_pro" >
+=======
             android:name=".activity.login_and_registration.RegistrationActivity"
             android:label="@string/title_activity_registration" >
+>>>>>>> origin/master
         </activity>
+=======
+>>>>>>> parent of f92b97c... GoPro fragment with listeners
     </application>
 
 </manifest>
