@@ -103,16 +103,19 @@ public class LoginActivity extends ActionBarActivity {
         // Set variables
         SharedPreferences prefs = getSharedPreferences("rmm", MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
-        editor.putString("username", etEmailAddress.getText().toString().trim());
-        editor.putString("password", etPassword.getText().toString().trim());
-        editor.putBoolean("imBackAgain", true);
+        editor.putString("username", etEmailAddress.getText().toString());
+        editor.putString("password", etPassword.getText().toString());
+        //editor.putBoolean("imBackAgain", true);
 
         editor.commit();
 
-        // Hooking Activity
-        Intent intent = new Intent(LoginActivity.this, LoadingActivity.class);
-        startActivity(intent);
-        finish();
+        ConnectTask connectTask = new ConnectTask(this);
+        connectTask.execute();
+
+//        // Hooking Activity
+//        Intent intent = new Intent(LoginActivity.this, LoadingActivity.class);
+//        startActivity(intent);
+//        finish();
     }
 
 

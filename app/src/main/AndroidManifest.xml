@@ -59,10 +59,6 @@
             android:name=".activity.login_and_registration.LoadingActivity"
             android:label="@string/title_activity_loading" >
         </activity>
-        <activity
-            android:name=".activity.login_and_registration.RegistrationActivity"
-            android:label="@string/title_activity_registration" >
-        </activity>
     </application>
 
 </manifest>

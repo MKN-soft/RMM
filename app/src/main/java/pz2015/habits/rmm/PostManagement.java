@@ -27,6 +27,7 @@ public class PostManagement  {
 
     //JSON Node names
     private static final String TAG_SUCCESS = "success";
+    private static final String TAG_ERROR = "error";
 
     public PostManagement(List<NameValuePair> params) {
         this.params = params;
@@ -42,15 +43,26 @@ public class PostManagement  {
             // success connection with server
             try {
                 int success = json.getInt(TAG_SUCCESS);
+                int errors = json.getInt(TAG_ERROR);
 
                 if (success == 1) {
                     // USER FOUND
                     return Errors.USER_FOUND;
                 }
                 else {
-                    // USER NOT EXISTS
-                    // REJESTRACJA
-                    return Errors.USER_NOT_EXISTS;
+                    if (errors == 1) {
+                        // BAD PASSWORD
+                        return Errors.USER_BAD_PASSWORD;
+                    }
+                    else if (errors == 2) {
+                        // USER NOT EXISTS
+                        // REJESTRACJA
+                        return Errors.USER_NOT_EXISTS;
+                    }
+                    else {
+                        // Now its really bad...
+                        return Errors.CRITICAL_ERROR;
+                    }
                 }
             } catch (Exception e) {
                 e.printStackTrace();

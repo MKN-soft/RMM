@@ -60,5 +60,13 @@
     <!-- Popup Dialog Strings -->
     <string name="title_no_account">No account found!</string>
     <string name="description_no_account">It\'s a description. Have you registered account? I bet NO!</string>
+    <string name="dialog_badpassword">Bad user password!</string>
+    <string name="dialog_title_badpassword">Bad password</string>
+    <string name="dialog_criticalerror">Ooooopss...</string>
+    <string name="dialog_title_criticalerror">Critical error!</string>
+    <string name="dialog_internetconnection">Application for working need internet connection.</string>
+    <string name="dialog_title_internetconnection">No connection!</string>
+    <string name="dialog_title_noserverconn">No connection</string>
+    <string name="dialog_noserverconn">Application has lost connection with server</string>
 
 </resources>
