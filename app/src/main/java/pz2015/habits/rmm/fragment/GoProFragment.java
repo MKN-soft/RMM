@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.android.vending.billing.IInAppBillingService;
 
 import pz2015.habits.rmm.R;
 
