@@ -105,17 +105,12 @@ public class LoginActivity extends ActionBarActivity {
         SharedPreferences.Editor editor = prefs.edit();
         editor.putString("username", etEmailAddress.getText().toString());
         editor.putString("password", etPassword.getText().toString());
-        //editor.putBoolean("imBackAgain", true);
+        editor.putBoolean("imBackAgain", true);
 
         editor.commit();
 
-        ConnectTask connectTask = new ConnectTask(this);
-        connectTask.execute();
-
-//        // Hooking Activity
-//        Intent intent = new Intent(LoginActivity.this, LoadingActivity.class);
-//        startActivity(intent);
-//        finish();
+        ConnectionTask connectionTask = new ConnectionTask(this, true);
+        connectionTask.execute();
     }
 
 

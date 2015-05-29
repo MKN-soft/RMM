@@ -15,6 +15,7 @@ import pz2015.habits.rmm.others.JSONParser;
  */
 public class PostManagement  {
 
+
     List<NameValuePair> params;
 
     JSONObject json;
@@ -24,6 +25,7 @@ public class PostManagement  {
 
     //URL to post
     private static String URL_LOGIN = "http://www.patra.waw.pl/php/check_login.php";
+    private static String URL_REGISTER = "http://www.patra.waw.pl/php/register_user.php";
 
     //JSON Node names
     private static final String TAG_SUCCESS = "success";
@@ -63,6 +65,34 @@ public class PostManagement  {
                         // Now its really bad...
                         return Errors.CRITICAL_ERROR;
                     }
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        // fail - json is null ?????
+        return Errors.USER_JSON_IS_NULL;
+    }
+
+    public Errors registerNewUser() {
+        // Get JSON OBJECT
+        json =  jParser.getJSONFromUrl(URL_REGISTER, params);
+
+        if (json != null) {
+            // success connection with server
+            try {
+                int success = json.getInt(TAG_SUCCESS);
+                int errors = json.getInt(TAG_ERROR);
+
+                //TODO POMYSLEC NAD INNYMI PRZYPADKAMI
+                if (success == 1) {
+                    // USER CREATED
+                    return Errors.USER_CREATED;
+                }
+                else {
+                    // Now its really bad...
+                    return Errors.CRITICAL_ERROR;
+
                 }
             } catch (Exception e) {
                 e.printStackTrace();

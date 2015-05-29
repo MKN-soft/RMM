@@ -1,14 +1,9 @@
 package pz2015.habits.rmm.activity.login_and_registration;
 
-import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.Button;
-import android.widget.FrameLayout;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
@@ -18,14 +13,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pz2015.habits.rmm.PostManagement;
-import pz2015.habits.rmm.R;
 import pz2015.habits.rmm.others.ConnectionDetector;
 import pz2015.habits.rmm.others.Errors;
 
 /**
  * Created by ASUS on 2015-05-29.
  */
-public class ConnectTask extends AsyncTask<Void, Void, Void> {
+public class ConnectionTask extends AsyncTask<Void, Void, Void> {
 
     ProgressDialog p;
 
@@ -42,9 +36,12 @@ public class ConnectTask extends AsyncTask<Void, Void, Void> {
 
     private final Context context;
 
-    public ConnectTask(Context context) {
+    Boolean LoginOrRegister;
+
+    public ConnectionTask(Context context, Boolean LoginOrRegister) {
         this.context = context;
         this.p = new ProgressDialog(context);
+        this.LoginOrRegister = LoginOrRegister;
     }
 
     @Override
@@ -81,9 +78,16 @@ public class ConnectTask extends AsyncTask<Void, Void, Void> {
         if (cd.isConnectingToInternet() == true) {
             // internet connection
 
-            // is user exists ?
-            PostManagement pm = new PostManagement(list);
-            result = pm.isUserExists();
+            if (LoginOrRegister == true) {
+                // is user exists ?
+                PostManagement pm = new PostManagement(list);
+                result = pm.isUserExists();
+            }
+            else {
+                // register user
+                PostManagement pm = new PostManagement(list);
+                result = pm.registerNewUser();
+            }
         }
         else {
             // no internet connection
@@ -97,7 +101,8 @@ public class ConnectTask extends AsyncTask<Void, Void, Void> {
     protected void onPostExecute(Void result) {
         super.onPostExecute(result);
         p.dismiss();
-        this.result.make(context);
+
+        this.result.make(context, this.list);
     }
 
 }

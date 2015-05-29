@@ -12,8 +12,14 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import org.apache.http.NameValuePair;
+
+import java.util.List;
+
+import pz2015.habits.rmm.PostManagement;
 import pz2015.habits.rmm.R;
 import pz2015.habits.rmm.activity.MainActivity;
+import pz2015.habits.rmm.activity.login_and_registration.ConnectionTask;
 
 /**
  * Created by ASUS on 2015-05-28.
@@ -21,7 +27,7 @@ import pz2015.habits.rmm.activity.MainActivity;
 public enum Errors {
     // User exists errors
     USER_NOT_EXISTS(2) {
-        public void make(Context context) {
+        public void make(final Context context, final List<NameValuePair> list) {
             AlertDialog.Builder builder = new AlertDialog.Builder(context);
 //                    .setTitle(context.getResources().getString(R.string.title_no_account))
 //                    .setMessage(context.getResources().getString(R.string.description_no_account))
@@ -52,7 +58,9 @@ public enum Errors {
 
                 @Override
                 public void onClick(View v) {
-                    System.exit(0);
+                    // Register user
+                    ConnectionTask connectionTask = new ConnectionTask(context, false);
+                    connectionTask.execute();
                 }
 
             });
@@ -69,7 +77,7 @@ public enum Errors {
         }
     },
     USER_FOUND(1) {
-        public void make(Context context) {
+        public void make(Context context, List<NameValuePair> list) {
             // Hooking Activity
             Intent intent = new Intent(context, MainActivity.class);
             context.startActivity(intent);
@@ -79,31 +87,38 @@ public enum Errors {
         }
     },
     USER_JSON_IS_NULL(0) {
-        public void make(Context context) {
+        public void make(Context context, List<NameValuePair> list) {
             dialogError(context, context.getResources().getString(R.string.dialog_title_noserverconn)
                     , context.getResources().getString(R.string.dialog_noserverconn));
         }
     },
     USER_NO_INTERNET_SERVICE(-1) {
-        public void make(Context context) {
+        public void make(Context context, List<NameValuePair> list) {
             dialogError(context, context.getResources().getString(R.string.dialog_title_internetconnection)
                     , context.getResources().getString(R.string.dialog_internetconnection));
         }
     },
     USER_BAD_PASSWORD(-2) {
-        public void make(Context context) {
+        public void make(Context context, List<NameValuePair> list) {
             dialogError(context, context.getResources().getString(R.string.dialog_title_badpassword)
                     , context.getResources().getString(R.string.dialog_badpassword));
         }
     },
     CRITICAL_ERROR(666) {
-        public void make(Context context) {
+        public void make(Context context, List<NameValuePair> list) {
             dialogError(context, context.getResources().getString(R.string.dialog_title_criticalerror)
                     , context.getResources().getString(R.string.dialog_criticalerror));
         }
+    },
+    USER_CREATED(3) {
+        public void make(Context context, List<NameValuePair> list) {
+            // Login to new created user
+            ConnectionTask connectionTask = new ConnectionTask(context, true);
+            connectionTask.execute();
+        }
     };
 
-    public abstract void make(Context context);
+    public abstract void make(Context context, List<NameValuePair> list);
 
     private int value;
 
