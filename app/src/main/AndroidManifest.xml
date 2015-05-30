@@ -8,6 +8,8 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <!-- Billing permission -->
     <uses-permission android:name="com.android.vending.BILLING" />
+    <!-- Wakelock permission -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <application
         android:allowBackup="true"
@@ -57,10 +59,9 @@
             android:name=".activity.ScheduleActivity"
             android:label="Schedule" >
         </activity>
-        <activity
-            android:name=".activity.login_and_registration.LoadingActivity"
-            android:label="@string/title_activity_loading" >
-        </activity>
+
+        <service android:name=".services.BackgroundService" />
+
     </application>
 
 </manifest>

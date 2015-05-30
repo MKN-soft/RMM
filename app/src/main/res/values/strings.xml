@@ -68,5 +68,6 @@
     <string name="dialog_title_internetconnection">No connection!</string>
     <string name="dialog_title_noserverconn">No connection</string>
     <string name="dialog_noserverconn">Application has lost connection with server</string>
+    <string name="title_activity_synchronization">SynchronizationActivity</string>
 
 </resources>

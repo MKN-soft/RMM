@@ -1,8 +1,8 @@
 package pz2015.habits.rmm.activity.login_and_registration;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -17,7 +17,7 @@ import pz2015.habits.rmm.R;
 import pz2015.habits.rmm.activity.MainActivity;
 
 
-public class LoginActivity extends ActionBarActivity {
+public class LoginActivity extends Activity {
 
     private Button loginBtn;
     private EditText etEmailAddress;
