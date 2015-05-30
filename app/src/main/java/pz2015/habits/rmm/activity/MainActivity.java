@@ -8,15 +8,20 @@ import pz2015.habits.rmm.adapter.NavDrawerListAdapter;
 import pz2015.habits.rmm.model.NavDrawerItem;
 import pz2015.habits.rmm.services.SynchroService;
 
+import android.annotation.TargetApi;
 import android.app.AlarmManager;
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.app.Notification;
+import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
@@ -33,6 +38,7 @@ import java.util.GregorianCalendar;
 
 
 public class MainActivity extends ActionBarActivity {
+
 
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
@@ -71,13 +77,46 @@ public class MainActivity extends ActionBarActivity {
         alarm.setRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), 86400000, pintent);
     }
 
+    /**
+     * Takes care of setting up notification
+     */
+    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
+    private void makeNotification(){
+        final int MY_NOTIFICATION_ID = 1;
+        final String notification_title = "Get your habits going!";
+        final String notification_text = "Did you update your progress today?";
+
+        //getting context for NotificationManager
+        NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+
+        //prepare intent which is triggered when notification is selected
+        Intent intent = new Intent(this, MainActivity.class);   //it should send to MainActivity
+
+        /*
+        A pending intent is a token that you give to another application
+        (e.g., notification manager, alarm manager or other 3rd party applications),
+        which allows this other application to use the permissions of your application to execute a predefined piece of code.
+        */
+        PendingIntent pIntent = PendingIntent.getActivity(this, 0, intent, 0);
+
+        // build notification
+        // the addAction re-use the same intent to keep the example short
+        Notification n  = new Notification.Builder(this)
+                .setContentTitle(notification_title)
+                .setContentText(notification_text)
+                .setSmallIcon(R.mipmap.ic_halo)
+                .setContentIntent(pIntent)
+                .setAutoCancel(true)
+                .addAction(R.mipmap.ic_halo, "Call", pIntent).build();  //this requires API16 JELLYBEAN
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-       gogoMyService();
+        //runs SynchroService
+        gogoMyService();
 
 
 
