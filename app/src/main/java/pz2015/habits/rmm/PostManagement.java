@@ -1,6 +1,9 @@
 package pz2015.habits.rmm;
 
 
+import android.content.Context;
+import android.content.SharedPreferences;
+
 import org.apache.http.NameValuePair;
 import org.json.JSONObject;
 
@@ -15,6 +18,7 @@ import pz2015.habits.rmm.others.JSONParser;
  */
 public class PostManagement  {
 
+    Context context;
 
     List<NameValuePair> params;
 
@@ -30,11 +34,13 @@ public class PostManagement  {
     //JSON Node names
     private static final String TAG_SUCCESS = "success";
     private static final String TAG_ERROR = "error";
+    private static final String TAG_SALT = "salt";
 
-    public PostManagement(List<NameValuePair> params) {
+    public PostManagement(Context context, List<NameValuePair> params) {
         this.params = params;
         this.jParser = new JSONParser();
         this.json = null;
+        this.context = context;
     }
 
     public Errors isUserExists() {
@@ -87,6 +93,18 @@ public class PostManagement  {
                 //TODO POMYSLEC NAD INNYMI PRZYPADKAMI
                 if (success == 1) {
                     // USER CREATED
+
+                    // Save our neu salt
+                    String salt = json.getString(TAG_SALT);
+                    // Set variables
+                    SharedPreferences prefs = context.getSharedPreferences("rmm", Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = prefs.edit();
+                    editor.putString("salt", salt);
+                    editor.putBoolean("imBackAgain", true);
+
+                    editor.commit();
+
+
                     return Errors.USER_CREATED;
                 }
                 else {

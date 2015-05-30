@@ -80,12 +80,12 @@ public class ConnectionTask extends AsyncTask<Void, Void, Void> {
 
             if (LoginOrRegister == true) {
                 // is user exists ?
-                PostManagement pm = new PostManagement(list);
+                PostManagement pm = new PostManagement(context, list);
                 result = pm.isUserExists();
             }
             else {
                 // register user
-                PostManagement pm = new PostManagement(list);
+                PostManagement pm = new PostManagement(context, list);
                 result = pm.registerNewUser();
             }
         }

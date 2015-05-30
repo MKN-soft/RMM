@@ -27,12 +27,15 @@ public class SettingsFragment extends Fragment {
         prefs = this.getActivity().getSharedPreferences("rmm", Context.MODE_PRIVATE);
         String username = prefs.getString("username", null);
         String password = prefs.getString("password", null);
+        String salt = prefs.getString("salt", null);
 
         TextView userLogin = (TextView) rootView.findViewById(R.id.userLogin);
         TextView userPassword = (TextView) rootView.findViewById(R.id.userPassword);
+        TextView userSalt = (TextView) rootView.findViewById(R.id.userSalt);
 
         userLogin.setText(username);
         userPassword.setText(password);
+        userSalt.setText(salt);
 
         return rootView;
     }

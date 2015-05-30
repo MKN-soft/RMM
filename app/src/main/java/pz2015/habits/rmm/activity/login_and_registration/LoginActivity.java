@@ -105,7 +105,7 @@ public class LoginActivity extends Activity {
         SharedPreferences.Editor editor = prefs.edit();
         editor.putString("username", etEmailAddress.getText().toString());
         editor.putString("password", etPassword.getText().toString());
-        editor.putBoolean("imBackAgain", true);
+
 
         editor.commit();
 
