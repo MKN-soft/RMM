@@ -57,7 +57,12 @@
         </activity>
         <activity
             android:name=".activity.ScheduleActivity"
-            android:label="Schedule" >
+            android:label="Schedule"
+            android:theme="@android:style/Theme.Dialog" >
+        </activity>
+        <activity
+            android:name=".activity.CalendarActivity"
+            android:label="Calendar">
         </activity>
 
         <service android:name=".services.SynchroService" />
