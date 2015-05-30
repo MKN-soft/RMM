@@ -6,19 +6,17 @@ import pz2015.habits.rmm.R;
 import pz2015.habits.rmm.fragment.SettingsFragment;
 import pz2015.habits.rmm.adapter.NavDrawerListAdapter;
 import pz2015.habits.rmm.model.NavDrawerItem;
-import pz2015.habits.rmm.services.BackgroundService;
+import pz2015.habits.rmm.services.SynchroService;
 
 import android.app.AlarmManager;
 import android.app.Fragment;
 import android.app.FragmentManager;
-import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
 import android.os.Bundle;
-import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
@@ -54,43 +52,23 @@ public class MainActivity extends ActionBarActivity {
     private NavDrawerListAdapter adapter;
 
 
-    private void isMyServiceRunning() {
-        Calendar cal = Calendar.getInstance();
-        cal.add(Calendar.SECOND, 3);
-        Intent intent = new Intent(MainActivity.this, BackgroundService.class);
+    private void gogoMyService() {
+        Calendar cur_cal = new GregorianCalendar();
+        cur_cal.setTimeInMillis(System.currentTimeMillis());
+        // Set run BackgroundService on 23:59
+        // 86400000 ms - ONE DAY
+        Calendar cal = new GregorianCalendar();
+        cal.add(Calendar.DAY_OF_YEAR, cur_cal.get(Calendar.DAY_OF_YEAR));
+        cal.set(Calendar.HOUR_OF_DAY, 23);
+        cal.set(Calendar.MINUTE, 59);
+        cal.set(Calendar.SECOND, cur_cal.get(Calendar.SECOND));
+        cal.set(Calendar.MILLISECOND, cur_cal.get(Calendar.MILLISECOND));
+        cal.set(Calendar.DATE, cur_cal.get(Calendar.DATE));
+        cal.set(Calendar.MONTH, cur_cal.get(Calendar.MONTH));
+        Intent intent = new Intent(MainActivity.this, SynchroService.class);
         PendingIntent pintent = PendingIntent.getService(MainActivity.this, 0, intent, 0);
         AlarmManager alarm = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-        alarm.setRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), 3600, pintent);
-
-//        NotificationCompat.Builder builder =
-//                new NotificationCompat.Builder(this)
-//                        .setSmallIcon(R.mipmap.ic_launcher)
-//                        .setContentTitle("My Notification Title")
-//                        .setContentText("Something interesting happened");
-//        int NOTIFICATION_ID = 12345;
-//
-//        Intent targetIntent = new Intent(this, MainActivity.class);
-//        PendingIntent contentIntent = PendingIntent.getActivity(this, 0, targetIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-//        builder.setContentIntent(contentIntent);
-//        NotificationManager nManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-//        nManager.notify(NOTIFICATION_ID, builder.build());
-//
-//
-//        Calendar cur_cal = new GregorianCalendar();
-//        cur_cal.setTimeInMillis(System.currentTimeMillis());
-//
-//        Calendar cal = new GregorianCalendar();
-//        cal.add(Calendar.DAY_OF_YEAR, cur_cal.get(Calendar.DAY_OF_YEAR));
-//        cal.set(Calendar.HOUR_OF_DAY, 17);
-//        cal.set(Calendar.MINUTE, 8);
-//        cal.set(Calendar.SECOND, cur_cal.get(Calendar.SECOND));
-//        cal.set(Calendar.MILLISECOND, cur_cal.get(Calendar.MILLISECOND));
-//        cal.set(Calendar.DATE, cur_cal.get(Calendar.DATE));
-//        cal.set(Calendar.MONTH, cur_cal.get(Calendar.MONTH));
-//        Intent intent = new Intent(MainActivity.this, BackgroundService.class);
-//        PendingIntent pintent = PendingIntent.getService(MainActivity.this, 0, intent, 0);
-//        AlarmManager alarm = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-//        alarm.setRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), 30*100, pintent);
+        alarm.setRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), 86400000, pintent);
     }
 
     @Override
@@ -99,7 +77,7 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
 
 
-       isMyServiceRunning();
+       gogoMyService();
 
 
 

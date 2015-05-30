@@ -46,7 +46,7 @@ public enum Errors {
             description.setText(context.getResources().getString(R.string.description_no_account));
 
             ImageView image = (ImageView) frameView.findViewById(R.id.popupImageView);
-            image.setImageResource(R.mipmap.ic_launcher);
+            image.setImageResource(R.mipmap.ic_halo);
 
             alertDialog.show();
 

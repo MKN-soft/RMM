@@ -60,7 +60,7 @@
             android:label="Schedule" >
         </activity>
 
-        <service android:name=".services.BackgroundService" />
+        <service android:name=".services.SynchroService" />
 
     </application>
 
