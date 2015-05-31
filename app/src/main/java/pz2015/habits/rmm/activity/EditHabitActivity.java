@@ -41,7 +41,7 @@ public class EditHabitActivity extends ActionBarActivity {
         final EditText habitNotes = (EditText) findViewById(R.id.editHabitNotes);
         habitImage =(ImageView)findViewById(R.id.editHabitImage);
 
-        //additional = habit.getSeries();
+        additional = habit.getSeries();
 
         habitName.setText(habit.getTitle());
         habitDescription.setText(habit.getDescription());
@@ -49,18 +49,11 @@ public class EditHabitActivity extends ActionBarActivity {
         habitNotes.setText(habit.getNotes());
         habitImage.setImageDrawable(habit.getImage());
 
-        String[] elements = {"Day", "Week", "Month"};
+        String[] elements = {"No change", "Day", "Week", "Month"};
         final Spinner spinner2 = (Spinner)findViewById(R.id.spinner2);
         ArrayAdapter<String> series = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, elements);
 
         spinner2.setAdapter(series);
-        /*if(additional == 1)
-            //spinner.setPopupBackgroundResource(0);
-        if(additional == 7)
-            //spinner.g
-           // spinner.setPopupBackgroundResource(1);
-        if(additional == 30)
-           // spinner.setPopupBackgroundResource(2);*/
 
         spinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
@@ -75,13 +68,16 @@ public class EditHabitActivity extends ActionBarActivity {
                 switch((int)position)
                 {
                     case 0:
-                        additional = 1; //Dzien
+                        Toast.makeText(EditHabitActivity.this, "No change ", Toast.LENGTH_SHORT).show();
                         break;
                     case 1:
+                        additional = 1; //Dzien
+                        break;
+                    case 2:
                         //wybrano drugi element
                         additional = 7;
                         break;
-                    case 2:
+                    case 3:
                         //wybrano trzeci element
                         additional = 30;
                         break;
