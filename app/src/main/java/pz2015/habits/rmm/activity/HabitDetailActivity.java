@@ -27,6 +27,8 @@ public class HabitDetailActivity extends Activity {
 
     private Context selfContext;
 
+    String additional = "Nothing";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,7 +49,24 @@ public class HabitDetailActivity extends Activity {
         title.setText(habit.getTitle());
         description.setText(habit.getDescription());
         notes.setText(habit.getNotes());
-        frequency.setText("Your frequency: "+habit.getFrequency());
+
+        int series = habit.getSeries();
+        if(series == 1) {
+            additional = "Days";
+            if (habit.getFrequency().equals("1"))
+                additional = "Day";
+        }else if(series == 7) {
+            additional = "Weeks";
+            if (habit.getFrequency().equals("1"))
+                additional = "Week";
+        }else if(series == 30) {
+            additional = "Months";
+            if (habit.getFrequency().equals("1"))
+                additional = "Month";
+        }
+
+
+        frequency.setText("Your frequency: "+habit.getFrequency()+" "+additional);
         date.setText("Created: "+habit.getDate());
 
         habitImage.setImageDrawable(habit.getImage());
@@ -126,7 +145,7 @@ public class HabitDetailActivity extends Activity {
         title.setText(habit2.getTitle());
         description.setText(habit2.getDescription());
         notes.setText(habit2.getNotes());
-        frequency.setText("Your frequency: "+habit2.getFrequency());
+        frequency.setText("Your frequency: "+habit2.getFrequency()+" "+additional);
     }
 
 

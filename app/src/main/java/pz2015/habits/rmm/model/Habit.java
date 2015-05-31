@@ -24,18 +24,20 @@ public class Habit implements Serializable {
     String frequency;
     Drawable image;
     String notes;
+    int series;
 
     List<HabitDefinition> definedHabits = new ArrayList<HabitDefinition>();
 
     public Habit() { }
 
-    public Habit(String title, String description, String frequency, Drawable image, String notes, String date) {
+    public Habit(String title, String description, String frequency, Drawable image, String notes, String date, int series) {
         this.title = title;
         this.description = description;
         this.frequency = frequency;
         this.image = image;
         this.notes = notes;
         this.date = date;
+        this.series = series;
     }
 
     public List<HabitDefinition> getHabitDefinitions(){
@@ -56,6 +58,8 @@ public class Habit implements Serializable {
 
     public String getNotes() { return notes; }
 
+    public int getSeries() {return series; }
+
     public void setTitle(String title) {
         this.title = title;
     }
@@ -73,5 +77,7 @@ public class Habit implements Serializable {
     public void setImage(Drawable image) {this.image = image;}
 
     public void setNotes(String notes) { this.notes = notes; }
+
+    public void setSeries(int series) { this.series = series;}
 
 }

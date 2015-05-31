@@ -7,9 +7,13 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
+import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -26,6 +30,7 @@ public class AddHabitActivity extends ActionBarActivity {
     public ImageView habitImage;
     public int position = LogicBase.getLastPosition();
     public int position2 = LogicBase.getLastPosition();
+    public  int additional;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +52,46 @@ public class AddHabitActivity extends ActionBarActivity {
         position = LogicBase.getLastPosition();
 
         habitImage.setImageDrawable(image);
+
+        String[] elements = {"Day", "Week", "Month"};
+        final Spinner spinner = (Spinner)findViewById(R.id.spinner);
+        ArrayAdapter<String> series = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, elements);
+
+        spinner.setAdapter(series);
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+            @Override
+            public void onItemSelected(AdapterView<?> arg0, View arg1,
+                                       int id, long position) {
+                // ta metoda wykonuje się za każdym razem, gdy zostanie wybrany jakiś element z naszej listy
+
+                Toast.makeText(AddHabitActivity.this, "Wybrano opcję " + (id + 1), Toast.LENGTH_SHORT).show();
+
+
+                switch((int)position)  //tutaj musimy przerzutować wartośc position na int, bo jest ona typu long, a typu long nie można używać do instrukcji switch
+                {
+                    case 0:
+                        additional = 1; //Dzien
+                        break;
+                    case 1:
+                        //wybrano drugi element
+                        additional = 7;
+                        break;
+                    case 2:
+                        //wybrano trzeci element
+                        additional = 30;
+                        break;
+                }
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> arg0) {
+                // ta metoda wykonuje sie gdy lista zostanie wybrana, ale nie zostanie wybrany żaden element z listy
+
+            }
+        });
 
 
         chooseImage.setOnClickListener(new View.OnClickListener() {
@@ -71,7 +116,7 @@ public class AddHabitActivity extends ActionBarActivity {
                     Date date = new Date();
                     String date1 = new SimpleDateFormat("dd MMMM yyyy").format(date);
 
-                    Habit newHabit = new Habit(habitName.getText().toString(), habitDescription.getText().toString(), habitFrequency.getText().toString(), image, habitNotes.getText().toString(), date1);
+                    Habit newHabit = new Habit(habitName.getText().toString(), habitDescription.getText().toString(), habitFrequency.getText().toString(), image, habitNotes.getText().toString(), date1, additional);
                     //2
                     LogicBase.addHabit(newHabit);
                     finish();
@@ -87,7 +132,12 @@ public class AddHabitActivity extends ActionBarActivity {
                     //notes
                     habit.setNotes(habitNotes.getText().toString());
                     //exchange old version habit on edit version
+
+                    habit.setSeries(additional);
+
                     LogicBase.setHabitAt(position2, habit);
+
+
 
 
                     int position3 = position + 1;
@@ -97,9 +147,9 @@ public class AddHabitActivity extends ActionBarActivity {
                         position3++;
                     }
 
-                        finish();
+                    finish();
 
-                    }
+                }
 
 
             }

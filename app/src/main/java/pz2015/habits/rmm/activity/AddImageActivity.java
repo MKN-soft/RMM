@@ -47,7 +47,7 @@ public class AddImageActivity extends Activity {
                 String date1 = new SimpleDateFormat("dd MMMM yyyy").format(date);
 
                 Drawable image = getResources().getDrawable(R.mipmap.ic_communities);
-                Habit habit = new Habit("title", "description", "frequency", image, "notes", date1);
+                Habit habit = new Habit("title", "description", "frequency", image, "notes", date1, 0);
                 LogicBase.addHabit(habit);
 
                 //onResume();
@@ -61,7 +61,7 @@ public class AddImageActivity extends Activity {
                 String date1 = new SimpleDateFormat("dd MMMM yyyy").format(date);
 
                 Drawable image = getResources().getDrawable(R.mipmap.ic_home);
-                Habit habit = new Habit("title", "description", "frequency", image, "notes", date1);
+                Habit habit = new Habit("title", "description", "frequency", image, "notes", date1, 0);
                 LogicBase.addHabit(habit);
 
                 //onResume();
@@ -75,7 +75,7 @@ public class AddImageActivity extends Activity {
                 String date1 = new SimpleDateFormat("dd MMMM yyyy").format(date);
 
                 Drawable image = getResources().getDrawable(R.mipmap.ic_launcher);
-                Habit habit = new Habit("title", "description", "frequency", image, "notes", date1);
+                Habit habit = new Habit("title", "description", "frequency", image, "notes", date1, 0);
                 LogicBase.addHabit(habit);
 
                 //onResume();
@@ -89,7 +89,7 @@ public class AddImageActivity extends Activity {
                 String date1 = new SimpleDateFormat("dd MMMM yyyy").format(date);
 
                 Drawable image = getResources().getDrawable(R.mipmap.ic_pages);
-                Habit habit = new Habit("title", "description", "frequency", image, "notes", date1);
+                Habit habit = new Habit("title", "description", "frequency", image, "notes", date1, 0);
                 LogicBase.addHabit(habit);
 
                 //onResume();
@@ -103,7 +103,7 @@ public class AddImageActivity extends Activity {
                 String date1 = new SimpleDateFormat("dd MMMM yyyy").format(date);
 
                 Drawable image = getResources().getDrawable(R.mipmap.ic_people);
-                Habit habit = new Habit("title", "description", "frequency", image, "notes", date1);
+                Habit habit = new Habit("title", "description", "frequency", image, "notes", date1, 0);
                 LogicBase.addHabit(habit);
 
                 //onResume();
@@ -117,7 +117,7 @@ public class AddImageActivity extends Activity {
                 String date1 = new SimpleDateFormat("dd MMMM yyyy").format(date);
 
                 Drawable image = getResources().getDrawable(R.mipmap.ic_photos);
-                Habit habit = new Habit("title", "description", "frequency", image, "notes", date1);
+                Habit habit = new Habit("title", "description", "frequency", image, "notes", date1, 0);
                 LogicBase.addHabit(habit);
 
                 //onResume();
@@ -131,7 +131,7 @@ public class AddImageActivity extends Activity {
                 String date1 = new SimpleDateFormat("dd MMMM yyyy").format(date);
 
                 Drawable image = getResources().getDrawable(R.mipmap.ic_running);
-                Habit habit = new Habit("title", "description", "frequency", image, "notes", date1);
+                Habit habit = new Habit("title", "description", "frequency", image, "notes", date1, 0);
                 LogicBase.addHabit(habit);
 
                 //onResume();
@@ -145,7 +145,7 @@ public class AddImageActivity extends Activity {
                 String date1 = new SimpleDateFormat("dd MMMM yyyy").format(date);
 
                 Drawable image = getResources().getDrawable(R.mipmap.ic_whats_hot);
-                Habit habit = new Habit("title", "description", "frequency", image, "notes", date1);
+                Habit habit = new Habit("title", "description", "frequency", image, "notes", date1, 0);
                 LogicBase.addHabit(habit);
 
                 //onResume();
@@ -159,7 +159,7 @@ public class AddImageActivity extends Activity {
                 String date1 = new SimpleDateFormat("dd MMMM yyyy").format(date);
 
                 Drawable image = getResources().getDrawable(R.mipmap.ic_question_mark);
-                Habit habit = new Habit("title", "description", "frequency", image, "notes", date1);
+                Habit habit = new Habit("title", "description", "frequency", image, "notes", date1, 0);
                 LogicBase.addHabit(habit);
 
                 //onResume();
