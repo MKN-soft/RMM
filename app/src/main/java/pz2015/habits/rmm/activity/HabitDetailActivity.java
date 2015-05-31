@@ -17,6 +17,7 @@ import pz2015.habits.rmm.model.Habit;
 
 /**
  * Created by ASUS on 2015-04-27.
+ * Displays habit details
  */
 public class HabitDetailActivity extends Activity {
 

@@ -22,6 +22,7 @@ import pz2015.habits.rmm.activity.login_and_registration.ConnectionTask;
 
 /**
  * Created by ASUS on 2015-05-28.
+ * Lists possible exceptions.
  */
 public enum Errors {
     // User exists errors

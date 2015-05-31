@@ -2,6 +2,7 @@ package pz2015.habits.rmm.adapter;
 
 /**
  * Created by Marcin on 2015-04-26.
+ * Navigation drawer list adapter
  */
 
 import android.app.Activity;

@@ -8,6 +8,7 @@ import java.util.List;
 
 /**
  * Created by ASUS on 2015-05-11.
+ * Represents habit. It's a habit model
  */
 public class Habit implements Serializable {
 

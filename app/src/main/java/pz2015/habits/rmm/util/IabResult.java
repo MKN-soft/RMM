@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-package com.example.android.trivialdrivesample.util;
+package pz2015.habits.rmm.util;
 
 /**
  * Represents the result of an in-app billing operation.

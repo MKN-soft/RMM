@@ -2,6 +2,7 @@ package pz2015.habits.rmm.model;
 
 /**
  * Created by Marcin on 2015-04-26.
+ * Model of item in navigation drawer.
  */
 public class NavDrawerItem {
 

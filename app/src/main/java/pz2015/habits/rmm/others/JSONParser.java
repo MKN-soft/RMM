@@ -22,6 +22,7 @@ import java.util.List;
 
 /**
  * Created by ASUS on 2015-05-26.
+ * Parses data that is received and sent via JSON
  */
 public class JSONParser {
 

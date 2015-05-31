@@ -14,7 +14,7 @@ import pz2015.habits.rmm.others.JSONParser;
 
 /**
  * Created by Marcin on 2015-05-08.
- * Modified by Me :)
+ * Manages sending and receiving data via JSON. Older versions of this class managed http POST.
  */
 public class PostManagement {
 

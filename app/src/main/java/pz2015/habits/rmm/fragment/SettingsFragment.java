@@ -13,6 +13,7 @@ import pz2015.habits.rmm.R;
 
 /**
  * Created by ASUS on 2015-04-27.
+ * Fragment that displays and makes it possible to edit settings (not implemented)
  */
 public class SettingsFragment extends Fragment {
 

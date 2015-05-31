@@ -15,6 +15,7 @@ import pz2015.habits.rmm.model.Habit;
 
 /**
  * Created by ASUS on 2015-04-27.
+ * Adapter for habit and navigation drawer.
  */
 public class HabitAdapter extends ArrayAdapter {
 

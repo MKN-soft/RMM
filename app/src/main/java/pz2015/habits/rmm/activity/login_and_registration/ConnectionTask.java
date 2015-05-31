@@ -18,6 +18,7 @@ import pz2015.habits.rmm.others.Errors;
 
 /**
  * Created by ASUS on 2015-05-29.
+ * Checks internet connection
  */
 public class ConnectionTask extends AsyncTask<Void, Void, Void> {
 

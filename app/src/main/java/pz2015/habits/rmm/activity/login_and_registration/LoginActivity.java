@@ -16,7 +16,9 @@ import android.widget.Toast;
 import pz2015.habits.rmm.R;
 import pz2015.habits.rmm.activity.MainActivity;
 
-
+/**
+ * Manages view and internet logging in and registration
+ */
 public class LoginActivity extends Activity {
 
     private Button loginBtn;

@@ -31,7 +31,9 @@ import pz2015.habits.rmm.fragment.SettingsFragment;
 import pz2015.habits.rmm.model.NavDrawerItem;
 import pz2015.habits.rmm.services.SynchroService;
 
-
+/**
+ * Main activity. Calls necessary navigation elements, method that makes notification and etc.
+ */
 public class MainActivity extends ActionBarActivity {
 
 

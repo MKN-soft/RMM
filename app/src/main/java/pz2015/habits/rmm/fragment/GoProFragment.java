@@ -10,7 +10,9 @@ import android.widget.TextView;
 
 import pz2015.habits.rmm.R;
 
-
+/**
+ * Fragment displaying "Go premium" aka "GoPro" TextView and ImageButton which call in-app billing on click
+ */
 public class GoProFragment extends Fragment {
 
     public GoProFragment() {

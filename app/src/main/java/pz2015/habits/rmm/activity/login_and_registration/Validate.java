@@ -6,6 +6,7 @@ import java.util.regex.Pattern;
 
 /**
  * Created by ASUS on 2015-05-27.
+ * Validates device with token, password and login
  */
 public class Validate {
 

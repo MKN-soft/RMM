@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 /**
  * Created by ASUS on 2015-05-31.
+ * Represents statistics. It is displayed when we view statistics (not implemented)
  */
 public class Statistic implements Serializable {
 
