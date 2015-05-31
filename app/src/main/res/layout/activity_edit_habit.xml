@@ -66,6 +66,17 @@
         android:id="@+id/textView4"
         android:layout_gravity="center_horizontal" />
 
+        <Spinner
+            android:layout_width="166dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/spinner2" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Change Periodicity"
+            android:id="@+id/textView7" />
+
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

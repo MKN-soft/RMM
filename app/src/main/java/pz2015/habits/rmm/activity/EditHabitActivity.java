@@ -6,9 +6,13 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
+import android.widget.Toast;
 
 import pz2015.habits.rmm.LogicBase;
 import pz2015.habits.rmm.R;
@@ -17,6 +21,8 @@ import pz2015.habits.rmm.model.Habit;
 
 public class EditHabitActivity extends ActionBarActivity {
     public ImageView habitImage;
+    public int additional;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,13 +41,60 @@ public class EditHabitActivity extends ActionBarActivity {
         final EditText habitNotes = (EditText) findViewById(R.id.editHabitNotes);
         habitImage =(ImageView)findViewById(R.id.editHabitImage);
 
-
+        //additional = habit.getSeries();
 
         habitName.setText(habit.getTitle());
         habitDescription.setText(habit.getDescription());
         habitFrequency.setText(habit.getFrequency());
         habitNotes.setText(habit.getNotes());
         habitImage.setImageDrawable(habit.getImage());
+
+        String[] elements = {"Day", "Week", "Month"};
+        final Spinner spinner2 = (Spinner)findViewById(R.id.spinner2);
+        ArrayAdapter<String> series = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, elements);
+
+        spinner2.setAdapter(series);
+        /*if(additional == 1)
+            //spinner.setPopupBackgroundResource(0);
+        if(additional == 7)
+            //spinner.g
+           // spinner.setPopupBackgroundResource(1);
+        if(additional == 30)
+           // spinner.setPopupBackgroundResource(2);*/
+
+        spinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+            @Override
+            public void onItemSelected(AdapterView<?> arg0, View arg1,
+                                       int id, long position) {
+                // ta metoda wykonuje się za każdym razem, gdy zostanie wybrany jakiś element z naszej listy
+
+                Toast.makeText(EditHabitActivity.this, "Wybrano opcję " + (id + 1), Toast.LENGTH_SHORT).show();
+
+
+                switch((int)position)
+                {
+                    case 0:
+                        additional = 1; //Dzien
+                        break;
+                    case 1:
+                        //wybrano drugi element
+                        additional = 7;
+                        break;
+                    case 2:
+                        //wybrano trzeci element
+                        additional = 30;
+                        break;
+                }
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> arg0) {
+                // ta metoda wykonuje sie gdy lista zostanie wybrana, ale nie zostanie wybrany żaden element z listy
+
+            }
+        });
 
         editImageButton.setOnClickListener( new View.OnClickListener() {
 
@@ -74,6 +127,8 @@ public class EditHabitActivity extends ActionBarActivity {
                 //notes
                habit.setNotes(habitNotes.getText().toString());
                 //exchange old version habit on edit version
+               habit.setSeries(additional);
+
                LogicBase.setHabitAt(position, habit);
                // LogicBase.refreshList();
 

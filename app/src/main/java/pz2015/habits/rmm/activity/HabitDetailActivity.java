@@ -145,6 +145,21 @@ public class HabitDetailActivity extends Activity {
         title.setText(habit2.getTitle());
         description.setText(habit2.getDescription());
         notes.setText(habit2.getNotes());
+
+        int series = habit2.getSeries();
+        if(series == 1) {
+            additional = "Days";
+            if (habit2.getFrequency().equals("1"))
+                additional = "Day";
+        }else if(series == 7) {
+            additional = "Weeks";
+            if (habit2.getFrequency().equals("1"))
+                additional = "Week";
+        }else if(series == 30) {
+            additional = "Months";
+            if (habit2.getFrequency().equals("1"))
+                additional = "Month";
+        }
         frequency.setText("Your frequency: "+habit2.getFrequency()+" "+additional);
     }
 
