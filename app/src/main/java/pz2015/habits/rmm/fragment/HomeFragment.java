@@ -6,15 +6,21 @@ package pz2015.habits.rmm.fragment;
  */
 
 import android.app.ListFragment;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -25,6 +31,7 @@ import pz2015.habits.rmm.R;
 import pz2015.habits.rmm.activity.HabitDetailActivity;
 import pz2015.habits.rmm.adapter.HabitAdapter;
 import pz2015.habits.rmm.model.Habit;
+import pz2015.habits.rmm.model.Statistic;
 
 public class HomeFragment extends ListFragment {
 
@@ -33,7 +40,7 @@ public class HomeFragment extends ListFragment {
     private List<Habit> habits = new ArrayList();
 
     // Wykomentowane na pozniej do serializacji
-    //private static final String HABITS_CACHE_FILE = "habit_cache.ser";
+    private static final String HABITS_CACHE_FILE = "habit_cache.ser";
 
     private View view;
 
@@ -48,6 +55,9 @@ public class HomeFragment extends ListFragment {
         //na razie randomowe habitsy
         habits = randomHabits();
 
+        // Write habits to file
+        writeHabitsToFile(habits, rootView);
+
         //create array adapter for homeFragment with given random habits
         habitItemArrayAdapter = new HabitAdapter(rootView.getContext(), habits);
 
@@ -57,6 +67,25 @@ public class HomeFragment extends ListFragment {
         LogicBase.setHomeFragment(this);
 
         return rootView;
+    }
+
+    private void writeHabitsToFile(List<Habit> habits, View v) {
+        try {
+            List<Statistic> statistics = new ArrayList<>();
+
+            for (int i = 0; i < habits.size(); i++)
+                statistics.add(new Statistic(habits.get(i)));
+
+
+            FileOutputStream fos = v.getContext().openFileOutput(HABITS_CACHE_FILE, Context.MODE_PRIVATE);
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            oos.writeObject(statistics);
+            oos.close();
+            fos.close();
+            Log.d("RMM", "Successfully wrote statistics to the file");
+        } catch (Exception e) {
+            Log.e("RMM", "Error writing statistics", e);
+        }
     }
 
     @Override

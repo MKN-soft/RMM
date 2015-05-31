@@ -18,6 +18,7 @@ import pz2015.habits.rmm.others.JSONParser;
  */
 public class PostManagement  {
 
+
     Context context;
 
     List<NameValuePair> params;
@@ -30,6 +31,7 @@ public class PostManagement  {
     //URL to post
     private static String URL_LOGIN = "http://www.patra.waw.pl/php/check_login.php";
     private static String URL_REGISTER = "http://www.patra.waw.pl/php/register_user.php";
+    private static final String URL_SYNCHRO = "http://www.patra.waw.pl/php/synchro.php";
 
     //JSON Node names
     private static final String TAG_SUCCESS = "success";
@@ -55,6 +57,14 @@ public class PostManagement  {
 
                 if (success == 1) {
                     // USER FOUND
+
+                    // Save our neu salt
+                    String salt = json.getString(TAG_SALT);
+                    // Set variables
+                    SharedPreferences prefs = context.getSharedPreferences("rmm", Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = prefs.edit();
+                    editor.putString("salt", salt);
+
                     return Errors.USER_FOUND;
                 }
                 else {
@@ -118,6 +128,35 @@ public class PostManagement  {
         }
         // fail - json is null ?????
         return Errors.USER_JSON_IS_NULL;
+    }
+
+    public Errors synchro() {
+        // Get JSON OBJECT
+        json =  jParser.getJSONFromUrl(URL_SYNCHRO, params);
+
+        if (json != null) {
+            // success connection with server
+            try {
+                int success = json.getInt(TAG_SUCCESS);
+                int errors = json.getInt(TAG_ERROR);
+
+                //TODO POMYSLEC NAD INNYMI PRZYPADKAMI
+                if (success == 1) {
+                    // Synchro is ok
+                    String dupa = json.getString("dupa");
+                    return Errors.SYNCHRO_OK;
+                }
+                else {
+                    // Now its really bad...
+                    return Errors.SYNCHRO_ERROR;
+
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        // fail - json is null ?????
+        return Errors.SYNCHRO_ERROR;
     }
 
 }

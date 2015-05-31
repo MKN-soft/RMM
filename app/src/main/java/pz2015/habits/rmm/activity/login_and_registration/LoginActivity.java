@@ -109,7 +109,7 @@ public class LoginActivity extends Activity {
 
         editor.commit();
 
-        ConnectionTask connectionTask = new ConnectionTask(this, true);
+        ConnectionTask connectionTask = new ConnectionTask(this, ConnectionTask.WhichSide.LOGIN);
         connectionTask.execute();
     }
 

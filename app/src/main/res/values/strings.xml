@@ -69,5 +69,7 @@
     <string name="dialog_title_noserverconn">No connection</string>
     <string name="dialog_noserverconn">Application has lost connection with server</string>
     <string name="title_activity_synchronization">SynchronizationActivity</string>
+    <string name="master_chef_1">keep your habits in check you miserable maggot!</string>
+    <string name="notification_habit_title">Habit today</string>
 
 </resources>

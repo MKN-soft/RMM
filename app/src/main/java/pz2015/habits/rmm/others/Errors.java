@@ -59,7 +59,7 @@ public enum Errors {
                 @Override
                 public void onClick(View v) {
                     // Register user
-                    ConnectionTask connectionTask = new ConnectionTask(context, false);
+                    ConnectionTask connectionTask = new ConnectionTask(context, ConnectionTask.WhichSide.REGISTER);
                     connectionTask.execute();
                 }
 
@@ -113,8 +113,18 @@ public enum Errors {
     USER_CREATED(3) {
         public void make(Context context, List<NameValuePair> list) {
             // Login to new created user
-            ConnectionTask connectionTask = new ConnectionTask(context, true);
+            ConnectionTask connectionTask = new ConnectionTask(context, ConnectionTask.WhichSide.LOGIN);
             connectionTask.execute();
+        }
+    },
+    SYNCHRO_OK(4) {
+        public void make(Context context, List<NameValuePair> list) {
+            // do nothing
+        }
+    },
+    SYNCHRO_ERROR(-4) {
+        public void make(Context context, List<NameValuePair> list) {
+            // do nothing
         }
     };
 

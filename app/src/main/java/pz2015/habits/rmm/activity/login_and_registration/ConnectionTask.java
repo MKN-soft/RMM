@@ -36,12 +36,38 @@ public class ConnectionTask extends AsyncTask<Void, Void, Void> {
 
     private final Context context;
 
-    Boolean LoginOrRegister;
+    WhichSide DarkSide;
 
-    public ConnectionTask(Context context, Boolean LoginOrRegister) {
+    public enum WhichSide {
+        LOGIN {
+            public Errors make(Context context, List<NameValuePair> list) {
+                // is user exists ?
+                PostManagement pm = new PostManagement(context, list);
+                return pm.isUserExists();
+            }
+        },
+        REGISTER {
+            public Errors make(Context context, List<NameValuePair> list) {
+                // register user
+                PostManagement pm = new PostManagement(context, list);
+                return pm.registerNewUser();
+            }
+        },
+        SYNCHRONIZE {
+            public Errors make(Context context, List<NameValuePair> list) {
+                // synchronize
+                PostManagement pm = new PostManagement(context, list);
+                return pm.synchro();
+            }
+        };
+
+        public abstract Errors make(Context context, List<NameValuePair> list);
+    }
+
+    public ConnectionTask(Context context, WhichSide DarkSide) {
         this.context = context;
         this.p = new ProgressDialog(context);
-        this.LoginOrRegister = LoginOrRegister;
+        this.DarkSide = DarkSide;
     }
 
     @Override
@@ -78,16 +104,8 @@ public class ConnectionTask extends AsyncTask<Void, Void, Void> {
         if (cd.isConnectingToInternet() == true) {
             // internet connection
 
-            if (LoginOrRegister == true) {
-                // is user exists ?
-                PostManagement pm = new PostManagement(context, list);
-                result = pm.isUserExists();
-            }
-            else {
-                // register user
-                PostManagement pm = new PostManagement(context, list);
-                result = pm.registerNewUser();
-            }
+            // LOOK TO ENUM CLASS UPPER!!!
+            result = this.DarkSide.make(context, list);
         }
         else {
             // no internet connection

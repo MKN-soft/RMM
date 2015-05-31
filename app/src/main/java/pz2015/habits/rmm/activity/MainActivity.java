@@ -59,10 +59,14 @@ public class MainActivity extends ActionBarActivity {
 
 
     private void gogoMyService() {
+        // Get time NOW
         Calendar cur_cal = new GregorianCalendar();
         cur_cal.setTimeInMillis(System.currentTimeMillis());
+
         // Set run BackgroundService on 23:59
         // 86400000 ms - ONE DAY
+
+        // Set schelude for SynchroService
         Calendar cal = new GregorianCalendar();
         cal.add(Calendar.DAY_OF_YEAR, cur_cal.get(Calendar.DAY_OF_YEAR));
         cal.set(Calendar.HOUR_OF_DAY, 23);
@@ -71,10 +75,27 @@ public class MainActivity extends ActionBarActivity {
         cal.set(Calendar.MILLISECOND, cur_cal.get(Calendar.MILLISECOND));
         cal.set(Calendar.DATE, cur_cal.get(Calendar.DATE));
         cal.set(Calendar.MONTH, cur_cal.get(Calendar.MONTH));
+
+        // Set intent for SynchroService
         Intent intent = new Intent(MainActivity.this, SynchroService.class);
+
+        // When we click on notification, we move to MainActivity
         PendingIntent pintent = PendingIntent.getService(MainActivity.this, 0, intent, 0);
+
+        // Alarm Manager
         AlarmManager alarm = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        //86400000
+        // Set repeat - per day
         alarm.setRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), 86400000, pintent);
+
+
+        // TO JEST TYLKO DO TESTÓW
+//        Calendar cal = Calendar.getInstance();
+//        cal.add(Calendar.SECOND, 3);
+//        Intent intent = new Intent(MainActivity.this, SynchroService.class);
+//        PendingIntent pintent = PendingIntent.getService(MainActivity.this, 0, intent, 0);
+//        AlarmManager alarm = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+//        alarm.setRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), 3600, pintent);
     }
 
     /**
