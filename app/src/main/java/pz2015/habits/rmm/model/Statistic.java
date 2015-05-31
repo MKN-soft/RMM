@@ -19,10 +19,16 @@ public class Statistic implements Serializable {
         this.frequency = habit.getFrequency();
     }
 
-    public String getId() { return this.id; }
+    public String getId() {
+        return this.id;
+    }
 
-    public String getDate() { return this.date; }
+    public String getDate() {
+        return this.date;
+    }
 
-    public String getFrequency() { return this.frequency; }
+    public String getFrequency() {
+        return this.frequency;
+    }
 
 }

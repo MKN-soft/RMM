@@ -5,7 +5,6 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.widget.CalendarView;
 
@@ -13,10 +12,6 @@ import com.prolificinteractive.materialcalendarview.CalendarDay;
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
 import com.prolificinteractive.materialcalendarview.OnDateChangedListener;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import pz2015.habits.rmm.LogicBase;
@@ -64,18 +59,18 @@ public class CalendarActivity extends Activity {
                 DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        switch (which){
+                        switch (which) {
                             case DialogInterface.BUTTON_POSITIVE:
                                 boolean found = false;
-                                for(HabitDefinition hab: currentHabit.getHabitDefinitions()){
-                                    if(hab.getYear() == calendarDay.getYear() && hab.getMonth() == calendarDay.getMonth() && hab.getDay() == calendarDay.getDay()){
+                                for (HabitDefinition hab : currentHabit.getHabitDefinitions()) {
+                                    if (hab.getYear() == calendarDay.getYear() && hab.getMonth() == calendarDay.getMonth() && hab.getDay() == calendarDay.getDay()) {
                                         hab.setDone(true);
                                         found = true;
                                     }
                                 }
 
 
-                                if(found == false) {
+                                if (found == false) {
                                     HabitDefinition HabitDef = new HabitDefinition(calendarDay.getYear(), calendarDay.getMonth(), calendarDay.getDay());
                                     HabitDef.setDone(true);
                                     definedHabits.add(HabitDef);

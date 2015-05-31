@@ -16,7 +16,6 @@ import org.apache.http.NameValuePair;
 
 import java.util.List;
 
-import pz2015.habits.rmm.PostManagement;
 import pz2015.habits.rmm.R;
 import pz2015.habits.rmm.activity.MainActivity;
 import pz2015.habits.rmm.activity.login_and_registration.ConnectionTask;
@@ -83,7 +82,7 @@ public enum Errors {
             context.startActivity(intent);
 
             // Close this activity
-            ((Activity)context).finish();
+            ((Activity) context).finish();
         }
     },
     USER_JSON_IS_NULL(0) {
@@ -127,16 +126,17 @@ public enum Errors {
             // do nothing
         }
     };
-
-    public abstract void make(Context context, List<NameValuePair> list);
-
     private int value;
 
     private Errors(int value) {
         this.value = value;
     }
 
-    public int getValue() { return this.value;}
+    public abstract void make(Context context, List<NameValuePair> list);
+
+    public int getValue() {
+        return this.value;
+    }
 
     public void dialogError(Context context, String title, String description) {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);

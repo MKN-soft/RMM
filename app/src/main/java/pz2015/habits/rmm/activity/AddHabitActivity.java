@@ -2,8 +2,8 @@ package pz2015.habits.rmm.activity;
 
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -30,7 +30,7 @@ public class AddHabitActivity extends ActionBarActivity {
     public ImageView habitImage;
     public int position = LogicBase.getLastPosition();
     public int position2 = LogicBase.getLastPosition();
-    public  int additional;
+    public int additional;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +46,7 @@ public class AddHabitActivity extends ActionBarActivity {
         final EditText habitNotes = (EditText) findViewById(R.id.addHabitNotes);
 
         final Drawable image = getResources().getDrawable(R.mipmap.ic_question_mark);
-        habitImage = (ImageView)findViewById(R.id.addHabitImage);
+        habitImage = (ImageView) findViewById(R.id.addHabitImage);
 
         //final int position = LogicBase.getLastPosition();
         position = LogicBase.getLastPosition();
@@ -54,7 +54,7 @@ public class AddHabitActivity extends ActionBarActivity {
         habitImage.setImageDrawable(image);
 
         String[] elements = {"Day", "Week", "Month"};
-        final Spinner spinner = (Spinner)findViewById(R.id.spinner);
+        final Spinner spinner = (Spinner) findViewById(R.id.spinner);
         ArrayAdapter<String> series = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, elements);
 
         spinner.setAdapter(series);
@@ -69,7 +69,7 @@ public class AddHabitActivity extends ActionBarActivity {
                 Toast.makeText(AddHabitActivity.this, "Wybrano opcję " + (id + 1), Toast.LENGTH_SHORT).show();
 
 
-                switch((int)position)  //tutaj musimy przerzutować wartośc position na int, bo jest ona typu long, a typu long nie można używać do instrukcji switch
+                switch ((int) position)  //tutaj musimy przerzutować wartośc position na int, bo jest ona typu long, a typu long nie można używać do instrukcji switch
                 {
                     case 0:
                         additional = 1; //Dzien
@@ -112,7 +112,7 @@ public class AddHabitActivity extends ActionBarActivity {
                 //int position2 = LogicBase.getLastPosition();
                 position2 = LogicBase.getLastPosition();
                 // check that habit exist  by image add
-                if(position == position2){// habit does not exist
+                if (position == position2) {// habit does not exist
                     Date date = new Date();
                     String date1 = new SimpleDateFormat("dd MMMM yyyy").format(date);
 
@@ -121,7 +121,7 @@ public class AddHabitActivity extends ActionBarActivity {
                     LogicBase.addHabit(newHabit);
                     finish();
 
-                }else{ // habit exist, change data therein
+                } else { // habit exist, change data therein
                     Habit habit = LogicBase.getHabitAt(position2);
 
                     habit.setTitle(habitName.getText().toString());
@@ -138,11 +138,9 @@ public class AddHabitActivity extends ActionBarActivity {
                     LogicBase.setHabitAt(position2, habit);
 
 
-
-
                     int position3 = position + 1;
                     int position4 = LogicBase.getLastPosition();
-                    while(position3 != position4) {
+                    while (position3 != position4) {
                         LogicBase.removeHabitItemAt(position + 1);
                         position3++;
                     }
@@ -160,7 +158,7 @@ public class AddHabitActivity extends ActionBarActivity {
     protected void onResume() {
         super.onResume();
         int position4 = LogicBase.getLastPosition();
-        if(position != position4){
+        if (position != position4) {
             int posPlus = LogicBase.getLastPosition();
             Habit habit = LogicBase.getHabitAt(posPlus);
             habitImage.setImageDrawable(habit.getImage());
@@ -172,7 +170,7 @@ public class AddHabitActivity extends ActionBarActivity {
         super.onBackPressed();
         int position3 = position + 1;
         int position4 = LogicBase.getLastPosition();
-        while(position3 <= position4) {
+        while (position3 <= position4) {
             LogicBase.removeHabitItemAt(position + 1);
             position3++;
         }

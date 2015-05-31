@@ -28,7 +28,8 @@ public class Habit implements Serializable {
 
     List<HabitDefinition> definedHabits = new ArrayList<HabitDefinition>();
 
-    public Habit() { }
+    public Habit() {
+    }
 
     public Habit(String title, String description, String frequency, Drawable image, String notes, String date, int series) {
         this.title = title;
@@ -40,44 +41,68 @@ public class Habit implements Serializable {
         this.series = series;
     }
 
-    public List<HabitDefinition> getHabitDefinitions(){
+    public List<HabitDefinition> getHabitDefinitions() {
         return definedHabits;
     }
 
-    public String getId() { return this.id; }
+    public String getId() {
+        return this.id;
+    }
 
-    public String getTitle() { return this.title; }
-
-    public String getDescription() { return this.description; }
-
-    public String getFrequency() { return this.frequency; }
-
-    public String getDate() { return date; }
-
-    public Drawable getImage() { return this.image; }
-
-    public String getNotes() { return notes; }
-
-    public int getSeries() {return series; }
+    public String getTitle() {
+        return this.title;
+    }
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getDescription() {
+        return this.description;
     }
 
     public void setDescription(String description) {
         this.description = description;
     }
 
+    public String getFrequency() {
+        return this.frequency;
+    }
+
     public void setFrequency(String frequency) {
         this.frequency = frequency;
     }
 
-    public void setDate(String date) { this.date = date; }
+    public String getDate() {
+        return date;
+    }
 
-    public void setImage(Drawable image) {this.image = image;}
+    public void setDate(String date) {
+        this.date = date;
+    }
 
-    public void setNotes(String notes) { this.notes = notes; }
+    public Drawable getImage() {
+        return this.image;
+    }
 
-    public void setSeries(int series) { this.series = series;}
+    public void setImage(Drawable image) {
+        this.image = image;
+    }
+
+    public String getNotes() {
+        return notes;
+    }
+
+    public void setNotes(String notes) {
+        this.notes = notes;
+    }
+
+    public int getSeries() {
+        return series;
+    }
+
+    public void setSeries(int series) {
+        this.series = series;
+    }
 
 }

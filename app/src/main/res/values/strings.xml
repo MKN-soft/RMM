@@ -21,9 +21,9 @@
 
     <!-- Nav Drawer Menu Items -->
     <string-array name="nav_drawer_items">
-        <item >Habits</item>
-        <item >Settings</item>
-        <item >GoPro</item>
+        <item>Habits</item>
+        <item>Settings</item>
+        <item>GoPro</item>
     </string-array>
 
     <!-- Nav Drawer List Item Icons -->

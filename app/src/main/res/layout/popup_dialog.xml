@@ -1,59 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <LinearLayout
-        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#3E80B4"
-        android:gravity="center">
+        android:gravity="center"
+        android:orientation="horizontal">
 
         <TextView
+            android:id="@+id/popupTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="Medium Text"
-            android:id="@+id/popupTitle"
+            android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="#5DBCD2"
             android:textSize="25dp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
     </LinearLayout>
 
     <LinearLayout
-        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
         android:layout_gravity="center_horizontal"
-        android:background="#ffffffff">
+        android:background="#ffffffff"
+        android:gravity="center"
+        android:orientation="horizontal">
 
         <ImageView
+            android:id="@+id/popupImageView"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:id="@+id/popupImageView"
-            android:src="@mipmap/ic_launcher"
-            android:layout_gravity="left" />
+            android:layout_gravity="left"
+            android:src="@mipmap/ic_launcher" />
 
         <TextView
+            android:id="@+id/popupDescription"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="New TextNew TextNew TextNew TextNew TextNew TextNew TextNew TextNew TextNew TextNew TextNew TextNew TextNew TextNew TextNew Text"
-            android:id="@+id/popupDescription"
             android:layout_gravity="right"
+            android:text="New TextNew TextNew TextNew TextNew TextNew TextNew TextNew TextNew TextNew TextNew TextNew TextNew TextNew TextNew TextNew Text"
             android:textColor="#5DBCD2"
             android:textSize="20dp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
     </LinearLayout>
 
     <LinearLayout
-        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:gravity="center"
+        android:layout_gravity="top|center_horizontal"
         android:background="#3E80B4"
-        android:layout_gravity="top|center_horizontal">
+        android:gravity="center"
+        android:orientation="horizontal">
 
         <Button
             android:id="@+id/popupButtonOK"
@@ -63,8 +64,7 @@
             android:clickable="true"
             android:text="Yes"
             android:textColor="#5DBCD2"
-            android:textStyle="bold"
-        />
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/popupButtonNO"
@@ -75,8 +75,7 @@
             android:clickable="true"
             android:text="No"
             android:textColor="#5DBCD2"
-            android:textStyle="bold"
-        />
+            android:textStyle="bold" />
     </LinearLayout>
 
 </LinearLayout>

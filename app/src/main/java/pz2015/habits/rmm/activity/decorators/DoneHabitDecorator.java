@@ -14,18 +14,18 @@ import pz2015.habits.rmm.model.HabitDefinition;
 /**
  * Created by Natka on 2015-05-31.
  */
-public class DoneHabitDecorator   implements DayViewDecorator {
+public class DoneHabitDecorator implements DayViewDecorator {
     List<HabitDefinition> definedHabits;
 
-    public DoneHabitDecorator(List<HabitDefinition> habDefs){
+    public DoneHabitDecorator(List<HabitDefinition> habDefs) {
         definedHabits = habDefs;
     }
 
     @Override
     public boolean shouldDecorate(CalendarDay calendarDay) {
-        for(HabitDefinition habDef : definedHabits){
-            if(compare(habDef, calendarDay) == true){
-                if(  habDef.isDone()){
+        for (HabitDefinition habDef : definedHabits) {
+            if (compare(habDef, calendarDay) == true) {
+                if (habDef.isDone()) {
                     return true;
                 }
             }
@@ -42,10 +42,10 @@ public class DoneHabitDecorator   implements DayViewDecorator {
         dayViewFacade.addSpan(new DotSpan(5, Color.GREEN));
     }
 
-    private boolean compare(HabitDefinition hd, CalendarDay cDay){
-        if(hd.getDay() == cDay.getDay()){
-            if(hd.getMonth() == cDay.getMonth()) {
-                if(hd.getYear() == cDay.getYear() ){
+    private boolean compare(HabitDefinition hd, CalendarDay cDay) {
+        if (hd.getDay() == cDay.getDay()) {
+            if (hd.getMonth() == cDay.getMonth()) {
+                if (hd.getYear() == cDay.getYear()) {
                     return true;
                 }
             }

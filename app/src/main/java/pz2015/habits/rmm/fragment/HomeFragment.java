@@ -8,7 +8,6 @@ package pz2015.habits.rmm.fragment;
 import android.app.ListFragment;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
@@ -17,7 +16,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-
 
 import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
@@ -35,16 +33,15 @@ import pz2015.habits.rmm.model.Statistic;
 
 public class HomeFragment extends ListFragment {
 
+    // Wykomentowane na pozniej do serializacji
+    private static final String HABITS_CACHE_FILE = "habit_cache.ser";
     private ListView habitListView;
     private ArrayAdapter habitItemArrayAdapter;
     private List<Habit> habits = new ArrayList();
-
-    // Wykomentowane na pozniej do serializacji
-    private static final String HABITS_CACHE_FILE = "habit_cache.ser";
-
     private View view;
 
-    public HomeFragment(){}
+    public HomeFragment() {
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -103,6 +100,7 @@ public class HomeFragment extends ListFragment {
         Intent intent = new Intent(getActivity(), HabitDetailActivity.class);
         getActivity().startActivity(intent);
     }
+
     //image.draw(R.mipmap.ic_pages);
     private List<Habit> randomHabits() {
         List<Habit> habits = new ArrayList<Habit>();
@@ -112,7 +110,7 @@ public class HomeFragment extends ListFragment {
         String date1 = new SimpleDateFormat("dd MMMM yyyy").format(date);
 
         for (int i = 0; i < 5; i++) {//zle to na dole
-            Habit habit = new Habit("Tytuł nawyku #" + i, "Trochę tekstu dla body #" + i,  ""+1+i,image,"Tu sa notatki pisz co chcesz by pomoc sobie dazyc do wyrobienia nawyku " + i, date1, 0);
+            Habit habit = new Habit("Tytuł nawyku #" + i, "Trochę tekstu dla body #" + i, "" + 1 + i, image, "Tu sa notatki pisz co chcesz by pomoc sobie dazyc do wyrobienia nawyku " + i, date1, 0);
             habits.add(habit);
         }
         return habits;

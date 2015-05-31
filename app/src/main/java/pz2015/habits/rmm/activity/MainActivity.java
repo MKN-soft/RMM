@@ -103,7 +103,6 @@ public class MainActivity extends ActionBarActivity {
         gogoMyService();
 
 
-
         mTitle = mDrawerTitle = getTitle();
 
         // load slide menu items
@@ -155,7 +154,6 @@ public class MainActivity extends ActionBarActivity {
         getSupportActionBar().setHomeButtonEnabled(true);
 
 
-
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
                 //R.drawable.ic_drawer, //nav menu toggle icon
                 R.string.app_name, // nav drawer open - description for accessibility
@@ -179,19 +177,6 @@ public class MainActivity extends ActionBarActivity {
         if (savedInstanceState == null) {
             // on first time display view for first nav item
             displayView(0);
-        }
-    }
-
-    /**
-     * Slide menu item click listener
-     * */
-    private class SlideMenuClickListener implements
-            ListView.OnItemClickListener {
-        @Override
-        public void onItemClick(AdapterView<?> parent, View view, int position,
-                                long id) {
-            // display view for selected nav drawer item
-            displayView(position);
         }
     }
 
@@ -232,7 +217,7 @@ public class MainActivity extends ActionBarActivity {
 
     /**
      * Diplaying fragment view for selected nav drawer list item
-     * */
+     */
     private void displayView(int position) {
         // update the main content by replacing fragments
         Fragment fragment = null;
@@ -299,6 +284,19 @@ public class MainActivity extends ActionBarActivity {
         super.onConfigurationChanged(newConfig);
         // Pass any configuration change to the drawer toggls
         mDrawerToggle.onConfigurationChanged(newConfig);
+    }
+
+    /**
+     * Slide menu item click listener
+     */
+    private class SlideMenuClickListener implements
+            ListView.OnItemClickListener {
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position,
+                                long id) {
+            // display view for selected nav drawer item
+            displayView(position);
+        }
     }
 
 

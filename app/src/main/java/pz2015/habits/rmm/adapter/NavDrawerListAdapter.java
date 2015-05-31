@@ -3,6 +3,7 @@ package pz2015.habits.rmm.adapter;
 /**
  * Created by Marcin on 2015-04-26.
  */
+
 import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -22,11 +23,10 @@ public class NavDrawerListAdapter extends BaseAdapter {
     private Context context;
     private ArrayList<NavDrawerItem> navDrawerItems;
 
-    public NavDrawerListAdapter(Context context, ArrayList<NavDrawerItem> navDrawerItems){
+    public NavDrawerListAdapter(Context context, ArrayList<NavDrawerItem> navDrawerItems) {
         this.context = context;
         this.navDrawerItems = navDrawerItems;
     }
-
 
 
     @Override
@@ -62,9 +62,9 @@ public class NavDrawerListAdapter extends BaseAdapter {
 
         // displaying count
         // check whether it set visible or not
-        if(navDrawerItems.get(position).getCounterVisibility()){
+        if (navDrawerItems.get(position).getCounterVisibility()) {
             txtCount.setText(navDrawerItems.get(position).getCount());
-        }else{
+        } else {
             // hide the counter view
             txtCount.setVisibility(View.GONE);
         }

@@ -21,48 +21,15 @@ import pz2015.habits.rmm.others.Errors;
  */
 public class ConnectionTask extends AsyncTask<Void, Void, Void> {
 
+    private final Context context;
     ProgressDialog p;
-
     String username;
     String password;
-
     List<NameValuePair> list;
-
     JSONObject json;
-
     ConnectionDetector cd;
-
     Errors result;
-
-    private final Context context;
-
     WhichSide DarkSide;
-
-    public enum WhichSide {
-        LOGIN {
-            public Errors make(Context context, List<NameValuePair> list) {
-                // is user exists ?
-                PostManagement pm = new PostManagement(context, list);
-                return pm.isUserExists();
-            }
-        },
-        REGISTER {
-            public Errors make(Context context, List<NameValuePair> list) {
-                // register user
-                PostManagement pm = new PostManagement(context, list);
-                return pm.registerNewUser();
-            }
-        },
-        SYNCHRONIZE {
-            public Errors make(Context context, List<NameValuePair> list) {
-                // synchronize
-                PostManagement pm = new PostManagement(context, list);
-                return pm.synchro();
-            }
-        };
-
-        public abstract Errors make(Context context, List<NameValuePair> list);
-    }
 
     public ConnectionTask(Context context, WhichSide DarkSide) {
         this.context = context;
@@ -106,8 +73,7 @@ public class ConnectionTask extends AsyncTask<Void, Void, Void> {
 
             // LOOK TO ENUM CLASS UPPER!!!
             result = this.DarkSide.make(context, list);
-        }
-        else {
+        } else {
             // no internet connection
             result = Errors.USER_NO_INTERNET_SERVICE;
         }
@@ -121,6 +87,32 @@ public class ConnectionTask extends AsyncTask<Void, Void, Void> {
         p.dismiss();
 
         this.result.make(context, this.list);
+    }
+
+    public enum WhichSide {
+        LOGIN {
+            public Errors make(Context context, List<NameValuePair> list) {
+                // is user exists ?
+                PostManagement pm = new PostManagement(context, list);
+                return pm.isUserExists();
+            }
+        },
+        REGISTER {
+            public Errors make(Context context, List<NameValuePair> list) {
+                // register user
+                PostManagement pm = new PostManagement(context, list);
+                return pm.registerNewUser();
+            }
+        },
+        SYNCHRONIZE {
+            public Errors make(Context context, List<NameValuePair> list) {
+                // synchronize
+                PostManagement pm = new PostManagement(context, list);
+                return pm.synchro();
+            }
+        };
+
+        public abstract Errors make(Context context, List<NameValuePair> list);
     }
 
 }

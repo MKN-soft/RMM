@@ -1,73 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
 <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    tools:context="pz2015.habits.rmm.EditHabitActivity"
+    android:orientation="vertical"
     android:padding="10dip"
-    android:stretchColumns="*">
+    android:stretchColumns="*"
+    tools:context="pz2015.habits.rmm.EditHabitActivity">
+
     <TableRow>
+
         <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:id="@+id/image1"
-            android:src="@mipmap/ic_running"
-            android:layout_column="0" />
-        <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_column="0"
+            android:src="@mipmap/ic_running" />
+
+        <ImageButton
             android:id="@+id/image2"
-            android:src="@mipmap/ic_running"
-            android:layout_column="1" />
-        <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/ic_running"
+            android:layout_column="1"
+            android:src="@mipmap/ic_running" />
+
+        <ImageButton
             android:id="@+id/image3"
-            android:layout_column="2" />
-
-    </TableRow>
-    <TableRow>
-        <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/ic_running"
+            android:layout_column="2"
+            android:src="@mipmap/ic_running" />
+
+    </TableRow>
+
+    <TableRow>
+
+        <ImageButton
             android:id="@+id/image4"
-            android:layout_column="0" />
-        <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_column="0"
+            android:src="@mipmap/ic_running" />
+
+        <ImageButton
             android:id="@+id/image5"
-            android:src="@mipmap/ic_running"
-            android:layout_column="1" />
-        <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_column="1"
+            android:src="@mipmap/ic_running" />
+
+        <ImageButton
             android:id="@+id/image6"
-            android:src="@mipmap/ic_running"
-            android:layout_column="2" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="2"
+            android:src="@mipmap/ic_running" />
 
     </TableRow>
+
     <TableRow>
+
         <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:id="@+id/image7"
-            android:src="@mipmap/ic_running"
-            android:layout_column="0" />
-        <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_column="0"
+            android:src="@mipmap/ic_running" />
+
+        <ImageButton
             android:id="@+id/image8"
-            android:src="@mipmap/ic_running"
-            android:layout_column="1" />
-        <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_column="1"
+            android:src="@mipmap/ic_running" />
+
+        <ImageButton
             android:id="@+id/image9"
-            android:src="@mipmap/ic_running"
-            android:layout_column="2" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="2"
+            android:src="@mipmap/ic_running" />
 
     </TableRow>
 

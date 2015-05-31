@@ -20,14 +20,11 @@ import pz2015.habits.rmm.model.Habit;
  */
 public class HabitDetailActivity extends Activity {
 
-    private Button _editHabit, _deleteHabit, schedule;
-
     public TextView title, description, notes, frequency;
     public ImageView habitImage;
-
-    private Context selfContext;
-
     String additional = "Nothing";
+    private Button _editHabit, _deleteHabit, schedule;
+    private Context selfContext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,12 +34,12 @@ public class HabitDetailActivity extends Activity {
         selfContext = this;
 
         //View on data Habit
-        title = (TextView)findViewById(R.id.habitTitle);
-        description = (TextView)findViewById(R.id.habitDescription);
-        notes = (TextView)findViewById(R.id.habitNotes);
-        frequency = (TextView)findViewById(R.id.habitFrequency);
-        TextView date = (TextView)findViewById(R.id.habitDate);
-        habitImage =(ImageView)findViewById(R.id.habitImage);
+        title = (TextView) findViewById(R.id.habitTitle);
+        description = (TextView) findViewById(R.id.habitDescription);
+        notes = (TextView) findViewById(R.id.habitNotes);
+        frequency = (TextView) findViewById(R.id.habitFrequency);
+        TextView date = (TextView) findViewById(R.id.habitDate);
+        habitImage = (ImageView) findViewById(R.id.habitImage);
 
         int position = LogicBase.getPosition();
         Habit habit = LogicBase.getHabitAt(position);
@@ -51,23 +48,23 @@ public class HabitDetailActivity extends Activity {
         notes.setText(habit.getNotes());
 
         int series = habit.getSeries();
-        if(series == 1) {
+        if (series == 1) {
             additional = "Days";
             if (habit.getFrequency().equals("1"))
                 additional = "Day";
-        }else if(series == 7) {
+        } else if (series == 7) {
             additional = "Weeks";
             if (habit.getFrequency().equals("1"))
                 additional = "Week";
-        }else if(series == 30) {
+        } else if (series == 30) {
             additional = "Months";
             if (habit.getFrequency().equals("1"))
                 additional = "Month";
         }
 
 
-        frequency.setText("Your frequency: "+habit.getFrequency()+" "+additional);
-        date.setText("Created: "+habit.getDate());
+        frequency.setText("Your frequency: " + habit.getFrequency() + " " + additional);
+        date.setText("Created: " + habit.getDate());
 
         habitImage.setImageDrawable(habit.getImage());
 
@@ -115,7 +112,7 @@ public class HabitDetailActivity extends Activity {
                 DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        switch (which){
+                        switch (which) {
                             case DialogInterface.BUTTON_POSITIVE:
                                 int position = LogicBase.getPosition();
                                 LogicBase.removeHabitItemAt(position);
@@ -137,7 +134,7 @@ public class HabitDetailActivity extends Activity {
         });
     }
 
-    public void onResume(){
+    public void onResume() {
         super.onResume();
         int position2 = LogicBase.getPosition();
         Habit habit2 = LogicBase.getHabitAt(position2);
@@ -147,22 +144,21 @@ public class HabitDetailActivity extends Activity {
         notes.setText(habit2.getNotes());
 
         int series = habit2.getSeries();
-        if(series == 1) {
+        if (series == 1) {
             additional = "Days";
             if (habit2.getFrequency().equals("1"))
                 additional = "Day";
-        }else if(series == 7) {
+        } else if (series == 7) {
             additional = "Weeks";
             if (habit2.getFrequency().equals("1"))
                 additional = "Week";
-        }else if(series == 30) {
+        } else if (series == 30) {
             additional = "Months";
             if (habit2.getFrequency().equals("1"))
                 additional = "Month";
         }
-        frequency.setText("Your frequency: "+habit2.getFrequency()+" "+additional);
+        frequency.setText("Your frequency: " + habit2.getFrequency() + " " + additional);
     }
-
 
 
 }

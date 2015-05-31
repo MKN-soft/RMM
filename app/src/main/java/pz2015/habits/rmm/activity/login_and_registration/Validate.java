@@ -22,10 +22,11 @@ public class Validate {
     private static final String EMAIL_MSG = "invalid email";
     private static final String PASSWORD_MSG = "invalid password";
 
-    public Validate() { }
+    public Validate() {
+    }
 
     public static boolean isEmailAddress(EditText editText, boolean required) {
-       return isValid(editText, EMAIL_REGEX, EMAIL_MSG, required);
+        return isValid(editText, EMAIL_REGEX, EMAIL_MSG, required);
     }
 
     public static boolean isPassword(EditText editText, boolean required) {
@@ -49,7 +50,7 @@ public class Validate {
         String text = editText.getText().toString().trim();
         editText.setError(null);
 
-        if ( required && !hasText(editText))
+        if (required && !hasText(editText))
             return false;
 
         if (required && !Pattern.matches(regex, text)) {

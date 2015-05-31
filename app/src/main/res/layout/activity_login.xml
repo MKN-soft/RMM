@@ -1,86 +1,90 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity">
+    tools:context=".MainActivity">
 
-    <LinearLayout android:id="@+id/uname_block"
+    <LinearLayout
+        android:id="@+id/uname_block"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:layout_above="@+id/pwd_block"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="10dp"
-        android:layout_marginTop="10dp">
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
 
-        <TextView android:id="@+id/username"
+        <TextView
+            android:id="@+id/username"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/lbl_username"
-            android:textSize="16sp"
-            android:textColor="@android:color/black"
             android:layout_gravity="center_vertical"
-            />
+            android:text="@string/lbl_username"
+            android:textColor="@android:color/black"
+            android:textSize="16sp" />
 
         <EditText
             android:id="@+id/fld_username"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:hint="@string/lbl_enter_username"
+            android:layout_gravity="center_vertical"
             android:layout_marginLeft="8dp"
+            android:hint="@string/lbl_enter_username"
             android:inputType="textEmailAddress"
             android:paddingLeft="5dp"
-            android:textSize="13sp"
-            android:layout_gravity="center_vertical"
-            />
+            android:textSize="13sp" />
 
     </LinearLayout>
 
-    <LinearLayout android:id="@+id/pwd_block"
+    <LinearLayout
+        android:id="@+id/pwd_block"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:layout_above="@+id/btn_login"
         android:layout_alignLeft="@+id/uname_block"
         android:layout_alignStart="@+id/uname_block"
         android:layout_marginBottom="10dp"
-        android:layout_marginTop="10dp">
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
 
-        <TextView android:id="@+id/pwd"
+        <TextView
+            android:id="@+id/pwd"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/lbl_pwd"
-            android:textSize="16sp"
-            android:textColor="@android:color/black"
             android:layout_gravity="center_vertical"
-            />
+            android:text="@string/lbl_pwd"
+            android:textColor="@android:color/black"
+            android:textSize="16sp" />
 
-        <EditText android:id="@+id/fld_pwd"
+        <EditText
+            android:id="@+id/fld_pwd"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:hint="@string/lbl_enter_pwd"
+            android:layout_gravity="center_vertical"
             android:layout_marginLeft="8dp"
+            android:hint="@string/lbl_enter_pwd"
             android:inputType="textPassword"
             android:paddingLeft="5dp"
-            android:textSize="13sp"
-            android:layout_gravity="center_vertical"
-            />
+            android:textSize="13sp" />
 
     </LinearLayout>
 
     <Button
         android:id="@+id/btn_login"
-        android:layout_height="wrap_content"
-        android:text="@string/lbl_login"
         android:layout_width="290dp"
-        android:gravity="center"
-        android:textSize="13sp"
-        android:textStyle="bold"
-        android:layout_centerVertical="true"
-        android:layout_alignRight="@+id/pwd_block"
+        android:layout_height="wrap_content"
         android:layout_alignEnd="@+id/pwd_block"
+        android:layout_alignRight="@+id/pwd_block"
+        android:layout_centerVertical="true"
+        android:layout_marginBottom="10dp"
         android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp" />
+        android:gravity="center"
+        android:text="@string/lbl_login"
+        android:textSize="13sp"
+        android:textStyle="bold" />
 
 </RelativeLayout>

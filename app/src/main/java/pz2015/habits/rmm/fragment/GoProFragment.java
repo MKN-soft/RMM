@@ -7,14 +7,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.android.vending.billing.IInAppBillingService;
 
 import pz2015.habits.rmm.R;
 
 
 public class GoProFragment extends Fragment {
 
-    public GoProFragment() { }
+    public GoProFragment() {
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

@@ -1,8 +1,8 @@
 package pz2015.habits.rmm.activity;
 
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -39,7 +39,7 @@ public class EditHabitActivity extends ActionBarActivity {
         final EditText habitDescription = (EditText) findViewById(R.id.editHabitDescription);
         final EditText habitFrequency = (EditText) findViewById(R.id.editHabitFrequency);
         final EditText habitNotes = (EditText) findViewById(R.id.editHabitNotes);
-        habitImage =(ImageView)findViewById(R.id.editHabitImage);
+        habitImage = (ImageView) findViewById(R.id.editHabitImage);
 
         additional = habit.getSeries();
 
@@ -50,7 +50,7 @@ public class EditHabitActivity extends ActionBarActivity {
         habitImage.setImageDrawable(habit.getImage());
 
         String[] elements = {"No change", "Day", "Week", "Month"};
-        final Spinner spinner2 = (Spinner)findViewById(R.id.spinner2);
+        final Spinner spinner2 = (Spinner) findViewById(R.id.spinner2);
         ArrayAdapter<String> series = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, elements);
 
         spinner2.setAdapter(series);
@@ -65,8 +65,7 @@ public class EditHabitActivity extends ActionBarActivity {
                 Toast.makeText(EditHabitActivity.this, "Wybrano opcję " + (id + 1), Toast.LENGTH_SHORT).show();
 
 
-                switch((int)position)
-                {
+                switch ((int) position) {
                     case 0:
                         Toast.makeText(EditHabitActivity.this, "No change ", Toast.LENGTH_SHORT).show();
                         break;
@@ -92,7 +91,7 @@ public class EditHabitActivity extends ActionBarActivity {
             }
         });
 
-        editImageButton.setOnClickListener( new View.OnClickListener() {
+        editImageButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -111,29 +110,29 @@ public class EditHabitActivity extends ActionBarActivity {
             public void onClick(View v) {
 
                 //give position (from file HomeFragment)
-               int position = LogicBase.getPosition();
+                int position = LogicBase.getPosition();
                 //give habit from position
-               Habit habit = LogicBase.getHabitAt(position);
+                Habit habit = LogicBase.getHabitAt(position);
                 //rewrite habitName on new
-               habit.setTitle(habitName.getText().toString());
+                habit.setTitle(habitName.getText().toString());
                 //description
-               habit.setDescription(habitDescription.getText().toString());
+                habit.setDescription(habitDescription.getText().toString());
                 //frequency
-               habit.setFrequency(habitFrequency.getText().toString());
+                habit.setFrequency(habitFrequency.getText().toString());
                 //notes
-               habit.setNotes(habitNotes.getText().toString());
+                habit.setNotes(habitNotes.getText().toString());
                 //exchange old version habit on edit version
-               habit.setSeries(additional);
+                habit.setSeries(additional);
 
-               LogicBase.setHabitAt(position, habit);
-               // LogicBase.refreshList();
+                LogicBase.setHabitAt(position, habit);
+                // LogicBase.refreshList();
 
-               finish();
+                finish();
             }
         });
     }
 
-    protected void onResume(){
+    protected void onResume() {
         super.onResume();
         int position2 = LogicBase.getPosition();
         Habit habit2 = LogicBase.getHabitAt(position2);

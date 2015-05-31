@@ -10,7 +10,6 @@ import android.os.Handler;
 import android.os.IBinder;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
-import android.widget.Toast;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
@@ -31,12 +30,12 @@ import pz2015.habits.rmm.others.ConnectionDetector;
  */
 public class SynchroService extends Service {
 
+    private static final String HABITS_CACHE_FILE = "habit_cache.ser";
+    public static Runnable runnable = null;
     public Context context = this;
     public Handler handler = null;
-    public static Runnable runnable = null;
     // Initialize internet detector
     ConnectionDetector cd;
-    private static final String HABITS_CACHE_FILE = "habit_cache.ser";
 
     @Override
     public IBinder onBind(Intent intent) {
@@ -76,7 +75,7 @@ public class SynchroService extends Service {
             ois.close();
             fis.close();
             Log.d("MasterChief", "Successfully read statistics from the file");
-        } catch(Exception e) {
+        } catch (Exception e) {
             Log.e("MasterChief", "Error reading statistics", e);
         }
 
@@ -102,7 +101,7 @@ public class SynchroService extends Service {
     private void makeSynchro() {
 
         SharedPreferences prefs = getSharedPreferences("rmm", MODE_PRIVATE);
-        String salt =  prefs.getString("salt", null);
+        String salt = prefs.getString("salt", null);
 
         List<Statistic> statistics = readHabits();
 
@@ -111,10 +110,10 @@ public class SynchroService extends Service {
         params.add(new BasicNameValuePair("salt", salt));
 
         for (int i = 0; i < statistics.size(); i++) {
-            params.add(new BasicNameValuePair("habit"+i, statistics.get(i).getId() + ";" + statistics.get(i).getDate() + ";" + statistics.get(i).getFrequency()));
+            params.add(new BasicNameValuePair("habit" + i, statistics.get(i).getId() + ";" + statistics.get(i).getDate() + ";" + statistics.get(i).getFrequency()));
         }
 
-        Thread thread = new Thread(new Runnable(){
+        Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
                 // Connection detector

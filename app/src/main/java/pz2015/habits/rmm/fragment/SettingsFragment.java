@@ -18,7 +18,8 @@ public class SettingsFragment extends Fragment {
 
     private SharedPreferences prefs;
 
-    public SettingsFragment() { }
+    public SettingsFragment() {
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

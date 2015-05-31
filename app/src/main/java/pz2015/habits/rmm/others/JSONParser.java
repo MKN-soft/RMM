@@ -30,7 +30,8 @@ public class JSONParser {
     static String json = "";
 
     // constructor
-    public JSONParser() {}
+    public JSONParser() {
+    }
 
     public JSONObject getJSONFromUrl(String url, List<NameValuePair> params) {
 

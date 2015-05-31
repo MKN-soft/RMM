@@ -66,7 +66,9 @@ public class LoginActivity extends Activity {
         });
     }
 
-    public boolean isLogged() { return prefs.getBoolean("imBackAgain", false); }
+    public boolean isLogged() {
+        return prefs.getBoolean("imBackAgain", false);
+    }
 
     private void registerViews() {
         etEmailAddress = (EditText) findViewById(R.id.fld_username);
@@ -75,8 +77,12 @@ public class LoginActivity extends Activity {
             public void afterTextChanged(Editable s) {
                 Validate.isEmailAddress(etEmailAddress, true);
             }
-            public void beforeTextChanged(CharSequence s, int start, int count, int after){}
-            public void onTextChanged(CharSequence s, int start, int before, int count){}
+
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
         });
 
         etPassword = (EditText) findViewById(R.id.fld_pwd);
@@ -85,8 +91,12 @@ public class LoginActivity extends Activity {
             public void afterTextChanged(Editable s) {
                 Validate.isPassword(etPassword, true);
             }
-            public void beforeTextChanged(CharSequence s, int start, int count, int after){}
-            public void onTextChanged(CharSequence s, int start, int before, int count){}
+
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
         });
     }
 
