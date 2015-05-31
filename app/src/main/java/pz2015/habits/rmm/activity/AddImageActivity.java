@@ -14,7 +14,7 @@ import pz2015.habits.rmm.R;
 import pz2015.habits.rmm.model.Habit;
 
 /**
- * Created by Natka on 2015-05-22.
+ * Class add image to new habit.
  */
 public class AddImageActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {

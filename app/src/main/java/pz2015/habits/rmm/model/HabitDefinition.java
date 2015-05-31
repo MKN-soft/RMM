@@ -1,7 +1,8 @@
 package pz2015.habits.rmm.model;
 
 /**
- * Created by Natka on 2015-05-30.
+ * Class define day of habit, have data and variable, which points on habit done or to do.
+ *
  */
 public class HabitDefinition {
     private int year;

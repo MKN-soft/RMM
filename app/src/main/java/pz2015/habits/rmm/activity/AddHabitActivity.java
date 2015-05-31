@@ -22,6 +22,9 @@ import pz2015.habits.rmm.LogicBase;
 import pz2015.habits.rmm.R;
 import pz2015.habits.rmm.model.Habit;
 
+/**
+ *Class add new habit to list of habits
+ */
 
 public class AddHabitActivity extends ActionBarActivity {
 
@@ -66,10 +69,10 @@ public class AddHabitActivity extends ActionBarActivity {
                                        int id, long position) {
                 // ta metoda wykonuje się za każdym razem, gdy zostanie wybrany jakiś element z naszej listy
 
-                Toast.makeText(AddHabitActivity.this, "Wybrano opcję " + (id + 1), Toast.LENGTH_SHORT).show();
+               // Toast.makeText(AddHabitActivity.this, "Wybrano opcję " + (id + 1), Toast.LENGTH_SHORT).show();
 
 
-                switch ((int) position)  //tutaj musimy przerzutować wartośc position na int, bo jest ona typu long, a typu long nie można używać do instrukcji switch
+                switch ((int) position)
                 {
                     case 0:
                         additional = 1; //Dzien

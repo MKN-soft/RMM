@@ -18,6 +18,9 @@ import pz2015.habits.rmm.LogicBase;
 import pz2015.habits.rmm.R;
 import pz2015.habits.rmm.model.Habit;
 
+/**
+ * Class edit data habit.
+ */
 
 public class EditHabitActivity extends ActionBarActivity {
     public ImageView habitImage;

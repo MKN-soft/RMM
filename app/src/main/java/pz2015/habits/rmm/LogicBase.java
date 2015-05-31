@@ -10,7 +10,9 @@ import pz2015.habits.rmm.fragment.HomeFragment;
 import pz2015.habits.rmm.model.Habit;
 
 /**
- * Created by Natka on 2015-04-30.
+ *
+ * Class supports list of habits, which is in domeFragment. It have method of adding, removing, changing habits or giving last position on list.
+ * It is used also to searching and giving habit on given position.
  */
 public class LogicBase {
 
@@ -106,15 +108,6 @@ public class LogicBase {
 
     }
 
-    public static Habit getLastHabit(int position) {
-        int count = habitItemArrayAdapter.getCount();
-        if (position == count - 1) {
-            return (Habit) habitItemArrayAdapter.getItem(position);
-        } else {
-            return null;
-        }
-
-    }
 
     public static int getLastPosition() {
         int count = habitItemArrayAdapter.getCount();

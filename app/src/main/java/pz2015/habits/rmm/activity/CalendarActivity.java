@@ -22,7 +22,8 @@ import pz2015.habits.rmm.model.Habit;
 import pz2015.habits.rmm.model.HabitDefinition;
 
 /**
- * Created by Natka on 2015-05-25.
+ *  Class calendar, which takes a list of day from habit and means them on calendar.
+ *  It used also to add habits done or to do.
  */
 public class CalendarActivity extends Activity {
     CalendarView calendar;

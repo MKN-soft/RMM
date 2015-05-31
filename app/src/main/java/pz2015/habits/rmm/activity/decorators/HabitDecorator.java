@@ -12,7 +12,7 @@ import java.util.List;
 import pz2015.habits.rmm.model.HabitDefinition;
 
 /**
- * Created by Natka on 2015-05-30.
+ * Class used to mark on the calendar habits(red circle ).
  */
 public class HabitDecorator implements DayViewDecorator {
     List<HabitDefinition> definedHabits;
