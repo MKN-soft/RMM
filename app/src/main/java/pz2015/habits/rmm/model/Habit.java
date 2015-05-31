@@ -3,6 +3,8 @@ package pz2015.habits.rmm.model;
 import android.graphics.drawable.Drawable;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by ASUS on 2015-05-11.
@@ -23,6 +25,8 @@ public class Habit implements Serializable {
     Drawable image;
     String notes;
 
+    List<HabitDefinition> definedHabits = new ArrayList<HabitDefinition>();
+
     public Habit() { }
 
     public Habit(String title, String description, String frequency, Drawable image, String notes, String date) {
@@ -32,6 +36,10 @@ public class Habit implements Serializable {
         this.image = image;
         this.notes = notes;
         this.date = date;
+    }
+
+    public List<HabitDefinition> getHabitDefinitions(){
+        return definedHabits;
     }
 
     public String getId() { return this.id; }
