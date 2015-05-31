@@ -65,6 +65,8 @@ public class PostManagement  {
                     SharedPreferences.Editor editor = prefs.edit();
                     editor.putString("salt", salt);
 
+                    editor.commit();
+
                     return Errors.USER_FOUND;
                 }
                 else {
