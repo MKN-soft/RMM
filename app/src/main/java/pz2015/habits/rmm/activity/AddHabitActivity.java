@@ -67,23 +67,18 @@ public class AddHabitActivity extends ActionBarActivity {
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1,
                                        int id, long position) {
-                // ta metoda wykonuje się za każdym razem, gdy zostanie wybrany jakiś element z naszej listy
-
-               // Toast.makeText(AddHabitActivity.this, "Wybrano opcję " + (id + 1), Toast.LENGTH_SHORT).show();
 
 
                 switch ((int) position)
                 {
                     case 0:
-                        additional = 1; //Dzien
+                        additional = 1; //Day
                         break;
                     case 1:
-                        //wybrano drugi element
-                        additional = 7;
+                        additional = 7;//week
                         break;
                     case 2:
-                        //wybrano trzeci element
-                        additional = 30;
+                        additional = 30;//month
                         break;
                 }
 
@@ -91,8 +86,6 @@ public class AddHabitActivity extends ActionBarActivity {
 
             @Override
             public void onNothingSelected(AdapterView<?> arg0) {
-                // ta metoda wykonuje sie gdy lista zostanie wybrana, ale nie zostanie wybrany żaden element z listy
-
             }
         });
 
