@@ -19,6 +19,11 @@ public class LogicBase {
     private static ArrayAdapter habitItemArrayAdapter;
     private static int position;
     private static HomeFragment homeFragment;
+    public static List<Habit> habits;
+
+    public static List<Habit> listWithoutItem;
+    public static boolean removed = false;
+    public static boolean added = false;
 
     public static void setHomeFragment(HomeFragment hf) {
         homeFragment = hf;
@@ -83,6 +88,9 @@ public class LogicBase {
         }
         newList.add(newHabit);
 
+        habits = newList;
+        added = true;
+
         habitItemArrayAdapter = new HabitAdapter(habitItemArrayAdapter.getContext(), newList);
         homeFragment.setListAdapter(habitItemArrayAdapter);
     }
@@ -103,6 +111,10 @@ public class LogicBase {
         }
 
         habitItemArrayAdapter = new HabitAdapter(habitItemArrayAdapter.getContext(), listWithoutRemovedElement); //habitItemArrayAdapter.getContext()
+
+        listWithoutItem = listWithoutRemovedElement;
+        removed = true;
+
         homeFragment.setListAdapter(habitItemArrayAdapter);
         //habitItemArrayAdapter.remove(habitItemArrayAdapter.getItem(position));
 
@@ -114,6 +126,5 @@ public class LogicBase {
         int position = count - 1;
         return position;
     }
-
 
 }

@@ -19,15 +19,23 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.List;
 
+import pz2015.habits.rmm.LogicBase;
 import pz2015.habits.rmm.R;
 import pz2015.habits.rmm.adapter.NavDrawerListAdapter;
 import pz2015.habits.rmm.fragment.GoProFragment;
 import pz2015.habits.rmm.fragment.HomeFragment;
 import pz2015.habits.rmm.fragment.SettingsFragment;
+import pz2015.habits.rmm.model.Habit;
+import pz2015.habits.rmm.model.HabitToFile;
 import pz2015.habits.rmm.model.NavDrawerItem;
 import pz2015.habits.rmm.services.SynchroService;
 
@@ -41,6 +49,8 @@ public class MainActivity extends ActionBarActivity {
     private ListView mDrawerList;
     private ActionBarDrawerToggle mDrawerToggle;
 
+    private static final String HABITS_CACHE_FILE = "habit_cache.ser";
+
     // nav drawer title
     private CharSequence mDrawerTitle;
 
@@ -53,46 +63,47 @@ public class MainActivity extends ActionBarActivity {
 
     private ArrayList<NavDrawerItem> navDrawerItems;
     private NavDrawerListAdapter adapter;
+    private List<Habit> habits;
 
 
     private void gogoMyService() {
-        // Get time NOW
-        Calendar cur_cal = new GregorianCalendar();
-        cur_cal.setTimeInMillis(System.currentTimeMillis());
-
-        // Set run BackgroundService on 23:59
-        // 86400000 ms - ONE DAY
-
-        // Set schelude for SynchroService
-        Calendar cal = new GregorianCalendar();
-        cal.add(Calendar.DAY_OF_YEAR, cur_cal.get(Calendar.DAY_OF_YEAR));
-        cal.set(Calendar.HOUR_OF_DAY, 23);
-        cal.set(Calendar.MINUTE, 59);
-        cal.set(Calendar.SECOND, cur_cal.get(Calendar.SECOND));
-        cal.set(Calendar.MILLISECOND, cur_cal.get(Calendar.MILLISECOND));
-        cal.set(Calendar.DATE, cur_cal.get(Calendar.DATE));
-        cal.set(Calendar.MONTH, cur_cal.get(Calendar.MONTH));
-
-        // Set intent for SynchroService
-        Intent intent = new Intent(MainActivity.this, SynchroService.class);
-
-        // When we click on notification, we move to MainActivity
-        PendingIntent pintent = PendingIntent.getService(MainActivity.this, 0, intent, 0);
-
-        // Alarm Manager
-        AlarmManager alarm = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-        //86400000
-        // Set repeat - per day
-        alarm.setRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), 86400000, pintent);
+//        // Get time NOW
+//        Calendar cur_cal = new GregorianCalendar();
+//        cur_cal.setTimeInMillis(System.currentTimeMillis());
+//
+//        // Set run BackgroundService on 23:59
+//        // 86400000 ms - ONE DAY
+//
+//        // Set schelude for SynchroService
+//        Calendar cal = new GregorianCalendar();
+//        cal.add(Calendar.DAY_OF_YEAR, cur_cal.get(Calendar.DAY_OF_YEAR));
+//        cal.set(Calendar.HOUR_OF_DAY, 23);
+//        cal.set(Calendar.MINUTE, 59);
+//        cal.set(Calendar.SECOND, cur_cal.get(Calendar.SECOND));
+//        cal.set(Calendar.MILLISECOND, cur_cal.get(Calendar.MILLISECOND));
+//        cal.set(Calendar.DATE, cur_cal.get(Calendar.DATE));
+//        cal.set(Calendar.MONTH, cur_cal.get(Calendar.MONTH));
+//
+//        // Set intent for SynchroService
+//        Intent intent = new Intent(MainActivity.this, SynchroService.class);
+//
+//        // When we click on notification, we move to MainActivity
+//        PendingIntent pintent = PendingIntent.getService(MainActivity.this, 0, intent, 0);
+//
+//        // Alarm Manager
+//        AlarmManager alarm = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+//        //86400000
+//        // Set repeat - per day
+//        alarm.setRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), 86400000, pintent);
 
 
         // TO JEST TYLKO DO TESTÓW
-//        Calendar cal = Calendar.getInstance();
-//        cal.add(Calendar.SECOND, 3);
-//        Intent intent = new Intent(MainActivity.this, SynchroService.class);
-//        PendingIntent pintent = PendingIntent.getService(MainActivity.this, 0, intent, 0);
-//        AlarmManager alarm = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-//        alarm.setRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), 3600, pintent);
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.SECOND, 3);
+        Intent intent = new Intent(MainActivity.this, SynchroService.class);
+        PendingIntent pintent = PendingIntent.getService(MainActivity.this, 0, intent, 0);
+        AlarmManager alarm = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        alarm.setRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), 3600, pintent);
     }
 
 
@@ -104,6 +115,20 @@ public class MainActivity extends ActionBarActivity {
         //runs SynchroService
         gogoMyService();
 
+
+        if (HomeFragment.getHabit() != null) {
+            habits = HomeFragment.getHabit();
+
+            // Save habit to file
+            writeHabitsToFile(habits);
+
+            // Read habits from cache file
+            readHabitsFromFile();
+        }
+        else {
+            // Read habits from cache file
+            readHabitsFromFile();
+        }
 
         mTitle = mDrawerTitle = getTitle();
 
@@ -183,6 +208,36 @@ public class MainActivity extends ActionBarActivity {
     }
 
     @Override
+    public void onStart() {
+        super.onStart();
+        if (HomeFragment.getHabit() != null || this.habits != null) {
+            if (LogicBase.removed == true) {
+                habits = LogicBase.listWithoutItem;
+                LogicBase.removed = false;
+            }
+            else if (LogicBase.added == true) {
+                habits = LogicBase.habits;
+                LogicBase.added = false;
+            }
+            else {
+                habits = HomeFragment.getHabit();
+            }
+
+
+
+            // Save habit to file
+            writeHabitsToFile(habits);
+
+            // Read habits from cache file
+            readHabitsFromFile();
+        }
+        else {
+            // Read habits from cache file
+            readHabitsFromFile();
+        }
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
@@ -222,10 +277,12 @@ public class MainActivity extends ActionBarActivity {
      */
     private void displayView(int position) {
         // update the main content by replacing fragments
-        Fragment fragment = null;
+
+        Fragment fragment = new Fragment();
         switch (position) {
             case 0:
-                fragment = new HomeFragment();
+                fragment = new HomeFragment(habits);
+
                 break;
             case 1:
                 fragment = new SettingsFragment();
@@ -300,6 +357,55 @@ public class MainActivity extends ActionBarActivity {
             displayView(position);
         }
     }
+
+
+    private void readHabitsFromFile() {
+        List<HabitToFile> readHabitToFile = new ArrayList<>();
+        try {
+            FileInputStream fis = getApplicationContext().openFileInput(HABITS_CACHE_FILE);
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            readHabitToFile = (List<HabitToFile>) ois.readObject();
+
+            ois.close();
+            fis.close();
+
+            habits = new ArrayList<>();
+
+            if (readHabitToFile != null)
+                for (int i = 0; i < readHabitToFile.size(); i++) {
+                    habits.add(new Habit(getApplicationContext(), readHabitToFile.get(i)));
+                }
+
+
+
+            Log.d("RMM", "Successfully read statistics from the file");
+        } catch (Exception e) {
+            Log.e("RMM", "Error reading statistics", e);
+
+            habits = new ArrayList<>();
+        }
+    }
+
+
+    private void writeHabitsToFile(List<Habit> habits) {
+        List<HabitToFile> writeHabitToFile = new ArrayList<>();
+
+        for (int i = 0; i < habits.size(); i++)
+            writeHabitToFile.add(new HabitToFile(getApplicationContext(), habits.get(i)));
+
+        try {
+            FileOutputStream fos = getApplicationContext().openFileOutput(HABITS_CACHE_FILE, Context.MODE_PRIVATE);
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            oos.writeObject(writeHabitToFile);
+            oos.close();
+            fos.close();
+            Log.d("RMM", "Successfully wrote habits to the file");
+        } catch (Exception e) {
+            Log.e("RMM", "Error writing habits", e);
+        }
+    }
+
+
 
 
 }

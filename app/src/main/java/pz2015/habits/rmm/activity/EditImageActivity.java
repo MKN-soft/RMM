@@ -45,7 +45,7 @@ public class EditImageActivity extends Activity {
                 int position = LogicBase.getPosition();
                 Habit habit = LogicBase.getHabitAt(position);
                 Drawable image = getResources().getDrawable(R.mipmap.ic_communities);
-                habit.setImage(image);
+                habit.setImage(image, R.mipmap.ic_communities);
                 LogicBase.setHabitAt(position, habit);
 
                 //onResume();
@@ -58,7 +58,7 @@ public class EditImageActivity extends Activity {
                 int position = LogicBase.getPosition();
                 Habit habit = LogicBase.getHabitAt(position);
                 Drawable image = getResources().getDrawable(R.mipmap.ic_home);
-                habit.setImage(image);
+                habit.setImage(image, R.mipmap.ic_home);
                 LogicBase.setHabitAt(position, habit);
 
                 //onResume();
@@ -71,7 +71,7 @@ public class EditImageActivity extends Activity {
                 int position = LogicBase.getPosition();
                 Habit habit = LogicBase.getHabitAt(position);
                 Drawable image = getResources().getDrawable(R.mipmap.ic_launcher);
-                habit.setImage(image);
+                habit.setImage(image, R.mipmap.ic_launcher);
                 LogicBase.setHabitAt(position, habit);
 
                 //onResume();
@@ -84,7 +84,7 @@ public class EditImageActivity extends Activity {
                 int position = LogicBase.getPosition();
                 Habit habit = LogicBase.getHabitAt(position);
                 Drawable image = getResources().getDrawable(R.mipmap.ic_pages);
-                habit.setImage(image);
+                habit.setImage(image, R.mipmap.ic_pages);
                 LogicBase.setHabitAt(position, habit);
 
                 //onResume();
@@ -97,7 +97,7 @@ public class EditImageActivity extends Activity {
                 int position = LogicBase.getPosition();
                 Habit habit = LogicBase.getHabitAt(position);
                 Drawable image = getResources().getDrawable(R.mipmap.ic_people);
-                habit.setImage(image);
+                habit.setImage(image, R.mipmap.ic_people);
                 LogicBase.setHabitAt(position, habit);
 
                 //onResume();
@@ -110,7 +110,7 @@ public class EditImageActivity extends Activity {
                 int position = LogicBase.getPosition();
                 Habit habit = LogicBase.getHabitAt(position);
                 Drawable image = getResources().getDrawable(R.mipmap.ic_photos);
-                habit.setImage(image);
+                habit.setImage(image, R.mipmap.ic_photos);
                 LogicBase.setHabitAt(position, habit);
 
                 //onResume();
@@ -123,7 +123,7 @@ public class EditImageActivity extends Activity {
                 int position = LogicBase.getPosition();
                 Habit habit = LogicBase.getHabitAt(position);
                 Drawable image = getResources().getDrawable(R.mipmap.ic_running);
-                habit.setImage(image);
+                habit.setImage(image, R.mipmap.ic_running);
                 LogicBase.setHabitAt(position, habit);
 
                 //onResume();
@@ -136,7 +136,7 @@ public class EditImageActivity extends Activity {
                 int position = LogicBase.getPosition();
                 Habit habit = LogicBase.getHabitAt(position);
                 Drawable image = getResources().getDrawable(R.mipmap.ic_whats_hot);
-                habit.setImage(image);
+                habit.setImage(image, R.mipmap.ic_whats_hot);
                 LogicBase.setHabitAt(position, habit);
 
                 //onResume();
@@ -149,7 +149,7 @@ public class EditImageActivity extends Activity {
                 int position = LogicBase.getPosition();
                 Habit habit = LogicBase.getHabitAt(position);
                 Drawable image = getResources().getDrawable(R.mipmap.ic_question_mark);
-                habit.setImage(image);
+                habit.setImage(image, R.mipmap.ic_question_mark);
                 LogicBase.setHabitAt(position, habit);
 
                 //onResume();
