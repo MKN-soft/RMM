@@ -40,7 +40,7 @@ public class HomeFragment extends ListFragment {
     // Wykomentowane na pozniej do serializacji
     private static final String STATISTICS_CACHE_FILE = "statistics_cache.ser";
     private static final String HABITS_CACHE_FILE = "habit_cache.ser";
-    private static List<Habit> hab;
+    public static List<Habit> hab;
     private ListView habitListView;
     private ArrayAdapter habitItemArrayAdapter;
     private List<Habit> habits;
