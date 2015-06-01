@@ -27,7 +27,6 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
 	// mysql select query
 	$sql = "SELECT id, login, haslo, salt FROM Uzytkownicy WHERE login = '".$username."' "; 
 	$result = mysql_query($sql);
-	
 
 	// check if user exists
 	if (!empty($result)) {
@@ -50,7 +49,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
 				$response['success'] = 1;
 				$response['error'] = 0;
 				$response['message'] = "Login successfully!";
-				$response['salt'] = $salt_db;
+				$response['salt'] = $salt;
 				
 				// "echoing" JSON response
 				echo json_encode($response); 
