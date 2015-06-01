@@ -22,8 +22,6 @@ import java.util.List;
 import pz2015.habits.rmm.R;
 import pz2015.habits.rmm.activity.MainActivity;
 import pz2015.habits.rmm.activity.login_and_registration.ConnectionTask;
-import pz2015.habits.rmm.model.Habit;
-import pz2015.habits.rmm.model.HabitToFile;
 import pz2015.habits.rmm.model.Statistic;
 import pz2015.habits.rmm.others.ConnectionDetector;
 
@@ -32,15 +30,12 @@ import pz2015.habits.rmm.others.ConnectionDetector;
  */
 public class SynchroService extends Service {
 
-    private static final String STATISTICS_CACHE_FILE = "statistics_cache.ser";
     private static final String HABITS_CACHE_FILE = "habit_cache.ser";
     public static Runnable runnable = null;
     public Context context = this;
     public Handler handler = null;
-
     // Initialize internet detector
     ConnectionDetector cd;
-
 
     @Override
     public IBinder onBind(Intent intent) {
@@ -69,6 +64,24 @@ public class SynchroService extends Service {
         return START_NOT_STICKY;
     }
 
+    private List<Statistic> readHabits() {
+        List<Statistic> statistics = new ArrayList<>();
+        try {
+
+            FileInputStream fis = openFileInput(HABITS_CACHE_FILE);
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            statistics = (List<Statistic>) ois.readObject();
+
+            ois.close();
+            fis.close();
+            Log.d("MasterChief", "Successfully read statistics from the file");
+        } catch (Exception e) {
+            Log.e("MasterChief", "Error reading statistics", e);
+        }
+
+        return statistics;
+    }
+
     private void makeNotification() {
         // Make notification
         NotificationCompat.Builder builder =
@@ -86,79 +99,33 @@ public class SynchroService extends Service {
     }
 
     private void makeSynchro() {
-        // First: Authorization with server
-        // Second: Send prepared data
 
-        // User salt for authorization
         SharedPreferences prefs = getSharedPreferences("rmm", MODE_PRIVATE);
         String salt = prefs.getString("salt", null);
 
-        // Prepare data for send
-        List<Statistic> statistics = readHabitsFromFile();
+        List<Statistic> statistics = readHabits();
+
         final List<NameValuePair> params = new ArrayList<>();
+
         params.add(new BasicNameValuePair("salt", salt));
-        params.add(new BasicNameValuePair("count", Integer.toString(statistics.size())));
 
         for (int i = 0; i < statistics.size(); i++) {
-            Statistic statistic = statistics.get(i);
-
-            if (statistic.emptyLastHabit())
-                continue;
-            String string = statistic.getDone() + ";" +
-                    statistic.getDate() + ";" + statistic.getFrequency() + ";" +
-                    statistic.getLastDate() + ";" + statistic.getBestScore() + ";" +
-                    statistic.getAverageLong() + ";" + statistic.getSuccessPercent() + statistic.getHabitSize();
-            params.add(new BasicNameValuePair("habit" + i, string));
+            params.add(new BasicNameValuePair("habit" + i, statistics.get(i).getId() + ";" + statistics.get(i).getDate() + ";" + statistics.get(i).getFrequency()));
         }
 
-        // Create new thread for networking
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
                 // Connection detector
                 cd = new ConnectionDetector(context);
 
-                // If connection detected, SEND
                 ConnectionTask.WhichSide darkside = ConnectionTask.WhichSide.SYNCHRONIZE;
                 if (cd.isConnectingToInternet() == true)
                     darkside.make(context, params);
             }
         });
-
-        // Start thread
         thread.start();
-    }
 
-    private List<Statistic> readHabitsFromFile() {
-        List<HabitToFile> readHabitToFile;
-        List<Habit> habits = new ArrayList<>();
-        List<Statistic> statistics = new ArrayList<>();
-        try {
-            FileInputStream fis = getApplicationContext().openFileInput(HABITS_CACHE_FILE);
-            ObjectInputStream ois = new ObjectInputStream(fis);
-            readHabitToFile = (List<HabitToFile>) ois.readObject();
-
-            ois.close();
-            fis.close();
-
-
-
-            if (readHabitToFile != null) {
-                for (int i = 0; i < readHabitToFile.size(); i++) {
-                    habits.add(new Habit(getApplicationContext(), readHabitToFile.get(i)));
-                }
-                for (int i = 0; i < habits.size(); i++) {
-                    statistics.add(new Statistic(habits.get(i)));
-                }
-            }
-
-
-            Log.d("RMM", "Successfully read statistics from the file");
-        } catch (Exception e) {
-            Log.e("RMM", "Error reading statistics", e);
-        }
-
-        return statistics;
     }
 
 

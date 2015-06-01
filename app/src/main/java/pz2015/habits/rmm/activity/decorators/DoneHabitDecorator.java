@@ -25,7 +25,7 @@ public class DoneHabitDecorator implements DayViewDecorator {
     public boolean shouldDecorate(CalendarDay calendarDay) {
         for (HabitDefinition habDef : definedHabits) {
             if (compare(habDef, calendarDay) == true) {
-                if (habDef.getDone()) {
+                if (habDef.isDone()) {
                     return true;
                 }
             }

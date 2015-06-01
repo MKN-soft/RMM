@@ -59,7 +59,6 @@ public class PostManagement {
                     SharedPreferences prefs = context.getSharedPreferences("rmm", Context.MODE_PRIVATE);
                     SharedPreferences.Editor editor = prefs.edit();
                     editor.putString("salt", salt);
-                    editor.putBoolean("imBackAgain", true);
 
                     editor.commit();
 
@@ -137,6 +136,7 @@ public class PostManagement {
                 //TODO POMYSLEC NAD INNYMI PRZYPADKAMI
                 if (success == 1) {
                     // Synchro is ok
+                    String dupa = json.getString("dupa");
                     return Errors.SYNCHRO_OK;
                 } else {
                     // Now its really bad...

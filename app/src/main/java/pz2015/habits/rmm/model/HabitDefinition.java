@@ -1,15 +1,10 @@
 package pz2015.habits.rmm.model;
 
-import java.io.Serializable;
-
 /**
  * Class define day of habit, have data and variable, which points on habit done or to do.
  *
  */
-public class HabitDefinition implements Serializable {
-
-    private static final long serialVersionUID = 1L;
-
+public class HabitDefinition {
     private int year;
     private int monthOfYear; // 0 - 11
     private int dayOfMonth; // 1 - 31
@@ -33,9 +28,11 @@ public class HabitDefinition implements Serializable {
         return dayOfMonth;
     }
 
+    public boolean isDone() {
+        return done;
+    }
+
     public void setDone(boolean val) {
         done = val;
     }
-
-    public boolean getDone() { return done; }
 }

@@ -9,7 +9,6 @@ import android.app.ListFragment;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -18,9 +17,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -32,48 +29,31 @@ import pz2015.habits.rmm.R;
 import pz2015.habits.rmm.activity.HabitDetailActivity;
 import pz2015.habits.rmm.adapter.HabitAdapter;
 import pz2015.habits.rmm.model.Habit;
-import pz2015.habits.rmm.model.HabitToFile;
 import pz2015.habits.rmm.model.Statistic;
 
 public class HomeFragment extends ListFragment {
 
     // Wykomentowane na pozniej do serializacji
-    private static final String STATISTICS_CACHE_FILE = "statistics_cache.ser";
     private static final String HABITS_CACHE_FILE = "habit_cache.ser";
-    private static List<Habit> hab;
     private ListView habitListView;
     private ArrayAdapter habitItemArrayAdapter;
-    private List<Habit> habits;
+    private List<Habit> habits = new ArrayList();
     private View view;
 
-
     public HomeFragment() {
-    }
-
-    public HomeFragment(List<Habit> habits) {
-        this.habits = habits;
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-
-
         View rootView = inflater.inflate(R.layout.fragment_home, container, false);
-        this.view = rootView;
 
         //na razie randomowe habitsy
-        //habits = randomHabits();
+        habits = randomHabits();
 
-        if (this.habits == null) {
-            habits =  new ArrayList();
-        }
-        else {
-            hab = habits;
-        }
-
-
+        // Write habits to file
+        writeHabitsToFile(habits, rootView);
 
         //create array adapter for homeFragment with given random habits
         habitItemArrayAdapter = new HabitAdapter(rootView.getContext(), habits);
@@ -82,7 +62,6 @@ public class HomeFragment extends ListFragment {
         setListAdapter(habitItemArrayAdapter);
         LogicBase.setHabitItemArrayAdapter(habitItemArrayAdapter); // remember reference to list of items
         LogicBase.setHomeFragment(this);
-
 
         return rootView;
     }
@@ -94,7 +73,8 @@ public class HomeFragment extends ListFragment {
             for (int i = 0; i < habits.size(); i++)
                 statistics.add(new Statistic(habits.get(i)));
 
-            FileOutputStream fos = v.getContext().openFileOutput(STATISTICS_CACHE_FILE, Context.MODE_PRIVATE);
+
+            FileOutputStream fos = v.getContext().openFileOutput(HABITS_CACHE_FILE, Context.MODE_PRIVATE);
             ObjectOutputStream oos = new ObjectOutputStream(fos);
             oos.writeObject(statistics);
             oos.close();
@@ -105,7 +85,23 @@ public class HomeFragment extends ListFragment {
         }
     }
 
+    @Override
+    public void onListItemClick(ListView l, View v, int position, long id) {
+        //NIE RUSZAC - moze sie przydac :)
+//        Fragment mFragment = new HabitDetailFragment();
+//        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+//
+//        transaction.replace(R.id.frame_container, mFragment);
+//        transaction.addToBackStack(null);
+//
+//        transaction.commit();
 
+        LogicBase.setPosition(position); // remember selected item position
+        Intent intent = new Intent(getActivity(), HabitDetailActivity.class);
+        getActivity().startActivity(intent);
+    }
+
+    //image.draw(R.mipmap.ic_pages);
     private List<Habit> randomHabits() {
         List<Habit> habits = new ArrayList<Habit>();
         Drawable image = getResources().getDrawable(R.mipmap.ic_pages);
@@ -113,20 +109,11 @@ public class HomeFragment extends ListFragment {
         Date date = new Date();
         String date1 = new SimpleDateFormat("dd MMMM yyyy").format(date);
 
-        Habit habit1 = new Habit("Bieganie", "Jestem gruby i chcę biegać", "1",image, "Motywacja", date1, 0);
-        habits.add(habit1);
+        for (int i = 0; i < 5; i++) {//zle to na dole
+            Habit habit = new Habit("Tytuł nawyku #" + i, "Trochę tekstu dla body #" + i, "" + 1 + i, image, "Tu sa notatki pisz co chcesz by pomoc sobie dazyc do wyrobienia nawyku " + i, date1, 0);
+            habits.add(habit);
+        }
         return habits;
-    }
-
-    @Override
-    public void onListItemClick(ListView l, View v, int position, long id) {
-        LogicBase.setPosition(position); // remember selected item position
-        Intent intent = new Intent(getActivity(), HabitDetailActivity.class);
-        getActivity().startActivity(intent);
-    }
-
-    public static List<Habit> getHabit() {
-        return hab;
     }
 
 }

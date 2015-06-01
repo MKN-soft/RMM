@@ -1,6 +1,5 @@
 package pz2015.habits.rmm.model;
 
-import android.content.Context;
 import android.graphics.drawable.Drawable;
 
 import java.io.Serializable;
@@ -27,12 +26,8 @@ public class Habit implements Serializable {
     Drawable image;
     String notes;
     int series;
-    int resourceName;
 
-    Context context;
-
-    List<HabitDefinition> definedHabits = new ArrayList<>();
-
+    List<HabitDefinition> definedHabits = new ArrayList<HabitDefinition>();
 
     public Habit() {
     }
@@ -45,20 +40,6 @@ public class Habit implements Serializable {
         this.notes = notes;
         this.date = date;
         this.series = series;
-    }
-
-    public Habit(Context context, HabitToFile habitToFile) {
-        this.id = habitToFile.getId();
-        this.title = habitToFile.getTitle();
-        this.description = habitToFile.getDescription();
-        this.date = habitToFile.getDate();
-        this.frequency = habitToFile.getFrequency();
-        this.context = context;
-        this.image = habitToFile.getImageToDrawable(context);
-        this.notes = habitToFile.getNotes();
-        this.series = habitToFile.getSeries();
-        this.resourceName = habitToFile.getResourceName();
-        this.definedHabits = habitToFile.definedHabits;
     }
 
     public List<HabitDefinition> getHabitDefinitions() {
@@ -105,10 +86,8 @@ public class Habit implements Serializable {
         return this.image;
     }
 
-    public void setImage(Drawable image, int ResourceName) {
-
+    public void setImage(Drawable image) {
         this.image = image;
-        this.resourceName = ResourceName;
     }
 
     public String getNotes() {
@@ -127,7 +106,4 @@ public class Habit implements Serializable {
         this.series = series;
     }
 
-    public int getResourceName() {
-        return resourceName;
-    }
 }
